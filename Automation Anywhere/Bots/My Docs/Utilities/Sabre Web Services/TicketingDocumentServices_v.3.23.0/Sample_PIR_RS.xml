@@ -1,0 +1,121 @@
+<TT:GetTicketingDocumentRS Version="3.23.0" xmlns="http://services.sabre.com/STL/v01" xmlns:STL="http://services.sabre.com/STL/v01" xmlns:TT="http://www.sabre.com/ns/Ticketing/DC" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:str="http://sabre.com/ticketing/xslt/strings" xmlns:utils="java:com.sabre.ticketing.tktdoc.utils.XsltUtils" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<STL:STL_Header.RS messageID="TKTHLI701-18235-724326884-1550664701526-13216-tktdoc" timeStamp="2019-02-20T06:11:41">
+		<OrchestrationID seq="1">TKTHLI701-18235-724326884-1550664701526-13216-tktdoc</OrchestrationID>
+		<DiagnosticData xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">Found</DiagnosticData>
+		<STL:Results>
+			<Success xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">
+				<System>T2</System>
+				<Source>DocumentServices</Source>
+			</Success>
+		</STL:Results>
+	</STL:STL_Header.RS>
+	<TT:PassengerItineraryReceipt>
+		<TT:Agent duty="*" sine="HG6">
+			<ns2:TicketingProvider checkDigit="6" name="SABRE                   " number="153" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">1S</ns2:TicketingProvider>
+			<ns2:IataNumber xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">57201756</ns2:IataNumber>
+			<ns2:WorkLocation xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">4DQ1</ns2:WorkLocation>
+			<ns2:IsoCountryCode xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">NL</ns2:IsoCountryCode>
+			<TT:CompanyName>OPPENHEIM TRAVEL</TT:CompanyName>
+		</TT:Agent>
+		<TT:Ticket accountingCode="888" number="8882023350558" numberOfServiceCoupons="1" type="TKT">
+			<TT:Details>
+				<TT:Reservation>
+					<ns2:Sabre createDate="2019-02-20T00:00:00" provider="1S" purgeDate="2019-02-20T00:00:00" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">FIQZQR</ns2:Sabre>
+				</TT:Reservation>
+				<ns2:LocalIssueDateTime xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">2019-02-20T12:28:00</ns2:LocalIssueDateTime>
+				<TT:ValidatingProvider name="Sabre Airways">U0</TT:ValidatingProvider>
+				<TT:MandateInfo type="Disclaimer">
+					<TT:Text language="EN">NOTICE
+CARRIAGE AND OTHER SERVICES PROVIDED BY THE CARRIER ARE SUBJECT TO CONDITIONS OF CARRIAGE, WHICH ARE HEREBY INCORPORATED BY REFERENCE.  THESE CONDITIONS MAY BE OBTAINED FROM THE ISSUING CARRIER. PASSENGERS ON A JOURNEY INVOLVING AN ULTIMATE DESTINATION OR A STOP IN A COUNTRY OTHER THAN THE COUNTRY OF DEPARTURE ARE ADVISED THAT INTERNATIONAL TREATIES KNOWN AS THE MONTREAL CONVENTION, OR ITS PREDECESSOR, THE WARSAW CONVENTION, INCLUDING ITS AMENDMENTS /THE WARSAW CONVENTION SYSTEM/MAY APPLY TO THE ENTIRE JOURNEY, INCLUDING ANY PORTION THEREOF WITHIN A COUNTRY. FOR SUCH PASSENGERS, THE APPLICABLE TREATY, INCLUDING SPECIAL CONTRACTS OF CARRIAGE EMBODIED IN ANY APPLICABLE TARIFFS, GOVERNS AND MAY LIMIT THE LIABILITY OF THE CARRIER. CHECK WITH YOUR CARRIER FOR MORE INFORMATION.</TT:Text>
+				</TT:MandateInfo>
+				<TT:MandateInfo type="HazardousMaterials">
+					<TT:Text language="NL">HET BIJ ZICH HEBBEN VAN GEVAARLIJKE STIFFEN ZOALS AEROSOLEN, VUURWERK EN ONTVLAMBARE VLOEISTOFFEN, AAN BOORD VAN HET VLIEGTUIG IS VERBODEN. INDIEN DEZE VOORSCHRIFTEN NIET DUIDELIJK ZIJN, GELIEVE DAN VOOR MEER INFORMATIE CONTACT OP TE NEMEN MET DE AIRLINE.</TT:Text>
+				</TT:MandateInfo>
+				<TT:MandateInfo type="DataProtectionNotice">
+					<TT:Text language="EN">DATA PROTECTION NOTICE: YOUR PERSONAL DATA WILL BE PROCESSED IN ACCORDANCE WITH THE APPLICABLE CARRIER’S PRIVACY POLICY AND, IF YOUR BOOKING IS MADE VIA A RESERVATION SYSTEM PROVIDER (“GDS”), WITH ITS PRIVACY POLICY. THESE ARE AVAILABLE AT HTTP://WWW.IATATRAVELCENTER.COM/PRIVACY OR FROM THE CARRIER OR GDS DIRECTLY. YOU SHOULD READ THIS DOCUMENTATION, WHICH APPLIES TO YOUR BOOKING AND SPECIFIES, FOR EXAMPLE, HOW YOUR PERSONAL DATA IS COLLECTED, STORED, USED, DISCLOSED AND TRANSFERRED.</TT:Text>
+				</TT:MandateInfo>
+				<ns2:ItineraryType xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">I</ns2:ItineraryType>
+			</TT:Details>
+			<TT:Customer>
+				<TT:Traveler nameId="1" nameNumber="1.1">
+					<ns2:Name xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">JAIN/SUJAT MR</ns2:Name>
+					<ns2:FirstName xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">SUJAT MR</ns2:FirstName>
+					<ns2:LastName xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">JAIN</ns2:LastName>
+					<TT:PassengerType>ADT</TT:PassengerType>
+				</TT:Traveler>
+			</TT:Customer>
+			<TT:ServiceCoupon coupon="1">
+				<TT:MarketingProvider name="Sabre Airways">U0</TT:MarketingProvider>
+				<ns2:MarketingFlightNumber xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">1017</ns2:MarketingFlightNumber>
+				<TT:OperatingProvider name="Sabre Airways">U0</TT:OperatingProvider>
+				<ns2:OperatingFlightNumber xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">1017</ns2:OperatingFlightNumber>
+				<ns2:ClassOfService name="ECONOMY" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">Y</ns2:ClassOfService>
+				<Cabin name="ECONOMY" xmlns="http://www.sabre.com/ns/Ticketing/DC" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">Y</Cabin>
+				<ns2:FareBasis xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">YWKWNL</ns2:FareBasis>
+				<ns2:StartLocation name="AMSTERDAM" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">AMS</ns2:StartLocation>
+				<ns2:StartDateTime xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">2019-02-20T13:25:00</ns2:StartDateTime>
+				<ns2:EndLocation name="LONDON HEATHROW" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">LHR</ns2:EndLocation>
+				<ns2:EndDateTime xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">2019-02-20T13:50:00</ns2:EndDateTime>
+				<ns2:NotValidBeforeDate xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">2019-02-20</ns2:NotValidBeforeDate>
+				<ns2:NotValidAfterDate xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">2019-02-20</ns2:NotValidAfterDate>
+				<ns2:BookingStatus name="CONFIRMED" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">OK</ns2:BookingStatus>
+				<ns2:CurrentStatus xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">OK</ns2:CurrentStatus>
+				<ns2:Reservation xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">TXCAHS</ns2:Reservation>
+				<ns2:BagAllowance xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">NIL</ns2:BagAllowance>
+			</TT:ServiceCoupon>
+			<TT:Amounts>
+				<TT:New>
+					<TT:Base>
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">322.00</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">322.00</ns2:Text>
+					</TT:Base>
+					<TT:TotalTax>
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">34.31</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">34.31</ns2:Text>
+					</TT:TotalTax>
+					<TT:Total>
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">356.31</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">356.31</ns2:Text>
+					</TT:Total>
+				</TT:New>
+			</TT:Amounts>
+			<TT:Taxes>
+				<TT:New>
+					<TT:Tax code="YQ" exempt="false" sequence="1" status="N">
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">11.00</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">11.00</ns2:Text>
+					</TT:Tax>
+					<TT:Tax code="CJ" exempt="false" name="SECURITY SERVICE CHARGE" sequence="2" status="N">
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">10.88</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">10.88</ns2:Text>
+					</TT:Tax>
+					<TT:Tax code="RN" exempt="false" name="PASSENGER SERVICE CHARGE" sequence="3" status="N">
+						<ns2:Amount currencyCode="EUR" decimalPlace="2" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">12.43</ns2:Amount>
+						<ns2:Text xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">12.43</ns2:Text>
+					</TT:Tax>
+				</TT:New>
+			</TT:Taxes>
+			<TT:Remark>
+				<TT:Endorsements sequence="1">NONENDO/NONREF</TT:Endorsements>
+			</TT:Remark>
+			<TT:FareCalculation>
+				<TT:New>AMS KL LON368.01NUC368.01END ROE0.874972</TT:New>
+			</TT:FareCalculation>
+			<TT:AffiliatedAgent>
+				<ns2:Booking duty="*" sine="HG6" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">
+					<ns2:WorkLocation>4DQ1</ns2:WorkLocation>
+					<ns2:IataNumber>57201756</ns2:IataNumber>
+					<ns2:HomeLocation>4DQ1</ns2:HomeLocation>
+				</ns2:Booking>
+			</TT:AffiliatedAgent>
+			<TT:Payment sequence="1" type="CA">
+				<ns2:Total xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">
+					<ns2:Amount currencyCode="EUR" decimalPlace="2">356.31</ns2:Amount>
+					<ns2:ApplyCreditInd>false</ns2:ApplyCreditInd>
+				</ns2:Total>
+				<TT:Remarks>CA</TT:Remarks>
+				<ns2:Cash CashIndicator="true" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC"/>
+			</TT:Payment>
+		</TT:Ticket>
+	</TT:PassengerItineraryReceipt>
+</TT:GetTicketingDocumentRS>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entities>
+  <Entity Name="OTA_CancelLLS2.0.2RS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="OTA_CancelLLS2.0.2RQRS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="OTA_CancelLLS2.0.2RQ.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="OTA_CancelLLS2.0.2RQ.wsdl">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xmldsig-core-schema.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xml.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xlink.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="wsse.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="sws_common.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="STL_Header_v.1.2.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="STL_For_SabreProtocol_v.1.2.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLSRS_v2.0.0_Design.xml">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLSRQ_v2.x_QuickStartGuide.xlsx">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLS2.0.0RS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLS2.0.0RQRS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLS2.0.0RQ.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="QueueMoveLLS2.0.0RQ.wsdl">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="msg-header-2_0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="envelope.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+</Entities>

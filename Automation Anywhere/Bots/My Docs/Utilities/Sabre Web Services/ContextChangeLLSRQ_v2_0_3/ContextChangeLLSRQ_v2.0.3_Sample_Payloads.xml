@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamplePayloads>
+	<!--Pre-Conditions:-->
+	<!--In order to sucessfully change AAA both branch and AAA access must be open between the two locations.-->
+	<!--In order to sucessfully change duty code the active user account must be authorized to change to the specified duty code within its Employee Profile Record (EPR).-->
+	<!--In order to sucessfully change partition the active user account must be authorized to change partitions within its Employee Profile Record (EPR). -->
+	<!--In order to sucessfully oversign the proper credentials must be provided.-->
+	<SampleRequests>
+		<!--Change AAA.-->
+		<!--Equivalent Sabre host command: AAA7TZA-->
+		<ContextChangeRQ Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ChangeAAA PseudoCityCode="7TZA"/>
+		</ContextChangeRQ>
+		<!--Change duty code.-->
+		<!--Equivalent Sabre host command: SI9-->
+		<ContextChangeRQ Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ChangeDuty Code="9"/>
+		</ContextChangeRQ>
+		<!--Change partition.-->
+		<!--Equivalent Sabre host command: //XX-->
+		<ContextChangeRQ Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<ChangePartition Code="XX">
+				<Password>ABC1234</Password>
+			</ChangePartition>
+		</ContextChangeRQ>
+		<!--Step 1: Oversign an alternate account onto the current active session.  This request must only include .../OverSign/Organization, and .../OverSign/Username.-->
+		<!--Equivalent Sabre host command: SI7971-IPCC-->
+		<ContextChangeRQ Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<OverSign>
+				<Organization>7TZA</Organization>
+				<Username>7971</Username>
+			</OverSign>
+		</ContextChangeRQ>
+		<!--Step 2: Oversign an alternate account onto the current active session.  This request must include all child elements of .../OverSign.-->
+		<!--Equivalent Sabre host command: N/A-->
+		<ContextChangeRQ Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<OverSign>
+				<Area>A</Area>
+				<DutyCode>*</DutyCode>
+				<Organization>7TZA</Organization>
+				<Password>ABC123</Password>
+				<Username>7971</Username>
+			</OverSign>
+		</ContextChangeRQ>
+	</SampleRequests>
+	<SampleResponses>
+		<ContextChangeRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" Version="2.0.3" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+			<stl:ApplicationResults status="Complete">
+				<stl:Success timeStamp="2013-06-25T09:37:20-05:00"/>
+			</stl:ApplicationResults>
+			<SecurityToken Updated="false">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/CERTG!ICESMSLB\/CRT.LB!-3778314304979377275!161702!0</SecurityToken>
+			<Text>B4T0.7TZA*AW5.A</Text>
+			<Text>NO MESSAGE..26JUN</Text>
+		</ContextChangeRS>
+	</SampleResponses>
+</SamplePayloads>

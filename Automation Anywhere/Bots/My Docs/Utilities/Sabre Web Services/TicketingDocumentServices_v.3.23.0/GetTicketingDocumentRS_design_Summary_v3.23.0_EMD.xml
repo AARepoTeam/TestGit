@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Required. No repeats -->
+<!-- Response from "TicketingDocumentServicesRQ" service with a list of documents that matched search criteria specified 
+    in the request. -->
+<!-- Attribute Version is required. It specifies service version that you used. Response will always use the same version as the request. -->
+<GetTicketingDocumentRS Version="3.23.0" xmlns:STL="http://services.sabre.com/STL/v01" xmlns="http://www.sabre.com/ns/Ticketing/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sabre.com/ns/Ticketing/DC TicketingDocumentServices_v.3.23.0.xsd">
+	<!-- Required. No repeats -->
+	<!-- STL:STL_Header.RS is a standard Sabre XML response header. -->
+	<!-- Attribute messageID is optional, but the service will always return it. It contains a message (request/response) 
+        identifier. The message identifier is intended to aid troubleshooting. Please provide this identifier when requesting support from the development team. -->
+	<STL:STL_Header.RS messageID="tkthld600-docread-ecee-2">
+		<!-- Required. No repeats -->
+		<!-- Stores the result of operation. Possible values are Found or NotFound -->
+		<STL:DiagnosticData>Found</STL:DiagnosticData>
+		<!-- Required. No repeats. -->
+		<!-- Informs about the results of the operation you requested. -->
+		<STL:Results>
+			<!-- At least one element is required under STL:Results. It will be either STL:Error or STL:Success element. 
+                Together with STL:Success, STL:Warning may be used. -->
+			<!--The presence of STL:Success element in the response informs you that the request was processed successfully. -->
+			<STL:Success>
+				<!-- Optional. No repeats -->
+				<!-- STL:System identifies a system responsible for processing of a given request. Possible values: T2 or TKT-WS. -->
+				<STL:System>TKT-WS</STL:System>
+				<!-- Optional. No repeats -->
+				<!-- STL:Source identifies a subsystem responsible for processing of a given request. Possible values: DocRead, TktDoc. -->
+				<STL:Source>TktDoc</STL:Source>
+			</STL:Success>
+			<!-- The presence of STL:Error element in the response informs you that some kind of an error occurred when the 
+                request was being processed. -->
+			<!-- Attribute type informs you about the general classification of the type of the error. Possible 
+                values are: Application, BusinessLogic, Validation, Transport. Required. -->
+			<!-- Attribute status informs you about the status of your request. Possible values are: Complete, 
+                Incomplete, NotProcessed, Unknown. Required. -->
+			<!-- Optional. Repeat factor=99 -->
+			<!-- STL:Warning may be used together with STL:Success to indicate that your search did not match any documents. -->
+			<!-- Attribute type informs you about the general classification of the type of the warning. Possible values 
+                are: Application, BusinessLogic, Validation, Transport. Required. -->
+			<!-- Attribute status informs you about the status of your request. Possible values are: Complete, Incomplete, 
+                NotProcessed, Unknown. For status Incomplete or NotProcessed an STL:Error element will be used instead. Required. -->
+			<STL:Warning type="Application" status="Complete">
+				<!-- Required. No repeats -->
+				<!-- STL:System identifies a system responsible for processing of a given request. Possible values: T2 or TKT-WS. -->
+				<STL:System>T2</STL:System>
+				<!-- Optional. Repeat factor=99 -->
+				<!-- SLT:SystemSpecificResults will always be returned if STL:Warning is returned. It is a container for 
+                    warning messages. -->
+				<STL:SystemSpecificResults>
+					<!-- Optional. No repeats -->
+					<!-- STL:ErrorMessage contains the detailed warning message, including any technical details available.-->
+					<STL:ErrorMessage>Not found</STL:ErrorMessage>
+					<!-- Optional. No repeats -->
+					<!-- STL:ShortText contains a short version of the warning message. -->
+					<STL:ShortText>Not found</STL:ShortText>
+				</STL:SystemSpecificResults>
+			</STL:Warning>
+		</STL:Results>
+	</STL:STL_Header.RS>
+	<!-- In case of an error, or if your search did not return any results, STL:STL_Header.RS will be the only element in 
+        the response. -->
+	<!-- In case some data was found, one of the Summary, Details, or Abbreviated elements will be returned after the header. -->
+	<!-- Optional. Repeat factor=Unbounded -->
+	<!-- Summary element is used to return a summary information about the documents that were found. -->
+	<!-- Summary of a Ticket document-->
+	<!-- Custom Details will return specific parts of the document details requested-->
+	<!-- Document Number in Custom Details will return 0-10 documents depending on the number requested and the number found-->
+	<!-- Currently supported document types are: 
+             - Electronic Miscellaneous Documents - element ElectronicMiscDocument,
+             - Ticket (VCR or ETKT) - element Ticket.
+			 - Voucher - element Voucher -->
+	<!-- EXAMPLE of Ticket document detailed information -->
+	<!-- Optional. Repeat factor=4 -->
+	<!-- Details element is used to return a detailed information about the found document -->
+	<!-- Optional. Repeat factor=Unbounded -->
+	<Summary>
+		<!-- Required. No repeats -->
+		<!-- Document serial number. -->
+		<DocumentNumber>2452103916202</DocumentNumber>
+		<!-- Required. No repeats -->
+		<!-- Document issue date and time - in local time zone of the station that issued it. -->
+		<LocalIssueDateTime>2013-03-04T09:50:39.000-06:00</LocalIssueDateTime>
+		<!-- Required. No repeats -->
+		<!-- Document type. Possible values are TKT, VOU, or EMD. -->
+		<DocumentType>EMD</DocumentType>
+		<!-- Required. No repeats -->
+		<!-- Issuing location code (usually city code) of the station that issued the document. -->
+		<IssuingLocation>YFB</IssuingLocation>
+		<!-- Optional. No repeats -->
+		<!-- PNR locator of the PNR containing this document. Returned if the document is a part of a PNR. -->
+		<!-- Attribute provider informs about the code of the airline that owns the PNR. Optional. -->
+		<Reservation provider="SY">NPJMAW</Reservation>
+		<!-- Required. No repeats -->
+		<!-- First name of the customer. -->
+		<FirstName>THOMAS</FirstName>
+		<!-- Required. No repeats -->
+		<!-- Last name (family name or surname) of the customer. Required. -->
+		<LastName>JONES</LastName>
+		<!-- Optional. No repeats. -->
+		<!-- Status of the document found (of the whole document, not particular coupon). Possible values: V – VOIDED, E – EXCHANGED, R – REFUNDED. -->
+		<DocumentStatus>V</DocumentStatus>
+		<!-- Required. No repeats -->
+		<!-- Total amount of money paid for this document. -->
+		<!-- Attribute currencyCode is the code of the currency in which the amount is expressed. Optional. -->
+		<!-- Attribute decimalPlace indicates the number of decimal places required by the currency. Optional. -->
+		<TotalAmount currencyCode="CAD" decimalPlace="2">4249.08</TotalAmount>
+	</Summary>
+</GetTicketingDocumentRS>

@@ -1,0 +1,352 @@
+<!--  Required. No repeats  -->
+<!--
+ Request to "TicketingDocumentServicesRQ" service to get information about document or documents matching specified search 
+    criteria. 
+-->
+<!--
+ The 'version' attribute is required. It specifies service version (XML schema version) that you want to use. 
+-->
+<!--
+ The 'requestType' attribute is optional and unused. 
+-->
+<GetTicketingDocumentRQ xmlns:STL="http://services.sabre.com/STL/v01" xmlns="http://www.sabre.com/ns/Ticketing/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="3.23.0">
+ <!--  Required. No repeats  -->
+ <!--
+ STL:STL_Header.RQ is a standard Sabre XML payload header. It can be left empty. 
+-->
+<STL:STL_Header.RQ>
+ <!--  Optional. No repeats.  -->
+ <!--
+ OrchestrationID specifies unique request identifier that can be used to track the transaction as it passes through all Sabre systems. 
+-->
+ <!--
+ Attribute seq is optional. It specifies sequence number that will be incremented by each subsystem. 
+-->
+<STL:OrchestrationID seq="1">prod-0000013421341</STL:OrchestrationID>
+ <!--
+ Remaining elements under STL:STL_Header.RQ are optional and unsupported. 
+-->
+</STL:STL_Header.RQ>
+ <!--  Required. No repeats  -->
+ <!--
+ STL:POS element contains information about Point Of Sale. It is currently ignored and can be left empty. 
+-->
+<STL:POS>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:Company is used to specify IATA code of a carrier or agency that sent this request. 
+-->
+<STL:Company>SY</STL:Company>
+ <!--  Optional. No repeats  -->
+ <!--
+STL:Pseudo is used to specify the Sabre code of a carrier or agency that sent this request. 
+-->
+<STL:Pseudo>ABCD</STL:Pseudo>
+ <!--  Optional. No repeats  -->
+ <!--
+STL:MultiHost is used to specify airline partition in case of multi-host source locations. 
+-->
+<STL:MultiHost>SY</STL:MultiHost>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:Actual is used to specify information about actual agent location (city code). 
+-->
+ <!--
+ Attribute country specifies country code of the station. Optional. 
+-->
+ <!--
+ Attribute province is optional and specifies province code of the station. Optional. 
+-->
+ <!--
+ Attribute number specifies agent station number. Optional. 
+-->
+<STL:Actual country="CA" province="QC" number="12345678">KRK</STL:Actual>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:Home is used to specify information about home agent location (city code). 
+-->
+ <!--
+ Attribute country specifies country code of the station. Optional. 
+-->
+ <!--
+ Attribute province specifies province code of the station. Optional. 
+-->
+ <!--
+ Attribute number specifies agent station number. Optional. 
+-->
+<STL:Home country="CA" province="QC" number="12345678">WAW</STL:Home>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:Sine is used to specify the Agent Sine - a code identifying an agent. 
+-->
+<STL:Sine>F!#</STL:Sine>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:DutyCode is used to specify agent's duty code. Optional. 
+-->
+<STL:DutyCode>4</STL:DutyCode>
+ <!--  Optional. No repeats  -->
+ <!--
+ STL:Lniata is used to specify agent's LNIATA. Optional. 
+-->
+<STL:Lniata>ABC123</STL:Lniata>
+</STL:POS>
+ <!--  Required. No repeats  -->
+ <!--
+ SearchParameters tag contains the document search parameters 
+-->
+ <!--
+ The 'resultType' attribute is optional. 
+    It is a code that represents the format of response to be returned.  
+
+        When searching for documents by DocumentNumber the following response formats are available:
+        D - details (default)
+        A - abbreviated list (airline use only)
+        C - custom (airline use only)
+
+        When searching for documents by other criteria the following response formats are available:
+        S - summary list (default; airline use only)
+        A - abbreviated list (airline use only)
+
+        There is a limit on the number of elements returned for each result type. If there are more results available a warning will be provided in response header. The limits are:
+        Summary - 500 document,
+        Abbreviated - 99 documents,
+        Details - 4 documents. 
+        Custom - variable number of documents depending on selected details 
+-->
+ <!--
+ The 'fetchInterlineCouponStatus' attribute is optional. Indicates to fetch real status of the service coupon in case the service coupon is in status CTRL. For Ticketing Open Systems hosted airline the status will be checked in OS database, otherwise in airline CRS  In order to check the satus the flag needs to be set to "true" and additional details about the agent's point of sale (POS) e.g. Psuedo, Actual, Sine, need to be provided in the request. There is no guarantee the status will be fetched or will not change. 
+-->
+ <!--
+ The 'fetchBaggageDisclosureText' attribute is optional. Indicates to fetch baggage disclosure text according to US DOT and CTA regulations. There is no guarantee the dislocure text will be fetched. In case there was an error fetching that text a WARNING will be added to response. 
+-->
+ <!--
+ The 'warnOnDuplication' attribute is optional. It controls what should be returned in case there are multiple documents in the database with the same document number (which can happen in some rare cases). If not specified, the latest document will be returned.
+        LATEST - response includes the latest document in requested format without indicating there is any duplication. If many document numbers are requested all of them are returned in requested format with same "latest" selection rule.
+        ERROR - response in an error indicating duplicated document number, date of issue and passenger first and last name. If many document numbers are requested none is returned.
+        WARNING - response includes the latest document in requested format and a warning indicating duplicated document number, date of issue and passenger first and last name. If many document numbers are requested all of them are returned in requested format and separate warning indicates each duplication.
+        SUMMARY - response includes all duplicate documents in summary format. If many document numbers are requested all of them are returned in summary format.
+        ALL - response includes all duplicate documents in requested format. If many document numbers are requested all of them are returned in requested format. 
+-->
+ <!--
+ The 'fetchValidatingProviderCouponStatus' attribute is optional. Indicates to fetch status of the service coupon from Validating Carrier database in case document Validating Carrier is different than TicketingProvider and Validating Carrier is Sabre hosted. There is no guarantee the status will be fetched or will not change. 
+-->
+ <!--
+ The 'fetchHistorical' attribute is optional. Indicates to fetch historical VCR details. If this indicator is set to true, it will fetch historical VCR details and to search for active VCRs, user need not provide this indicator. 
+-->
+<SearchParameters fetchInterlineCouponStatus="true" fetchBaggageDisclosureText="true" resultType="D" warnOnDuplication="ERROR" fetchValidatingProviderCouponStatus="true" fetchHistorical="true">
+ <!--  Required. No repeats  -->
+ <!--
+ TicketingProvider is used to pass the code of a carrier that owns the document that you want to find. Note you 
+            may not be authorized to search for documents owned by other carriers. For airline tickets this is the ariline code. For 
+            subscriber tickets pass 1S (Sabre), 1B (Abacus) or 1F (Infini). 
+-->
+<TicketingProvider>SY</TicketingProvider>
+ <!--  Optional. No repeats.  -->
+ <!--
+ DocumentType specifies document type code of the document that you want to find. Current valid values are "EMD", "TKT", and "VOU". 
+-->
+ <!--
+ An electronic miscellaneous document (EMD) is an IATA-standard document issued as proof of payment for any ancillary items (seats, bags) purchased.
+        A ticket(TKT) is an accountable document issued as proof of payment for air travel and can be either paper or electronic.
+        A voucher (VOU) is either a paper or electonic IATA-standard coupon or document, either pre-paid or free, for certain goods or services.
+-->
+<DocumentType>EMD</DocumentType>
+ <!--
+ Remaining elements under SearchParameters are exclusive which means only one of them can be present within the 
+            'SearchParameters' element at once. One of these elements has to be included in the request: 
+-->
+ <!--
+ DocumentNumber, FrequentFlyerNumber, Reservation, LastName, or LocalIssueDate. 
+-->
+ <!--  Mutually exclusive choice. Repeat factor=see below  -->
+ <!--
+ Depends on return type. Details can return up to 4 documents. CustomDetails can return a variable number of documents depending on the selected details (4,5,7, or 10).
+    -    4 when RelatedDocuments and History requested
+    -    5 when RelatedDocuments not requested and History requested
+    -    7 when RelatedDocuments requested and History not requested
+    -    10 when neither RelatedDocuments nor History requested  
+-->
+ <!--
+ DocumentNumber is used to pass serial number of the document that you want to find. 
+-->
+ <!--
+The 'localIssueDate' attribute is optional and will error when TicketingProvider is 1S, 1B or 1F. See the description of the LocalIssueDate element below. 
+-->
+ <!--
+The 'workLocation' attribute is optional for airline and required when TicketingProvider is 1S, 1B or 1F. It is used to pass code of 
+            point of sale that issued the document (usually city code). 
+-->
+<DocumentNumber localIssueDate="2011-10-13" workLocation="DFW">1234567890123</DocumentNumber>
+ <!--
+ Remaining search parameters are supported only when TicketingProvider is other than 1S, 1B, 1F. 
+-->
+ <!--  Mutually exclusive choice. No repeats.  -->
+ <!--
+ FrequentFlyerNumber is used to search documents by the Frequent Flyer loyalty program number of the customer. 
+-->
+<FrequentFlyerNumber>01234567890123456789</FrequentFlyerNumber>
+ <!--
+ Mutually exclusive choice. Supported repeat factor = 10. 
+-->
+ <!--
+ Reservation is used to search for documents by PNR locator. 
+-->
+ <!--
+ Attribute pnrLocator is required and specifies Sabre PNR locator. 
+-->
+ <!--
+ Attribute pnrCreateDate is optional and specifies PNR create date. 
+-->
+ <!--
+ Attribute workLocation is optional and specifies work location of the agent that created the PNR. 
+-->
+<Reservation pnrLocator="ABCDEF" pnrCreateDate="2013-03-01" workLocation="DFW">
+ <!--
+ LocalIssueDate and LocalIssueDateRange are mutually exclusive and optional. No repeats. 
+-->
+ <!--
+ LocalIssueDate is used to narrow the search to only documents issued on specific date. 
+-->
+<LocalIssueDate>2013-03-01</LocalIssueDate>
+ <!--
+ LocalIssueDateRange is used to narrow the search to only documents issued during a specific date range. 
+-->
+ <!--
+ The 'afterDate' attribute is required if using this search option. The date entered is the date after which a document was issued. 
+-->
+ <!--
+ The 'beforeDate' attribute is required if using this search option. The date entered is the date before which a document was issued. 
+-->
+<LocalIssueDateRange afterDate="2013-02-27" beforeDate="2013-03-03"/>
+</Reservation>
+ <!--  Mutually exclusive choice. No repeats.  -->
+ <!--
+ LastName is used to search by the last name (family name or surname) of the customer that the document was issued for. 
+            You may specify the whole last name or the first few letters of the last name. 
+-->
+ <!--
+ The 'firstName' attribute is optional. It is used to pass the first name of the customer that the document was 
+            issued for. You may specify the whole first name or the first few letters of the first name. 
+-->
+ <!--
+The 'pnrLocator' attribute is optional and is used to pass the PNR Locator that contains the document you are looking for. 
+-->
+ <!--
+The 'workLocation' attribute is optional. It is used to pass code of point of sale that issued the document (usually city code). 
+-->
+<LastName lastName="JOHNSON" firstName="GREGORY" pnrLocator="IGGCOE" workLocation="CCPT">
+ <!--
+ LocalIssueDate and LocalIssueDateRange are mutually exclusive and optional. No repeats. 
+-->
+ <!--
+ LocalIssueDate is used to narrow the search to only documents issued on specific date. 
+-->
+<LocalIssueDate>2013-03-01</LocalIssueDate>
+ <!--
+ LocalIssueDateRange is used to narrow the search to only documents issued during a specific date range. 
+-->
+ <!--
+ The 'afterDate' attribute is required if using this search option. The date entered is the date after which a document was issued. 
+-->
+ <!--
+ The 'beforeDate' attribute is required if using this search option. The date entered is the date before which a document was issued. 
+-->
+<LocalIssueDateRange afterDate="2013-02-27" beforeDate="2013-03-03"/>
+</LastName>
+ <!--  Mutually exclusive choice. No repeats.  -->
+ <!--
+ LocalIssueDate is used to search by the document issue date (in the local time zone of the issuing station). 
+-->
+ <!--
+ The attribute 'workLocation' is required and specifies the location of the agent that issued the document. 
+-->
+<LocalIssueDate workLocation="DFW">2011-10-13</LocalIssueDate>
+ <!--
+Mandatory. Service coupon level details along with flight details
+-->
+ <!-- Optional. current service coupon status -->
+ <!--
+Optional. Indicator when set as True defines that the search is for OPEN segment.
+-->
+<ServiceCoupon status="OK" openSegmentInd="true">
+ <!-- Optional. The origin city of the issued document -->
+ <!--
+Optional. The destination city of the issued documen
+-->
+ <!--
+Optional, last name and first name of the passenger
+-->
+ <!--
+Optional. flight number and two digit code of the marketed carrier
+-->
+ <!-- Mandatory. flight departure date -->
+ <!-- Mandatory. Flight departure date range. -->
+<StartLocation>DFW</StartLocation>
+<EndLocation>MIA</EndLocation>
+<LastName lastName="SAMPLE" firstName="TEST"/>
+<MarketingFlight number="888" provider="U0"/>
+<FlightStartDate>2017-08-13</FlightStartDate>
+<FlightStartDateRange afterDate="2017-08-13" beforeDate="2017-08-13">String</FlightStartDateRange>
+</ServiceCoupon>
+ <!--
+Mandatory. FOID number type, number of the passenger. 
+-->
+ <!-- Optional. country where the FOID got issued. -->
+ <!-- Mandatory. flight departure date -->
+ <!-- Mandatory. Flight departure date range. -->
+<FormOfIdentification type="PP" number="878156UO" country="US">
+<FlightStartDate>2017-08-13</FlightStartDate>
+<FlightStartDateRange afterDate="2017-08-13" beforeDate="2017-08-13">String</FlightStartDateRange>
+</FormOfIdentification>
+ <!--
+Mandatory. The customer's loyalty number assigned by the airline 
+-->
+ <!-- Mandatory. flight departure date -->
+ <!-- Mandatory. Flight departure date range. -->
+<FrequentFlyer number="34586565" provider="U0">
+<FlightStartDate>2017-08-13</FlightStartDate>
+<FlightStartDateRange afterDate="2017-08-13" beforeDate="2017-08-13">String</FlightStartDateRange>
+</FrequentFlyer>
+ <!-- Mandatory. Credit card details of the customer -->
+ <!-- Optional. Two letter credit card code -->
+ <!-- Mandatory. Credit card number of the passenger -->
+ <!-- Optional. Last name of the traveler -->
+ <!-- Mandatory. flight departure date -->
+ <!-- Mandatory. Flight departure date range. -->
+<Card code="VI" number="4444444444444444">
+<LastName lastName="SAMPLE" firstName="TEST"/>
+<FlightStartDate>2017-08-13</FlightStartDate>
+<FlightStartDateRange afterDate="2017-08-13" beforeDate="2017-08-13">String</FlightStartDateRange>
+</Card>
+<CustomResponseDetails/>
+ <!--
+This optional search parameter will allow a search for all documents associated to a PNR by providing a date range.
+-->
+ <!--  Optional. Repeatable without upper limit.  -->
+ <!--
+ CustomResponseDetails element is applicable ONLY for Custom response format. If requested type of details is not recognized it will be ignored. Use this element to define which sections of the response should be populated if data is available. Specify each element separately.
+Available elements are:
+- Customer = traveler or purchaser information
+- Affinity = loyalty program information
+- FlownServiceCoupon = when Ticket coupon status changes to USED 
+- ServiceCoupon = Ticket or EMD coupon information
+- Miscellaneous= EMD
+- Amounts = amount paid
+- Taxes = taxes paid
+- Remark = PNR remarks
+- AffiliatedAgent = booking agent information (can be travel agent or airline)
+- FareCalculation = fare calculation line of the coupon
+- RelatedDocument= travel document numbers (e.g. ticket, EMD)
+- PrintCoupon= Status of flight coupon when printed (PRT)
+- Payment = payment information
+- History = Reservation history
+-->
+<CustomResponseDetails>Customer</CustomResponseDetails>
+<CustomResponseDetails>Taxes</CustomResponseDetails>
+		<!-- Optional element: AdditionalFilter(s) can be used to apply additional filtering to documents found using above search criteria
+		Available options:
+		EligibleForExchange = This option removes EMD documents from search response, that are NOT eligible for Exchange as per Document exchangeability rules -->
+		<AdditionalFilter>EligibleForExchange</AdditionalFilter>
+</SearchParameters>
+</GetTicketingDocumentRQ>

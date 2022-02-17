@@ -1,0 +1,2738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://services.sabre.com/css/ssi/rulescommontypes/v1.0.0" version="2.0.0" jaxb:version="2.0" xmlns="http://services.sabre.com/css/ssi/rulescommontypes/v1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:re="http://services.sabre.com/css/ssi/enumerations/v1.0.0" xmlns:rst="http://services.sabre.com/css/ssi/rulessimpletypes/v1.0.0" xmlns:stlp="http://services.sabre.com/STL_Payload/v02_00">
+  <xsd:import namespace="http://services.sabre.com/STL_Payload/v02_00" schemaLocation="STL2_Payload_v02_00.xsd"/>
+  <xsd:import namespace="http://services.sabre.com/css/ssi/enumerations/v1.0.0" schemaLocation="Enumerations_v2.0.0.xsd"/>
+  <xsd:import namespace="http://services.sabre.com/css/ssi/rulessimpletypes/v1.0.0" schemaLocation="RulesSimpleTypes_v2.0.0.xsd"/>
+  <xsd:complexType name="Rule">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Rule</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:group ref="RuleLevelChoice">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <jaxb:property name="Level"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:group>
+      <xsd:element name="Action" type="RuleAction">
+        <xsd:annotation>
+          <xsd:documentation>name - Action, type - RuleAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Condition" type="CompoundCondition" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Condition, type - CompoundCondition
+                    Either this element - Condition of CompoundCondition type or
+                        GroupedCondition of GroupedCondition type should be used.
+                        Both cannot be used.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GroupedCondition" type="GroupedCondition" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - GroupedCondition, type - GroupedCondition
+                        Either this element - GroupedCondition of GroupedCondition type or 
+                        Condition of CompoundCondition type should be used.
+                        Both cannot be used.
+                        This element can be used only if Rules Parenthesis is enabled on the GUI.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Strategy" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Strategy</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>text field to describe rule. Length limit 25. Alphanumeric</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z0-9 ]{0,25}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AppliedClasses" type="rst:FareClasses" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - AppliedClasses, type - FareClasses from Simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TypeModifier" type="re:RuleTypeModifier">
+        <xsd:annotation>
+          <xsd:documentation>name - TypeModifier, type - RuleTypeModifier from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Status" type="re:RuleStatus">
+        <xsd:annotation>
+          <xsd:documentation>name - Status, type - RuleStatus from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Priority" type="xsd:int" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>we need to fine more details..</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Weight" type="RuleWeight" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>we need to fine more details..</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AncillaryUsage" type="xsd:int" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>used for Ancillary rules ONLY.example -- Merch ManagerGUI .</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="VendorCode" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>used for Ancillary rules ONLY.example -- Merch ManagerGUI .</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RuleWithID">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Rule with ID string</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Rule">
+        <xsd:sequence>
+          <xsd:element name="RuleId" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>rule unique id- . Only required for UpdateRule Request</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RuleWithAll">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Rule with All user information and Rule ID</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Rule">
+        <xsd:sequence>
+          <xsd:element name="Invalid" type="xsd:boolean" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>if this is true, rule may not work</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CreationUser" type="rst:UserId">
+            <xsd:annotation>
+              <xsd:documentation>name - CreationUser, type - UserId from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ModificationUser" type="rst:UserId">
+            <xsd:annotation>
+              <xsd:documentation>name - ModificationUser, type - UserId from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RuleId" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Unique Rule Id</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="RuleAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RuleAction with choice of different types for Actions that can be
+                perfromed with a Rule</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="NoValueAction" type="NoValueAction">
+        <xsd:annotation>
+          <xsd:documentation>name - NoValueAction, type - NoValueAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="BidPriceAdjustAction" type="BidPriceAdjustAction">
+        <xsd:annotation>
+          <xsd:documentation>name - BidPriceAdjustAction, type - BidPriceAdjustAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AvailabilityAction" type="AvailabilityActionWithoutFareClass">
+        <xsd:annotation>
+          <xsd:documentation>name - AvailabilityAction, type - AvailabilityActionWithoutFareClass</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IncreaseAvailabilityAction" type="IncreaseAvailabilityAction">
+        <xsd:annotation>
+          <xsd:documentation>name - IncreaseAvailabilityAction, type - IncreaseAvailabilityAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MaxMinDecreaseAvailabilityAction" type="MinMaxAvailabilityAction">
+        <xsd:annotation>
+          <xsd:documentation>name - MaxMinDecreaseAvailabilityAction, type - MinMaxAvailabilityAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SellActionCategory" type="SellActionCategory">
+        <xsd:annotation>
+          <xsd:documentation>name - SellActionCategory, type - SellActionCategory</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClassAction" type="FareClassAction">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClassAction, type - FareClassAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClassActionWithValue" type="FareClassActionWithValue">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClassActionWithValue, type - FareClassActionWithValue</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MarketFareClassAction" type="MarketFareClassAction">
+        <xsd:annotation>
+          <xsd:documentation>name - MarketFareClassAction, type - MarketFareClassAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MarketFareClassWithoutParameterAction" type="MarketFareClassWithoutParameterAction">
+        <xsd:annotation>
+          <xsd:documentation>name - MarketFareClassWithoutParameterAction, type -
+                        MarketFareClassWithoutParameterAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CodeShareAction" type="CodeShareAction">
+        <xsd:annotation>
+          <xsd:documentation>name - CodeShareAction, type - CodeShareAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SegmentLimitsAction" type="SegmentLimitsAction">
+        <xsd:annotation>
+          <xsd:documentation>name - SegmentLimitsAction, type - SegmentLimitsAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WaitListAction" type="WaitlistAction">
+        <xsd:annotation>
+          <xsd:documentation>name - WaitlistAction, type - WaitlistAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="WaitlistWithNoValueAction" type="WaitlistWithNoValueAction">
+        <xsd:annotation>
+          <xsd:documentation>name - WaitlistWithNoValueAction, type - WaitlistWithNoValueAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ByPassAction" type="ByPassAction">
+        <xsd:annotation>
+          <xsd:documentation>name - ByPassAction, type - ByPassAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CopyFaresFromPOSAction" type="CopyFaresFromPOSAction">
+        <xsd:annotation>
+          <xsd:documentation>name - CopyFaresFromPOSAction, type - CopyFaresFromPOSAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CopyFaresFromFareClassesAction" type="CopyFaresFromFareClassesAction">
+        <xsd:annotation>
+          <xsd:documentation>name - CopyFaresFromFareClassesAction, type - CopyFaresFromFareClassesAction</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="NoValueAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - NoValueAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:UseReceivedBidPrice, DoNotUseReceivedBidPrice, BidPriceSend,
+                        BidPriceDontSend, FallbackToAvs, AllowPartialCancel, SetToFinancial, SetToPhysical,
+                        RemoveJourneyUser, SkipMarriage, SubstitutePocForPosCity, OverrideMinTripAvailability,
+                        CascadeToCache, RemoveCascade, Cascade, BlockPartialCancel</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="UseReceivedBidPrice|DoNotUseReceivedBidPrice|BidPriceSend|BidPriceDontSend|FallbackToAvs|AllowPartialCancel|SetToFinancial|SetToPhysical|RemoveJourneyUser|SkipMarriage|SubstitutePocForPosCity|OverrideMinTripAvailability|CascadeToCache|RemoveCascade|Cascade|BlockPartialCancel"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BidPriceAdjustAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - BidPriceAdjustAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:BidPriceExchangeAdjust, LegBidPriceAdjust, ODBidPriceAdjust</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="BidPriceExchangeAdjust|LegBidPriceAdjust|ODBidPriceAdjust"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="BidPriceExchangeParameters" type="BidPriceAdjustmentParameter" minOccurs="1" maxOccurs="3">
+        <xsd:annotation>
+          <xsd:documentation>name - BidPriceExchangeParameters, type - BidPriceAdjustmentParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AvailabilityActionWithoutFareClass">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AvailabilityActionWithoutFareClass</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:BlockAvailabilities, UnBlockAvailabilities, Uncapp,
+                        BypassRtdpAvailabilities</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="BlockAvailabilities|UnBlockAvailabilities|Uncapp|BypassRtdpAvailabilities"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Availability"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SellActionCategory">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - SellActionCategory</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:BlockSells, UnBlockSells and BypassRtdpSells</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="BlockSells|UnBlockSells|BypassRtdpSells"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Sell"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FareClassAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FareClassAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Inhibit, Uninhibit, SuppressToZero, Unsuppress,
+                        AddClassToFareClassSequence, RemoveClassToFareClassSequence, SetPolicyClass,
+                        SetPhysicalControls, UnsetPhysicalControls</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Inhibit|Uninhibit|SuppressToZero|Unsuppress|AddClassToFareClassSequence|RemoveClassToFareClassSequence|SetPolicyClass|SetPhysicalControls|UnsetPhysicalControls|ExternalInhibit|ExternalUninhibit"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Modifier" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>To Be used with Inhibit, Uninhibit Action Name.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Sell|Clearance|Waitlist|Availability"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FareClassActionWithValue">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FareClassActionWithValue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:SetBaseClassAuth</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SetBaseClassAuth"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="rst:MaxThreeDigitInteger" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Value, type - MaxThreeDigitInteger from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Percentage"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketFareClassAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - MarketFareClassAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:IncreaseFareValue, DecreaseFareValue</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="IncreaseFareValue|DecreaseFareValue"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Value, type - Integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Percentage|Absolute"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Parameters" type="TypedIntegerRuleActionParameter" minOccurs="0" maxOccurs="2">
+        <xsd:annotation>
+          <xsd:documentation>name - Parameters, type - TypedIntegerRuleActionParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="FareValue"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ByPassAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ByPassAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Bypass</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Bypass"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Parameters" type="ValueRuleActionParameter" minOccurs="1" maxOccurs="4">
+        <xsd:annotation>
+          <xsd:documentation>ValueRuleActionParameter has element ChildActionParameterValue which consists of
+                        ChildAction.
+                        The name to be used for ChildAction: SkipRules, Overbook, ByPassRtdp, Override.
+                        ValueType to be used: Absolute for action SkipRules, Overbook, BypassRtdp and None for action
+                        Override.
+                        Modifier to be used:None</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MarketFareClassWithoutParameterAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - MarketFareClassWithoutParameterAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:SetMarketFare</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SetMarketFare"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="rst:SetMarketFareValue" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Value, type - SetMarketFareValue from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Absolute"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="FareValue"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WaitlistAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - WaitListAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Limit, SetWaitlistAuthorization</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Limit|SetWaitlistAuthorization"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Value, type - integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType" type="re:RuleActionValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType, type - RuleActionValueType from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Waitlist"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WaitlistWithNoValueAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - WaitlistWithNoValueAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:RegardlessOfAvailability</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="RegardlessOfAvailability"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Waitlist"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CopyFaresFromPOSAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - CopyFaresFromPOSAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:CopyFaresFromPOS</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CopyFaresFromPOS"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Value" type="xsd:string" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Value isn't represent this action for this moment. All values are stored in
+                        action parameters</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Parameters" type="PosPercentageActionParameterValue" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Parameters, type - PosPercentageActionParameterValue</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CopyFaresFromFareClassesAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - CopyFaresFromFareClassesAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:CopyFaresFromFareClasses</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CopyFaresFromFareClasses"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Parameters" type="CopyFaresFromFareClassesModelParameter" minOccurs="1" maxOccurs="25">
+        <xsd:annotation>
+          <xsd:documentation>name - Parameters, type - CopyFaresFromFareClassesModelParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IncreaseAvailabilityAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - IncreaseAvailabilityAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Increase, MaxIncrease</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Increase|MaxIncrease"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Value" type="rst:MaxThreeDigitInteger1To999" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>actual change in number. May be % or inccrease or decrease</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Absolute|Percentage"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Parameters" type="IncreaseAvailabilityParameter" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Parameters, type - IncreaseAvailabilityParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Availability"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="MinMaxAvailabilityAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - MinMaxAvailabilityAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Decrease, Max, Min</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Decrease|Max|Min"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Value" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>actual change in number. May be % or increase or decrease</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Absolute|Percentage"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Availability"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SegmentLimitsAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - SegmentLimitsAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:Override</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Override"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SegmentLimits|Min|Max|LoadFactor|LoadFactorMin|LoadFactorMax"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CodeShareAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - CodeShareAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:CapQuotaSalesLimit</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CapQuotaSalesLimit"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Value" type="rst:MaxThreeDigitInteger1To999" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>actual change in number. May be % or increase or decrease</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Absolute"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:group name="RuleLevelChoice">
+    <xsd:annotation>
+      <xsd:documentation>Group - RuleLevelChoice</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="AgentRuleLevel" type="AgentRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - AgentRuleLevel, type - AgentRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="HostRuleLevel" type="HostRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - HostRuleLevel, type - HostRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PointOfSaleRuleLevel" type="PointOfSaleRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - PointOfSaleRuleLevel, type - PointOfSaleRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LocationRuleLevel" type="LocationRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationRuleLevel, type - LocationRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MarketRuleLevel" type="MarketRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - MarketRuleLevel, type - MarketRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AirlineGdsRuleLevel" type="AirlineGdsRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineGdsRuleLevel, type - AirlineGdsRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PseudoCityCodeRuleLevel" type="PseudoCityCodeRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - PseudoCityCodeRuleLevel, type - PseudoCityCodeRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightNumberRuleLevel" type="FlightNumberRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightNumberRuleLevel, type - FlightNumberRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OperatingPartnerRuleLevel" type="OperatingPartnerRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - OperatingPartnerRuleLevel, type - OperatingPartnerRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MarketingPartnerRuleLevel" type="MarketingPartnerRuleLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - MarketingPartnerRuleLevel, type - MarketingPartnerRuleLevel</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:group>
+  <xsd:complexType name="RuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LevelName" type="re:RuleLevelType">
+        <xsd:annotation>
+          <xsd:documentation>name - LevelName, type - RuleLevelType from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AgentRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AgentRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="Agent">
+            <xsd:annotation>
+              <xsd:documentation>name - Agent</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:annotation>
+                <xsd:documentation>6 or 8 char. alphanumeric. Special chars allowed / . *</xsd:documentation>
+              </xsd:annotation>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[a-zA-Z0-9/.*]{6,8}"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AirlineGdsRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AirlineGdsRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="AirlineGds" type="rst:AirlineCarrier">
+            <xsd:annotation>
+              <xsd:documentation>name - AirlineGds, type - AirlineCarrier from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AncillaryRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AncillaryRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="AncillarySubcode" type="rst:AncillarySubcode">
+            <xsd:annotation>
+              <xsd:documentation>name - AncillarySubcode, type - AncillarySubcode from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="FlightNumberRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FlightNumberRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="FlightNumber" type="rst:FlightNumberIncludingGroups">
+            <xsd:annotation>
+              <xsd:documentation>flight or flight groups</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LocationGroup">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - LocationGroup</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="Group">
+        <xsd:sequence>
+          <xsd:element name="Level" type="re:LocationLevel" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - Level, type - LocationLevel from enumeration types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Group">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Group</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="GroupId" type="xsd:string" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - GroupId, type - String</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Description" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Description, type - String</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ChildGroup" type="Group" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - ChildGroup, type - Group</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="ChildGroups"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="HostRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - HostRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="LocationRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - LocationRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="Location" type="Location">
+            <xsd:annotation>
+              <xsd:documentation>name - Location, type - Location</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MarketRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - MarketRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="OriginLocation" type="Location">
+            <xsd:annotation>
+              <xsd:documentation>name - OriginLocation, type - Location</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationLocation" type="Location">
+            <xsd:annotation>
+              <xsd:documentation>name - DestinationLocation, type - Location</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RoundTripRule" type="xsd:boolean" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - RoundTripRule, type - boolean</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MarketingPartnerRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - MarketingPartnerRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="MarketingPartner" type="rst:AirlineCarrier">
+            <xsd:annotation>
+              <xsd:documentation>name - MarketingPartner, type - AirlineCarrier from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OperatingPartnerRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - OperatingPartnerRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="OperatingPartner" type="rst:AirlineCarrier">
+            <xsd:annotation>
+              <xsd:documentation>name - OperatingPartner, type - AirlineCarrier from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PointOfSaleRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - PointOfSaleRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="PointOfSale">
+            <xsd:annotation>
+              <xsd:documentation>name - PointOfSale</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:annotation>
+                <xsd:documentation>atleast 2. Max 8. Alphanumeric UpperCase.</xsd:documentation>
+              </xsd:annotation>
+              <xsd:restriction base="xsd:string">
+                <xsd:pattern value="[A-Z0-9]{2,8}"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PriceRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - PriceRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PseudoCityCodeRuleLevel">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - PseudoCityCodeRuleLevel</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleLevel">
+        <xsd:sequence>
+          <xsd:element name="PseudoCityCode" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>name - PseudoCityCode, type - string</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="RuleActionParameter" type="RuleActionParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - RuleActionParameter, type - RuleActionParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="AncillaryRuleParameter" type="AncillaryRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - AncillaryRuleParameter, type - AncillaryRuleParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="AuthorizationHierarchyParameter" type="AuthorizationHierarchyParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - AuthorizationHierarchyParameter, type - AuthorizationHierarchyParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="AuthorizationRuleParameter" type="AuthorizationRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - AuthorizationRuleParameter, type - AuthorizationRuleParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="BidPriceAdjustmentParameter" type="BidPriceAdjustmentParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - BidPriceAdjustmentParameter, type - BidPriceAdjustmentParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="IncreaseAvailabilityParameter" type="IncreaseAvailabilityParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - IncreaseAvailabilityParameter, type - IncreaseAvailabilityParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="CopyFaresFromFareClassesModelParameter" type="CopyFaresFromFareClassesModelParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - CopyFaresFromFareClassesModelParameter, type -
+                CopyFaresFromFareClassesModelParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="TypedIntegerRuleActionParameter" type="TypedIntegerRuleActionParameter">
+    <xsd:annotation>
+      <xsd:documentation>name - TypedIntegerRuleActionParameter, type - TypedIntegerRuleActionParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RuleActionParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RuleActionParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType name="AncillaryRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AncillaryRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="AncillarySubcode" type="rst:AncillarySubcode" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - AncillarySubcode, type - AncillarySubcode from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CabinId" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - CabinId, type - integer</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Value" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>actual change in number. May be % or increase or decrease</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ValueType" type="re:RuleActionValueType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - ValueType, type - RuleActionValueType from enumeration type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AuthorizationHierarchyParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AuthorizationHierarchyParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="Level" type="re:HierarchyLevel">
+            <xsd:annotation>
+              <xsd:documentation>name - Level, type - HierarchyLevel from enumeration type</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="FareClasses" type="rst:FareClasses" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AuthorizationRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - AuthorizationRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="Value" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>actual change in number. May be % or inccrease or decrease</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ValueType" type="re:RuleActionValueType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - ValueType, type - RuleActionValueType from enumeration types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="BidPriceAdjustmentParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - BidPriceAdjustmentParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="FareClasses" type="rst:FareClasses">
+            <xsd:annotation>
+              <xsd:documentation>name - FareClasses, type - FareClasses from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BidPriceMinValue" type="rst:MaxEightDigitInteger" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>min 0 to 99999999. This value in cents.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BidPriceMaxValue" type="rst:MaxEightDigitInteger" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>min 0 to 99999999. This value in cents.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AvailabilityThreshold" type="rst:MaxThreeDigitInteger" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>0-999 only</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdjustmentValue" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>0-999 only</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AdjustmentType" type="re:AdjustmentValueType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - AdjustmentType, type - AdjustmentValueType</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="IncreaseAvailabilityParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - IncreaseAvailabilityParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="SegmentLimitType" type="re:IncreaseAvailabilitySlsType" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - SegmentLimitType, type - IncreaseAvailabilitySlsType from
+                                enumeration types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="CapByNumberInParty" type="rst:MaxThreeDigitInteger1To999" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - CapByNumberInParty, type - MaxThreeDigitInteger1To999 from simple
+                                types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="PosPercentageActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - PosPercentageActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="PercentageOfOriginalValue" type="xsd:int" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - PercentageOfOriginalValue, type - integer</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Pos" type="xsd:string" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - Pos, type - string</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CopyFaresFromFareClassesModelParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - CopyFaresFromFareClassesModelParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="From" type="rst:FareClass" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - From, type - FareClass from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Value" type="rst:MaxThreeDigitInteger" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - Value, type - MaxThreeDigitInteger from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="To" type="rst:FareClass" minOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>name - To, type - FareClass from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TypedIntegerRuleActionParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - TypedIntegerRuleActionParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ValueRuleActionParameter">
+        <xsd:sequence>
+          <xsd:element name="Type" type="re:RuleActionParameterType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - Type, type - RuleActionParameterType from enumeration types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ValueRuleActionParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ValueRuleActionParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="RuleActionParameter">
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:annotation>
+              <xsd:documentation>childActionParameterValue Element is used for ByPassAction and Similarly
+                                typedIntegerActionParameterValue
+                                is used for MarketFareClassAction.Both the elements should not be used together.</xsd:documentation>
+            </xsd:annotation>
+            <xsd:element name="ChildActionParameterValue" type="ChildActionParameterValue" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>name - ChildActionParameterValue, type - ChildActionParameterValue</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="TypedIntegerActionParameterValue" type="TypedIntegerActionParameterValue" minOccurs="0">
+              <xsd:annotation>
+                <xsd:documentation>name - TypedIntegerActionParameterValue, type -
+                                    TypedIntegerActionParameterValue</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ActionParameterValue" type="ActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>name - ActionParameterValue, type - ActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ChildActionParameterValue" type="ChildActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>name - ChildActionParameterValue, type - ChildActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="TypedIntegerActionParameterValue" type="TypedIntegerActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>name - TypedIntegerActionParameterValue, type - TypedIntegerActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType name="ChildActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ChildActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ActionParameterValue">
+        <xsd:sequence>
+          <xsd:element name="ChildAction" type="ChildAction">
+            <xsd:annotation>
+              <xsd:documentation>name - ChildAction, type - ChildAction</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ChildAction">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ChildAction</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:SkipRules, Overbook, BypassRtdpAvailabilities, Override</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SkipRules|Overbook|Override|BypassRtdpAvailabilities"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ValueType">
+        <xsd:annotation>
+          <xsd:documentation>name - ValueType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Absolute|None"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Modifier">
+        <xsd:annotation>
+          <xsd:documentation>name - Modifier</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="None"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TypedIntegerActionParameterValue">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - TypedIntegerActionParameterValue</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="ActionParameterValue">
+        <xsd:sequence>
+          <xsd:element name="Value" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>actual change in number. May be % or increase or decrease</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Type" type="re:IntegerActionParameterValueType" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>name - Type, type - IntegerActionParameterValueType from enumeration
+                                types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="CompoundCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - CompoundCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ConditionList" type="Condition" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - ConditionList, type - Condition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="GroupedCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - GroupedCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Operator" type="re:ConditionOperator">
+        <xsd:annotation>
+          <xsd:documentation>name - Operator, type - ConditionOperator from enumeration
+                        if Operator is NONE - only 1 Basic Condition is allowed
+                        if Operator is NOT - only Grouped Condition is allowed with AND and OR</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Condition" type="NestedCondition" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - Condition, type - NestedCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NestedCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - NestedCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="BasicCondition" type="RuleCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - BasicCondition, type - RuleCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="GroupedCondition" type="GroupedCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - GroupedCondition, type - GroupedCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="Condition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Operator" type="re:ConditionOperator">
+        <xsd:annotation>
+          <xsd:documentation>name - Operator, type - ConditionOperator from enumeration</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Argument" type="NegatableBasicCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - Argument, type - NegatableBasicCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NegatableBasicCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - NegatableBasicCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Negated" type="xsd:boolean">
+        <xsd:annotation>
+          <xsd:documentation>true = condition negated.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Condition" type="RuleCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - Condition, type - RuleCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RuleCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RuleCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="FlightRuleCondition" type="FlightRuleCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightRuleCondition, type - FlightRuleCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DateRangeCondition" type="DateRangeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - DateRangeCondition, type - DateRangeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OriginTypeCondition" type="OriginTypeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - OriginTypeCondition, type - OriginTypeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DaysOfWeekCondition" type="DaysOfWeekCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - DaysOfWeekCondition, type - DaysOfWeekCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="NoValueCondition" type="NoValueCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - NoValueCondition, type - NoValueCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TimeRangeCondition" type="TimeRangeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - TimeRangeCondition, type - TimeRangeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IntegerCondition" type="IntegerCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - IntegerCondition, type - IntegerCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightServiceTypeCondition" type="FlightServiceTypeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightServiceTypeCondition, type - FlightServiceTypeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ConnectingTimeCondition" type="ConnectingTimeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - ConnectingTimeCondition, type - ConnectingTimeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CloseDateTimeCondition" type="CloseTimeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - CloseDateTimeCondition, type - CloseTimeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AirlineCarrierCondition" type="AirlineCarrierCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineCarrierCondition, type - AirlineCarrierCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AirlineCarrierListCondition" type="AirlineCarrierListCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineCarrierListCondition, type - AirlineCarrierListCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DutyCodeCondition" type="DutyCodeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - DutyCodeCondition, type - DutyCodeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StringListCondition" type="StringListCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - StringListCondition, type - StringListCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="StringParameterCondition" type="StringParameterCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - StringParameterCondition, type - StringParameterCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ClassBookingCondition" type="ClassBookingCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - ClassBookingCondition, type - ClassBookingCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LoadFactorCondition" type="LoadFactorCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - LoadFactorCondition, type - LoadFactorCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FrequentFlyerCondition" type="FrequentFlyerCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - FrequentFlyerCondition, type - FrequentFlyerCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SegmentCondition" type="SegmentCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - SegmentCondition, type - SegmentCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SegmentLimitSalesCondition" type="SegmentLimitSalesCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - SegmentLimitSalesCondition, type - SegmentLimitSalesCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightRangeCondition" type="FlightRangeCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightRangeCondition, type - FlightRangeCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LocationAirportToWorldCondition" type="LocationAirportToWorldCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationAirportToWorldCondition, type - LocationAirportToWorldCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RoutingCondition" type="RoutingCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - RoutingCondition, type - RoutingCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FareClassCountCondition" type="FareClassCountCondition">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClassCountCondition, type - FareClassCountCondition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="LocationAirportToWorldCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Filtering based on location. can be origin or destination or something else.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Board|Off|Origin|Destination|OnlineOrigin|OnlineDestination|POC"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LocationListRuleParameter" type="LocationListRuleParameter">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationListRuleParameter, type - LocationListRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FlightRuleCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Filtering based on Flight</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Flight"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FlightModifierRuleParameter" type="re:FlightModifierRuleParameterValue">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightModifierRuleParameter, type - FlightModifierRuleParameterValue from
+                        enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightNumber" type="rst:FlightNumberIncludingGroups" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightNumber, type - FlightNumberIncludingGroups from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DateRangeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Travel Date, Selling Date, Blackout Date, Inbound Date and Outbound Date</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="TravelDate|SellingDate|BlackoutDate|InboundDateCondition|OutboundDateCondition"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DateRange" type="DateRangeRuleParameter" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - DateRange, type - DateRangeRuleParameter</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="DateRanges"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OriginTypeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Origin Type Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="OriginType"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OriginTypeRuleParameter" type="re:OriginTypeRuleParameterValue">
+        <xsd:annotation>
+          <xsd:documentation>name - OriginTypeRuleParameter, type - OriginTypeRuleParameterValue from
+                        enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DaysOfWeekCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Selling Day of the Week, Travel Day of the Week</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SellingDOW|TravelDOW"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DaysOfWeek" type="re:DayOfWeek" minOccurs="1" maxOccurs="6">
+        <xsd:annotation>
+          <xsd:documentation>name - DaysOfWeek, type - DayOfWeek from enumeration types</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="DaysOfWeek"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NoValueCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Condition which does not require a parameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="BlockspaceCodeshare|LoyaltyIndicator|PrimaryScreen|FourSegmentConnectionWithCodeshare"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TimeRangeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Names to Be used:ArrivalTime, DepartureTime, SellingTime</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="ArrivalTime|DepartureTime|SellingTime"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="TimeRange" type="TimeRange" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - TimeRange, type - TimeRange</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="TimeRanges"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IntegerCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for Close Restriction, Hours Outside Departure,
+                Hours to Departure, Maximum Stay, Minimum Stay, Minutes to departure,
+                Online Connection, Online Connection OA and Open Restriction Conditions</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CloseRestriction|HoursOutsideDeparture|HoursToDeparture|MaximumStay|MinimumStay|MinutesToDeparture|OnlineConnection|OnlineConnectionOA|OpenRestriction"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IntegerParameter" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - IntegerParameter, type - Integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConnectingTimeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Names to Be used:ConnectingTime</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="ConnectingTime"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ConnectingTimeRuleParameter" type="ConnectingTimeRuleParameter">
+        <xsd:annotation>
+          <xsd:documentation>name - ConnectingTimeRuleParameter, type - ConnectingTimeRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FlightServiceTypeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for Flight Service Type Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="FlightServiceType"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FlightServiceTypeRuleParameter" type="FlightServiceTypeRuleParameter" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightServiceTypeRuleParameter, type - FlightServiceTypeRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CloseTimeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Names to Be used:CloseDateAndTime</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CloseDateAndTime"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DateTimeParameter" type="rst:DateTime.SSI">
+        <xsd:annotation>
+          <xsd:documentation>name - DateTimeParameter, type - DateTime.SSI from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AirlineCarrierCondition">
+    <xsd:annotation>
+      <xsd:documentation>Can support a single airline carrier as parameter. Should be used for Codeshare Operating
+                partner condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="CodeshareOperatingPartner"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AirlineCarrier" type="rst:AirlineCarrier" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineCarrier, type - AirlineCarrier from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AirlineCarrierListCondition">
+    <xsd:annotation>
+      <xsd:documentation>Can support a list of airline carriers as parameter. Should be used for Marketing Carrier
+                or originating airline or gds condition.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="MarketingCarrier|OriginatingAirlineOrGDS"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AirlineCarrier" type="rst:AirlineCarrier" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineCarrier, type - AirlineCarrier from simple types</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="AirlineCarriers"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ClassBookingCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Class Availability, Class Booking and Expected Class Booking</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="ClassBookings|ClassAvailability|ExpectedClassBooking"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClassRuleParameter" type="rst:FareClass" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClassRuleParameter, type - FareClass from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OperatorRuleParameter" type="rst:ComparisonOperator" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - OperatorRuleParameter, type - ComparisonOperator from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IntegerParameter" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>integerParameter is defined as int with no constraints because range value is not
+                        the same for each of condition. The validation is defined in code of RuleValidator class.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FareClassCountCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Class Wait-List, Large-Party, CabinCapacity, CabinCapacityAdjustment and
+                ClassAuthorization Counts</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="WaitListCount|LargePartyCount|ClassAuthorization|CabinCapacity|CabinCapacityAdjustment"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MultipleFareClassRuleParameter" type="rst:MultipleFareClass" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - MultipleFareClassRuleParameter, type - MultipleFareClass from simple
+                        types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OperatorRuleParameter" type="rst:ComparisonOperator" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - OperatorRuleParameter, type - ComparisonOperator from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IntegerParameter" type="rst:MaxThreeDigitInteger" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - IntegerParameter, type - MaxThreeDigitInteger from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoadFactorCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for LoadFactor, ReducedLoadFactor and ExpectedLoadFactor</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="LoadFactor|ReducedLoadFactor|ExpectedLoadFactor"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LoadFactorRuleParameter" type="LoadFactorRuleParameter" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - LoadFactorRuleParameter, type - LoadFactorRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DutyCodeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for Duty Code Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="DutyCode"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DutyCode" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Single Character. Valid values are 0-9, *, -, /, @ and ¥</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="DutyCodes"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9*-\\/¥@]{1}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="StringListCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Oa Connection, POS, PCC and Routing Configuration, HomeCity</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="OAConnection|POS|PCC|RoutingConfiguration|HomeCity"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="StringParameter" type="xsd:string" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - StringParameter, type - String</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="StringParameters"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="StringParameterCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for TwoCabinConfiguration Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="TwoCabinConfiguration"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="StringParameter" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - StringParameter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[C|F|J]{1}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FrequentFlyerCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for Frequent Flyer Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="FrequentFlyer"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FrequentFlyer" type="FrequentFlyerRuleParameter" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - FrequentFlyer, type - FrequentFlyerRuleParameter</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="FrequentFlyers"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SegmentCondition">
+    <xsd:annotation>
+      <xsd:documentation>Should be used for Segment Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Segment"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SegmentModifierRuleParameter" type="re:SegmentModifierRuleParameterValue" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - SegmentModifierRuleParameter, type - SegmentModifierRuleParameterValue
+                        from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SegmentRuleParameter" type="re:SegmentRuleParameterValue" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - SegmentRuleParameter, type - SegmentRuleParameterValue from enumeration
+                        types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SegmentLimitSalesCondition">
+    <xsd:annotation>
+      <xsd:documentation>Used for Segment Limit Sales Condition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="SegmentLimitSales"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FareClassRuleParameter" type="rst:FareClass" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - FareClassRuleParameter, type - FareClass from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OperatorRuleParameter">
+        <xsd:annotation>
+          <xsd:documentation>name - OperatorRuleParameter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Equal"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IntegerParameter" type="xsd:int" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - IntegerParameter, type - Integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FlightRangeCondition">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FlightRangeCondition</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>Names to Be used:FlightRange</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="FlightRange"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FlightRangeModifierRuleParameter" type="re:FlightRangeModifierRuleParameterValue">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightRangeModifierRuleParameter, type -
+                        FlightRangeModifierRuleParameterValue from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightRange" type="IntegerRangeRuleParameter" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightRange, type - IntegerRangeRuleParameter</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="FlightRanges"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RoutingCondition">
+    <xsd:annotation>
+      <xsd:documentation>Names to Be used:Routing</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name">
+        <xsd:annotation>
+          <xsd:documentation>name - Name</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Routing"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="RoutingModifierRuleParameter" type="re:RoutingModifierRuleParameterValue">
+        <xsd:annotation>
+          <xsd:documentation>name - RoutingModifierRuleParameter, type - RoutingModifierRuleParameterValue
+                        from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="RoutingRuleParameter" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - RoutingRuleParameter</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:annotation>
+            <xsd:documentation>Values to be used with Is Routing Modifier Rule Parameter : Direct Or
+                            International Or Domestic Or Nonstop Or OnlineConnect Or InterlineConnect Or
+                            CodeshareConnect./</xsd:documentation>
+            <xsd:documentation>Values to be used with IsConnectPoint Routing Modifier Rule Parameter : First
+                            Or Second Or Third Or Any./</xsd:documentation>
+          </xsd:annotation>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Direct|International|Domestic|Nonstop|OnlineConnect|InterlineConnect|CodeshareConnect|Any|First|Second|Third"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LocationCode" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationCode, type - string</xsd:documentation>
+          <xsd:appinfo>
+            <jaxb:property name="LocationCodes"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConnectingTimeRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Either minConnectingTime Or maxConnectingTime Or Both are required for Connecting Time
+                Rule Condition.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Location" type="Location">
+        <xsd:annotation>
+          <xsd:documentation>name - Location, type - Location</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MinConnectingTime" type="TimePeriod" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - MinConnectingTime, type - TimePeriod</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MaxConnectingTime" type="TimePeriod" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - MaxConnectingTime, type - TimePeriod</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DateRangeRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - DateRangeRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="StartDate" type="rst:Date.SSI">
+        <xsd:annotation>
+          <xsd:documentation>name - StartDate, type - Date.SSI from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="EndDate" type="rst:Date.SSI">
+        <xsd:annotation>
+          <xsd:documentation>name - EndDate, type - Date.SSI from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FlightServiceTypeRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FlightServiceTypeRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Name" type="re:FlightServiceTypeName" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Name, type - FlightServiceTypeName from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Code" type="rst:SingleCharacter" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - Code, type - SingleCharacter from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FrequentFlyerRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - FrequentFlyerRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="FrequentFlyerType" type="re:FrequentFlyerType">
+        <xsd:annotation>
+          <xsd:documentation>name - FrequentFlyerType, type - FrequentFlyerType from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TierLevel" type="rst:MaxThreeDigitInteger" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - TierLevel, type - MaxThreeDigitInteger from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FrequentFlyerName" type="rst:AirlineCarrier" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>airline code + number</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IntegerRangeRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - IntegerRangeRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Start" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>name - Start, type - Integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="End" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>name - End, type - Integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LoadFactorRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - LoadFactorRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LoadFactorClass" type="rst:FareClass">
+        <xsd:annotation>
+          <xsd:documentation>Only One Fare Class Can be Used With Load Factor Condition</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LoadFactorOperator" type="re:OperatorRuleParameterValue">
+        <xsd:annotation>
+          <xsd:documentation>name - LoadFactorOperator, type - OperatorRuleParameterValue from enumeration
+                        types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LoadFactorValue" type="rst:MaxThreeDigitInteger">
+        <xsd:annotation>
+          <xsd:documentation>min 0-999 only</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Board" type="LocationListRuleParameter" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Board, type - LocationListRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Off" type="LocationListRuleParameter" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Off, type - LocationListRuleParameter</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightModifier" type="re:FlightModifierRuleParameterValue" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightModifier, type - FlightRangeModifierRuleParameterValue from
+                        enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightCarrier" type="rst:AirlineCarrier" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>2 char. Alphanumeric UpperCase.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightValues" type="rst:FlightNumberIncludingGroups" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>FlightNumber and FlightNumberGroupNumber allowed</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LocationListRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - LocationListRuleParameter</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="LocationLevel" type="re:LocationLevel" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationLevel, type - LocationLevel from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Codes" type="LocationCodes" minOccurs="1" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>2 or 3 char. Alpha UpperCase or Numeric</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NoValueRuleParameter">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - NoValueRuleParameter</xsd:documentation>
+    </xsd:annotation>
+  </xsd:complexType>
+  <xsd:complexType name="Market">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Market</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Origin" type="Location">
+        <xsd:annotation>
+          <xsd:documentation>name - Origin, type - Location</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Destination" type="Location">
+        <xsd:annotation>
+          <xsd:documentation>name - Destination, type - Location</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Location">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Location</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Code" type="LocationCodes">
+        <xsd:annotation>
+          <xsd:documentation>2 or 3 char. Alpha UpperCase or Numeric</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LocationLevel" type="re:LocationLevel">
+        <xsd:annotation>
+          <xsd:documentation>name - LocationLevel, type - LocationLevel from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RuleWeight">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RuleWeight</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Type" type="re:WeightType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Type, type - WeightType from enumeration types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Value" type="xsd:int" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>name - Value, type - integer</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TimeRange">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - TimeRange</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Start" type="Time.SSI">
+        <xsd:annotation>
+          <xsd:documentation>name - Start, type - Time.SSI</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="End" type="Time.SSI">
+        <xsd:annotation>
+          <xsd:documentation>name - End, type - Time.SSI</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TimePeriod">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - TimePeriod</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Hours" type="rst:MaxThreeDigitInteger">
+        <xsd:annotation>
+          <xsd:documentation>min 0-999 only</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Minutes" type="rst:Minutes">
+        <xsd:annotation>
+          <xsd:documentation>range: 0-59</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Time.SSI">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - Time.SSI</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Hours" type="rst:Hours">
+        <xsd:annotation>
+          <xsd:documentation>range: 0-23</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Minutes" type="rst:Minutes">
+        <xsd:annotation>
+          <xsd:documentation>range: 0-59</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LocationCodes">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - LocationCodes</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="CityId" type="rst:CityId">
+        <xsd:annotation>
+          <xsd:documentation>name - CityId, type - CityId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AirportId" type="rst:AirportId">
+        <xsd:annotation>
+          <xsd:documentation>name - AirportId, type - AirportId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CountryId" type="rst:CountryId">
+        <xsd:annotation>
+          <xsd:documentation>name - CountryId, type - CountryId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="CountryGroup" type="rst:CountryGroup">
+        <xsd:annotation>
+          <xsd:documentation>name - CountryGroup, type - CountryGroup from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AirportCityGroup" type="rst:AirportCityGroup">
+        <xsd:annotation>
+          <xsd:documentation>name - AirportCityGroup, type - AirportCityGroup from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="World" type="rst:World">
+        <xsd:annotation>
+          <xsd:documentation>name - World, type - World from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Conference" type="rst:Conference">
+        <xsd:annotation>
+          <xsd:documentation>name - Conference, type - Conference from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Region" type="rst:Region">
+        <xsd:annotation>
+          <xsd:documentation>name - Region, type - Region from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="GroupIdForRequest">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - GroupIdForRequest</xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="AirlineGroupId" type="rst:AirlineCarrier">
+        <xsd:annotation>
+          <xsd:documentation>name - AirlineGroupId, type - AirlineGroupId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="FlightGroupId" type="rst:FlightGroupId">
+        <xsd:annotation>
+          <xsd:documentation>name - FlightGroupId, type - FlightGroupId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PosGroupId" type="rst:POSGroupId">
+        <xsd:annotation>
+          <xsd:documentation>name - PosGroupId, type - POSGroupId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PccGroupId" type="rst:PCCGroupId">
+        <xsd:annotation>
+          <xsd:documentation>name - PccGroupId, type - PCCGroupId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AgentGroupId" type="rst:AgentGroupId">
+        <xsd:annotation>
+          <xsd:documentation>name - AgentGroupId, type - AgentGroupId from simple types</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:complexType name="RequestBase">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - RequestBase</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="stlp:STL_Request_Payload">
+        <xsd:sequence>
+          <xsd:element name="UserId" type="rst:UserId">
+            <xsd:annotation>
+              <xsd:documentation>This is the user who is performing the action.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Carrier" type="rst:AirlineCarrier">
+            <xsd:annotation>
+              <xsd:documentation>name - Carrier, type - AirlineCarrier from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseBase">
+    <xsd:annotation>
+      <xsd:documentation>Complex type - ResponseBase</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="stlp:STL_Response_Payload">
+        <xsd:sequence>
+          <xsd:element name="Carrier" type="rst:AirlineCarrier">
+            <xsd:annotation>
+              <xsd:documentation>name - Carrier, type - AirlineCarrier from simple types</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

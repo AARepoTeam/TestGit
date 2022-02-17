@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--"ReturnHostCommand" is used to specify whether or not to return the native host command in the response message.-->
+<ContextChangeRQ ReturnHostCommand="false" TimeStamp="2013-08-12T09:30:00-06:00" Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--Optional-->
+	<!--Repeat Factor=0-->
+	<!--"ChangeAAA" cannot combine with any of the other elements in this message.-->
+	<!--"AccountingCity" is used to specify an accounting city code.  This qualifier is only valid for SabreSonicRes-hosted carriers.-->
+	<!--"AccountingCode" is used to specify an accounting code.  This qualifier is only valid for SabreSonicRes-hosted carriers.-->
+	<!--"PseudoCityCode" is used to specify the 3 or 4 character security ID of the authorized POS location to be accessed.-->
+	<!--"OfficeStationCode" is used to specify a station code.  This qualifier is only valid for SabreSonicRes-hosted carriers.-->
+	<!--In order to sucessfully change AAA both branch and AAA access must be open between the two locations.-->
+	<!--PseudoCityCode equivalent Sabre host command: AAALON-->
+	<!--Office accounting code equivalent Sabre host command: AAALON/LGW/T1/12345678-->
+	<ChangeAAA AccountingCity="LGW" AccountingCode="T1" OfficeStationCode="12345678" PseudoCityCode="LON"/>
+	<!--Optional-->
+	<!--Repeat Factor=0-->
+	<!--"ChangeDuty" cannot combine with any of the other elements in this message.-->
+	<!--"ChangeDuty" is used to activate an alternate duty code in the current user account profile, i.e. Username.-->
+	<!--Acceptable values are 0-9, "*," or "-."  Utilization of any other values will invalidate the current session.-->
+	<!--In order to sucessfully change duty code the active user account must be authorized to change to the specified duty code within its Employee Profile Record (EPR).-->
+	<!--Equivalent Native Entry: SI5-->
+	<ChangeDuty Code="5"/>
+	<!--Optional-->
+	<!--Repeat Factor=0-->
+	<!--"ChangePartition" cannot combine with any of the other elements in this message.-->
+	<!--"Code" is used to specify a partition code.-->
+	<!--Equivalent Native Entry: //XX-->
+	<ChangePartition Code="XX">
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"NewPassword" is used to specify a new password.-->
+		<NewPassword>DEF67890</NewPassword>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"Password" is used to specify the partition changing password.  If the client account is of a mask-based access type, i.e. internal EPRs containing the EPR keyword "NONPCP," they will need to pad this element with eight spaces per TPF requirements.-->
+		<Password>ABC12345</Password>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"PIN" is used to specify a personal identification number.-->
+		<PIN>ABC67890</PIN>
+	</ChangePartition>
+	<!--Optional-->
+	<!--Repeat Factor=0-->
+	<!--"OverSign" cannot combine with any of the other elements in this message.-->
+	<!--"OverSign" is used to oversign an alternate user account onto a previously established Sabre Web Services session.-->
+	<!--The over sign process takes two steps.  During the first step, the client application must only send the .../Organization element and the .../Username element.  After receiving a successful response the client application then needs to send all of the child elements associated with .../Oversign, i.e. .../Area, .../DutyCode, ../Organization,  .../Password, as well as .../Username.-->
+	<!--Please note that over sign can only be utilized once per session.  Once over sign is succesffuly invoked it is not possible to go back to the previous active user account.  Once a client application completes processing with the over signed user account it should then close the session.-->
+	<!--Equivalent Native Entry:SI007179IPCC-->
+	<OverSign>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"Area" is used to specify an area.  Please use "A" in all cases, otherwise if a client successfully invokes this functionality it must stop using its previously established BinarySecurityToken, and begin using the new BinarySecurityToken returned in the ContextChangeLLSRQ response via: soap-env:Envelope/soap-env:Header/wsse:Security/wsse:BinarySecurityToken.-->
+		<Area>A</Area>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"DutyCode" is used to specify a duty code.-->
+		<DutyCode>5</DutyCode>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"Organization" is used to specify the client application's organization, i.e. PseudoCityCode, or airline code.-->
+		<Organization>IPCC</Organization>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"Password" is used to specify the client application's password.-->
+		<Password>ABC123</Password>
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<!--"Username" is used to specify the client application's user name.-->
+		<Username>7971</Username>
+	</OverSign>
+</ContextChangeRQ>

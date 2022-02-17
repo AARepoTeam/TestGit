@@ -1,0 +1,7 @@
+#Authorization=Basic VDEwMTY0Njk6VkRPQyo1VE5WRElJaw==
+#PSS TID
+Authorization=Basic VDEwMTQyOTE6Q05ESCpUY0NJWFAwRQ==
+
+Password=RIPARPA1
+URL=https://pssi.dev.esoa.qcorpaa.aa.com/pssi/sws/
+Username=871316

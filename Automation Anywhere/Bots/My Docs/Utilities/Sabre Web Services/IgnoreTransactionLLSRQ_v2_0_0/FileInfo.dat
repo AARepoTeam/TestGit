@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entities>
+  <Entity Name="IgnoreTransactionLLSRQ_v2.x_QuickStartGuide.xlsx">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionRSv2.0.0.png">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionRQv2.0.0.png">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLSRS_v2.0.0_Design.xml">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLS2.0.0RQ.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLS2.0.0RQ.wsdl">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xmldsig-core-schema.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xml.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xlink.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="wsse.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="STL_Header_v.1.2.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="STL_For_SabreProtocol_v.1.2.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="msg-header-2_0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLSRQ_v2.0.0_Sample_Payloads.xml">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLSRQ_v2.0.0_Design.xml">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLS2.0.0RS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="IgnoreTransactionLLS2.0.0RQRS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="envelope.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+</Entities>

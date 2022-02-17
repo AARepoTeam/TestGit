@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entities>
+  <Entity Name="xmldsig-core-schema.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xml.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xlink.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="wsse.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="PNRBuilderTypes_v1.16.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="OpenReservation.1.9.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="msg-header-2_0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="GetReservation_1.16.0_1.wsdl">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="GetReservationSTLRS_v1.16.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="GetReservationSTLRQ_v1.16.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="envelope.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="Ancillaries.1.9.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="Air.1.9.0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+</Entities>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entities>
+  <Entity Name="xmldsig-core-schema.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xml.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="xlink.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="wsse.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="SessionCloseRS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="SessionCloseRQRS.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="SessionCloseRQ.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="SessionCloseRQ.wsdl">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="msg-header-2_0.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+  <Entity Name="envelope.xsd">
+    <Properties>
+      <Property Name="VCSFileStatus">Locked</Property>
+    </Properties>
+  </Entity>
+</Entities>

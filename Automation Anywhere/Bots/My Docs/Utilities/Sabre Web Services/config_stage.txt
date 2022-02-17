@@ -1,0 +1,4 @@
+Password=RIPARPA1
+URL=https://pssi.stage.esoa.aa.com/pssi/sws/
+Username=871316
+Authorization=Basic UzEwMTMzMjc6TERCSypQUjZDWFBMZA==Error_Report_Folder=\\esstop403s-green-smb-isilon.corpaa.aa.com\DFWD1_RM_RPANAS_STAGE\Automation Anywhere\RIPA\ETAssurance Logs

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TT:GetTicketingDocumentRS Version="3.23.0" xmlns="http://services.sabre.com/STL/v01" xmlns:STL="http://services.sabre.com/STL/v01" xmlns:TT="http://www.sabre.com/ns/Ticketing/DC" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC" xmlns:str="http://sabre.com/ticketing/xslt/strings" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<STL:STL_Header.RS messageID="TKTVLC650-1854-719791545-1548875149873-827586-tktdoc" timeStamp="2019-01-30T13:05:49">
+		<OrchestrationID seq="1">TKTVLC650-1854-719791545-1548875149873-827586-tktdoc</OrchestrationID>
+		<DiagnosticData>Found</DiagnosticData>
+		<Results>
+			<Success>
+				<System>T2</System>
+				<Source>DocumentServices</Source>
+			</Success>
+		</Results>
+	</STL:STL_Header.RS>
+	<TT:Summary>
+		<TT:Indicators historical="false"/>
+		<TT:DocumentNumber>8381501807084</TT:DocumentNumber>
+		<TT:LocalIssueDateTime>2019-01-30T12:05:46</TT:LocalIssueDateTime>
+		<TT:DocumentType>EMD</TT:DocumentType>
+		<TT:IssuingLocation>YYC</TT:IssuingLocation>
+		<TT:Reservation>THWKPR</TT:Reservation>
+		<TT:FirstName>SCHULKO</TT:FirstName>
+		<TT:LastName>STEPH</TT:LastName>
+		<TT:TotalAmount currencyCode="CAD" decimalPlace="2">42.50</TT:TotalAmount>
+	</TT:Summary>
+</TT:GetTicketingDocumentRS>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContextChangeRS Version="2.0.3" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+	<!--Mandatory-->
+	<!--Repeat Factor=0-->
+	<stl:ApplicationResults status="Complete">
+		<!--Optional-->
+		<!--Repeat Factor=0-->
+		<stl:Success timeStamp="2013-08-12T09:30:00-06:00">
+			<!--Optional-->
+			<!--Repeat Factor=0-->
+			<stl:SystemSpecificResults>
+				<!--Optional-->
+				<!--Repeat Factor=0-99-->
+				<!--"HostCommand" is used to return the command associated with the request transaction if applicable.-->
+				<!--"LNIATA" is used to return the line address associated with the particular host command.-->
+				<stl:HostCommand LNIATA="ABC123">TEST</stl:HostCommand>
+			</stl:SystemSpecificResults>
+		</stl:Success>
+		<!--Optional-->
+		<!--Repeat Factor=0-99-->
+		<!--"type" is used to return the error type.  Values are limited to: "Application," or "BusinessLogic." "Transport" and "Validation" type errors are returned as soap-fault content.-->
+		<stl:Error type="BusinessLogic" timeStamp="2013-08-12T09:30:00-06:00">
+			<!--Optional-->
+			<!--Repeat Factor=0-->
+			<stl:SystemSpecificResults>
+				<!--Optional-->
+				<!--Repeat Factor=0-99-->
+				<!--"HostCommand" is used to return the command associated with the request transaction if applicable.-->
+				<!--"LNIATA" is used to return the line address associated with the particular host command.-->
+				<stl:HostCommand LNIATA="ABC123">TEST</stl:HostCommand>
+				<!--Optional-->
+				<!--Repeat Factor=0-99-->
+				<!--"code" is used to return the error code.-->
+				<!--"Message" is used to return the error message.-->
+				<stl:Message code="0">TEST</stl:Message>
+				<!--Optional-->
+				<!--Repeat Factor=0-->
+				<!--"ShortText" is used to return additional error message-related information.-->
+				<stl:ShortText>TEST</stl:ShortText>
+			</stl:SystemSpecificResults>
+		</stl:Error>
+		<!--Optional-->
+		<!--Repeat Factor=0-99-->
+		<!--"type" is used to return the warning type.  Values are limited to: "BusinessLogic." No other types are currently supported.-->
+		<stl:Warning type="BusinessLogic">
+			<!--Optional-->
+			<!--Repeat Factor=0-->
+			<stl:SystemSpecificResults>
+				<!--Optional-->
+				<!--Repeat Factor=0-99-->
+				<!--"HostCommand" is used to return the command associated with the request transaction if applicable.-->
+				<!--"LNIATA" is used to return the line address associated with the particular host command.-->
+				<stl:HostCommand LNIATA="ABC123">TEST</stl:HostCommand>
+				<!--Optional-->
+				<!--Repeat Factor=0-99-->
+				<!--"code" is used to return the warning code.-->
+				<!--"Message" is used to return the warning message.-->
+				<stl:Message code="0">TEST</stl:Message>
+				<!--Optional-->
+				<!--Repeat Factor=0-->
+				<!--"ShortText" is used to return additional warning message-related information. -->
+				<stl:ShortText>TEST</stl:ShortText>
+			</stl:SystemSpecificResults>
+		</stl:Warning>
+	</stl:ApplicationResults>
+	<!--Optional-->
+	<!--Repeat Factor=0-->
+	<!--"SecurityToken" is used to return security token related information.-->
+	<!--"Updated" is used to indicate whether or not the security token has changed.  If @Updated="true" the client application needs to begin utilizing the new security token on all subsequent requests.-->
+	<SecurityToken Updated="true">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-4050052768321457152!87610!0</SecurityToken>
+	<!--Optional-->
+	<!--Repeat Factor=0-999-->
+	<!--"Text" is used to return miscellaneous free text-based information.-->
+	<Text>7TZA.7TZA9AW3.A..*AW3 NOT SIGNED OUT</Text>
+	<Text>7TZA.7TZA9AW3.A..*AW3 NOT SIGNED OUT</Text>
+</ContextChangeRS>

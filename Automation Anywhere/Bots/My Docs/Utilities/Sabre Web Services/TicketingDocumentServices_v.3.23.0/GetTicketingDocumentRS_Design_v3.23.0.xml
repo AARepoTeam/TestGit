@@ -1,0 +1,2258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Required. No repeats -->
+<!-- Response from "TicketingDocumentServicesRQ" service with a list of documents that matched search criteria specified 
+    in the request. -->
+<!-- Attribute Version is required. It specifies service version that you used. Response will always use the same version as the request. -->
+<GetTicketingDocumentRS Version="3.22.0" xmlns:STL="http://services.sabre.com/STL/v01" xmlns="http://www.sabre.com/ns/Ticketing/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sabre.com/ns/Ticketing/DC file:///C:/Schema/TicketingDocumentServices_v.3.22.0%20(1).xsd">
+	<!-- Required. No repeats -->
+	<!-- STL:STL_Header.RS is a standard Sabre XML response header. -->
+	<!-- STL:STL_Header.RS is a standard Sabre XML response header. -->
+	<!-- Attribute messageID is optional, but the service will always return it. It contains a message (request/response) 
+        identifier. The message identifier is intended to aid troubleshooting. Please provide this identifier when requesting support from the development team. -->
+	<STL:STL_Header.RS messageID="tkthld600-docread-ecee-2">
+		<!-- Required. No repeats -->
+		<!-- Stores the result of operation. Possible values are Found or Not found -->
+		<STL:DiagnosticData>Found</STL:DiagnosticData>
+		<!-- Required. No repeats. -->
+		<!-- Informs about the results of the operation you requested. -->
+		<STL:Results>
+			<!-- At least one element is required under STL:Results. It will be either STL:Error or STL:Success element. 
+                In addition to STL:Error or STL:Success, STL:Warning may be returned. -->
+			<!--The presence of STL:Success element in the response informs you that the request was processed successfully. -->
+			<STL:Success>
+				<!-- Optional. No repeats -->
+				<!-- STL:System identifies a system responsible for processing of a given request. Possible values: T2 or TKT-WS. -->
+				<STL:System>TKT-WS</STL:System>
+				<!-- Optional. No repeats -->
+				<!-- STL:Source identifies a subsystem responsible for processing of a given request. Possible values: DocRead, TktDoc. -->
+				<STL:Source>TktDoc</STL:Source>
+			</STL:Success>
+			<!-- The presence of STL:Error element in the response informs you that some kind of an error occurred when the 
+                request was being processed. -->
+			<!-- Attribute type informs you about the general classification of the type of the error. Possible 
+                values are: Application, BusinessLogic, Validation, Transport. Required. -->
+			<!-- Attribute status informs you about the status of your request. Possible values are: Complete, 
+                Incomplete, NotProcessed, Unknown. Required. -->
+			<STL:Error status="NotProcessed" timeStamp="2012-01-31T05:33:31.662-06:00" type="Application">
+				<!-- Optional. No repeats -->
+				<!-- STL:Source identifies a subsystem responsible for processing of a given request. Possible values: DocRead, TktDoc. -->
+				<STL:Source>TktDoc</STL:Source>
+				<!-- Required. No repeats -->
+				<!-- STL:System identifies a system responsible for processing of a given request. Possible values: T2 or TKT-WS. -->
+				<STL:System>TKT-WS</STL:System>
+				<!-- Optional. Repeat factor=99 -->
+				<!-- SLT:SystemSpecificResults will always be returned exactly once if STL:Error is returned. It is a container for 
+                    error messages. -->
+				<STL:SystemSpecificResults>
+					<!-- Optional. No repeats -->
+					<!-- STL:ErrorMessage contains the detailed error message, including any technical details available.-->
+					<STL:ErrorMessage>XML request schema validation failed: Invalid request XML - TicketingProvider element is missing. Please amend your request and try again.</STL:ErrorMessage>
+					<!-- Optional. No repeats -->
+					<!-- STL:ShortText contains a short version of the error message. -->
+					<STL:ShortText>XML request schema validation failed</STL:ShortText>
+				</STL:SystemSpecificResults>
+			</STL:Error>
+			<!-- Optional. Repeat factor=99 -->
+			<!-- STL:Warning may be used together with STL:Success to indicate that your search did not match any documents. -->
+			<!-- Attribute type informs you about the general classification of the type of the warning. Possible values 
+                are: Application, BusinessLogic, Validation, Transport. Required. -->
+			<!-- Attribute status informs you about the status of your request. Possible values are: Complete, Incomplete, 
+                NotProcessed, Unknown. For status Incomplete or NotProcessed an STL:Error element will be used instead. Required. -->
+			<STL:Warning type="Application" status="Complete">
+				<!-- Required. No repeats -->
+				<!-- STL:System identifies a system responsible for processing of a given request. Possible values: T2 or TKT-WS. -->
+				<STL:System>T2</STL:System>
+				<!-- Optional. Repeat factor=99 -->
+				<!-- SLT:SystemSpecificResults will always be returned if STL:Warning is returned. It is a container for 
+                    warning messages. -->
+				<STL:SystemSpecificResults>
+					<!-- Optional. No repeats -->
+					<!-- STL:ErrorMessage contains the detailed warning message, including any technical details available.-->
+					<STL:ErrorMessage>Not found</STL:ErrorMessage>
+					<!-- Optional. No repeats -->
+					<!-- STL:ShortText contains a short version of the warning message. -->
+					<STL:ShortText>Not found</STL:ShortText>
+				</STL:SystemSpecificResults>
+			</STL:Warning>
+		</STL:Results>
+	</STL:STL_Header.RS>
+	<!-- In case of an error, or if your search did not return any results, STL:STL_Header.RS will be the only element in 
+        the response. -->
+	<!-- In case some data was found, one of the Summary, Details, CustomDetails or Abbreviated elements will be returned after the header (depending on the requested result type). -->
+	<!-- Optional. Repeat factor=Unbounded -->
+	<!-- Summary element is used to return a summary information about the documents that were found. -->
+	<Summary>
+		<!-- Required. No repeats -->
+		<!-- Document serial number. -->
+		<DocumentNumber>8298200110468</DocumentNumber>
+		<!-- Required. No repeats -->
+		<!-- Document issue date and time - in local time zone of the station that issued it. -->
+		<LocalIssueDateTime>2011-09-08T16:11:32.000Z</LocalIssueDateTime>
+		<!-- Required. No repeats -->
+		<!-- Document type. Possible values are TKT, MSR and EMD. -->
+		<DocumentType>EMD</DocumentType>
+		<!-- Optional. No repeats -->
+		<!-- Station location code (usually city code) of the station that issued the document. -->
+		<IssuingLocation>LPQFGH1</IssuingLocation>
+		<!-- Optional. No repeats -->
+		<!-- PNR locator of the PNR containing this document. Returned if the document is a part of a PNR. -->
+		<!-- Attribute provider informs about the code of the airline that owns the PNR. Optional. -->
+		<Reservation provider="SY">DHTYAF</Reservation>
+		<!-- Required. No repeats -->
+		<!-- First name of the customer. -->
+		<FirstName>WIESLAW</FirstName>
+		<!-- Required. No repeats -->
+		<!-- Last name (family name or surname) of the customer. Required. -->
+		<LastName>JAJECZNICA</LastName>
+		<!-- Optional. No repeats. -->
+		<!-- Status of the document found (of the whole document, not particular coupon). Possible values: V â€“ VOIDED, E â€“ EXCHANGED, R â€“ REFUNDED. -->
+		<DocumentStatus>V</DocumentStatus>
+		<!-- Required. No repeats -->
+		<!-- Total amount of money paid for this document. -->
+		<!-- Attribute currencyCode is the code of the currency in which the amount is expressed. Optional. -->
+		<!-- Attribute decimalPlace indicates the number of decimal places required by the currency. Optional. -->
+		<TotalAmount currencyCode="USD" decimalPlace="2">60.0</TotalAmount>
+	</Summary>
+	<!-- Currently supported document types that can be returned under Details and CustomDetails alement are: 
+             - Electronic Miscellaneous Documents - element ElectronicMiscDocument,
+             - Ticket (VCR or ETKT) - element Ticket. 
+             - Voucher - element Voucher. -->
+	<!-- EXAMPLE of Electronic Miscellaneous Documents document detailed information -->
+	<!-- Optional. Unlimited repeats. -->
+	<!-- Details element is used to return a detailed information about the found document in case exactly one document was 
+        matched by the search. -->
+	<Details>
+		<!-- Required. No repeats -->
+		<!-- Agent tag provides information about the agent that issued the document. -->
+		<!-- Attribute duty informs about the agent duty code. -->
+		<!-- Attribute sine provides information about agent sine (agent ID). -->
+		<!-- Attribute ordinal provides ordinal number of the agent city code which is normally used by Travel Agencies -->
+		<Agent duty="4" sine="H01" ordinal="1">
+			<!-- Required. No repeats -->
+			<!-- TicketingProvider provides airline code of the carrier that the agent represents. -->
+			<TicketingProvider>PG</TicketingProvider>
+			<!-- Optional. No repeats -->
+			<!-- StationLocation is the location code of the station that the agent belongs to. -->
+			<StationLocation>LPQTO</StationLocation>
+			<!-- Optional. No repeats -->
+			<!-- StationNumber is the identification number of the station that the agent belongs to. -->
+			<StationNumber>18391052</StationNumber>
+			<!-- Optional. No repeats -->
+			<!-- WorkLocation is the city code of the agent's actual station location. -->
+			<WorkLocation>LPQFGH1</WorkLocation>
+			<!-- Optional. No repeats -->
+			<!-- HomeLocation is the city code of the agent's home station location. -->
+			<HomeLocation>HDQ</HomeLocation>
+			<!-- Optional. No repeats -->
+			<!-- Lniata is the agent LNIATA (session identifier). -->
+			<Lniata>6B1B73</Lniata>
+			<!-- Optional. No repeats -->
+			<!-- IsoCountryCode is the station country code. -->
+			<IsoCountryCode>LA</IsoCountryCode>
+			<!--Optional. No repeats-->
+			<!--Name of the company where the agent belongs to. Normally, this pertains to the Airline or Travel Agency Name-->
+			<!--String length of 150 characters from version 3.17.0 onwards-->
+			<CompanyName>LONDON UK,OUTSIDE TRAINING</CompanyName>
+			<!-- Optional. No repeats -->
+			<!-- Name is the full name of the agent. -->
+			<Name>J SMITH</Name>
+			<!-- Optional. No repeats -->
+			<!-- FirstName is the first name of the agent. -->
+			<FirstName>J</FirstName>
+			<!-- Optional. No repeats -->
+			<!-- LastName is the last name (family name) of the agent. -->
+			<LastName>SMITH</LastName>
+			<!-- Optional. No repeats -->
+			<!-- EmployeeNumber is the agent user ID. -->
+			<EmployeeNumber>0123456</EmployeeNumber>
+			<!-- Optional. No repeats -->
+			<!-- ShiftStartDateTime is the agent shift start date/time (time when "assign printer" command was issued). -->
+			<ShiftStartDateTime>2011-09-08T16:08:40.000Z</ShiftStartDateTime>
+			<!-- Optional. No repeats -->
+			<!--Pseudo City Code (PCC) or geographic city code of the creation agent. -->
+			<CrsLocation>LPQ</CrsLocation>
+			<!-- Optional. No repeats -->
+			<!-- Provides information about agent's shift -->
+			<Session>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was opened -->
+				<AgentOpenType>AGT</AgentOpenType>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was closed -->
+				<AgentCloseType>SUP</AgentCloseType>
+			</Session>
+		</Agent>
+		<!-- Required. No repeats -->
+		<!-- TransactionInfo holds some information about the transaction during which the document was issued. -->
+		<!-- Attribute category provides transaction category code. -->
+		<!-- Attribute sequence is the transaction sequence number. -->
+		<!-- Attribute type informs about the transaction type. -->
+		<TransactionInfo category="C" sequence="1" type="SALE">
+			<!-- Optional. No repeats -->
+			<!-- TCN is the transaction number (transaction ID). -->
+			<TCN>40140711905</TCN>
+			<!-- Required. No repeats -->
+			<!-- LocalDateTime is the timestamp of the transaction in the local time zone of the station that generated the 
+                transaction. -->
+			<LocalDateTime>2011-09-08T16:13:59.000Z</LocalDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+			<SystemDateTime>2011-09-08T04:13:59.000Z</SystemDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemProvider is the airline code of the carrier that initiated the transaction. -->
+			<SystemProvider>PG</SystemProvider>
+			<!-- Optional. No repeats -->
+			<!-- InputEntry is the GreenScreen entry that initiated the transaction. -->
+			<InputEntry>MISC2/5$EMD+</InputEntry>
+		</TransactionInfo>
+		<!-- Required. No repeats -->
+		<!-- ElectronicMiscDocument provides detailed information about the Electronic Miscellaneous Document that was found. -->
+		<!-- Attribute accountingCode provides the accounting code. -->
+		<!-- Attribute checkDigit is the document check digit. -->
+		<!-- Attribute formNumber is the form number. -->
+		<!-- Attribute number is the document number. Required -->
+		<!-- Attribute serialNumber is the serial number. -->
+		<!-- Attribute type is the document type code and will always be "EMD" for Electronic Miscellaneous Documents. Required.-->
+		<ElectronicMiscDocument accountingCode="829" checkDigit="5" formNumber="820" number="8298200110469" serialNumber="0110469" type="EMD">
+			<!-- Optional. No repeats -->
+			<!-- Indicators element provides information about some flags that can be set on an EMD document. -->
+			<!-- Attribute commisionable informs if the document is commisionable. -->
+			<!-- Attribute electronic informs if the document is electronic. That should always be true for EMD documents. Required. -->
+			<!-- Attribute interlineable informs if the document can be shared with another carrier. -->
+			<!-- Attribute refundable informs if the document can be refunded. The accepted values are
+            Y = Yes (Service Type is refundable)
+            N = No (Service Type is non-refundable)
+            R = Re-use.  (Service Type is non-refundable but the value may be reapplied towards a future purchase)
+            B = Blank = No application (edits only permit Blank when the Service Type is not available)-->
+			<!-- Attribute historical informs if the document has been moved to historical database. -->
+			<!-- Attribute offerType informs if the document was an ATPCO, NDC or LCC document
+				The possible values for offerType are-
+				NDC= The documnent is an NDC document
+				ATPCONormalisation= The document is issued through traditional ATPCO path using the new API
+				LCCNormalisation= The document is issued through traditional LCC path using the new API -->
+			<Indicators commisionable="true" electronic="true" interlineable="false" refundable="Y" historical="false" offertype="NDC"/>
+			<!-- Required. No repeats -->
+			<!-- Details element provides detailed information about the EMD document. -->
+			<Details>
+				<!-- Optional. No repeats -->
+				<!-- Reservation provides information about the PNR. -->
+				<Reservation>
+					<!-- Optional. No repeats -->
+					<!-- Sabre element provides PNR locator. -->
+					<!-- Attribute createDate is the PNR create date. -->
+					<!-- Attribute provider is the airline code of the carrier that owns the PNR. -->
+					<Sabre createDate="2011-09-08T04:13:00.000" provider="PG">DHTYJG</Sabre>
+				</Reservation>
+				<!-- Required. No repeats -->
+				<!-- SystemCreateDateTime is the timestamp of when the document was created - in CST time zone. -->
+				<SystemCreateDateTime>2011-09-08T04:13:59.000</SystemCreateDateTime>
+				<!-- Required. No repeats -->
+				<!-- LocalIssueDateTime is the timestamp of when the document was created in the local time of the issuing 
+                    station. -->
+				<LocalIssueDateTime>2011-09-08T16:13:59.000</LocalIssueDateTime>
+				<!-- Required. No repeats -->
+				<!-- LastUpdate is the timestamp of when the document was last updated - in CST time zone. -->
+				<LastUpdate>2011-09-08T04:13:59.000</LastUpdate>
+				<!-- Required. No repeats -->
+				<!-- ValidatingProvider is the airline code of the validating carrier. -->
+				<ValidatingProvider>PG</ValidatingProvider>
+				<!-- Optional. No repeats -->
+				<!-- ElectronicMiscType is the type of EMD document: A for associated documents or S for standalone documents. -->
+				<ElectronicMiscType>A</ElectronicMiscType>
+				<!-- Optional. No repeats -->
+				<!-- ReasonForIssue is the reason for issuance code (RFIC) as defined by IATA EMD specification. -->
+				<!-- Attribute name contains the description -->
+				<ReasonForIssue name="Baggage">C</ReasonForIssue>
+				<!-- NetType code indicates type of Net transaction -->
+				<NetType>M</NetType>
+				<!-- This will have the OrderID of the hosted carriers and 1S OrderID in case of TN copy of the document. -->
+				<SabreOrderID provider="1S">SAB1SORDR</SabreOrderID>
+				<!-- This is relevant only for subscribers. This field will have the airline OrderID in TN copy of the document. -->
+                <OtherOrderID provider="1S">1AOTHERORDR</OtherOrderID>
+                <!-- This field will display the OrderItemID of the airlines for both hosted and 1S documents. -->
+                <SabreOrderItemID provider="1S">1SSABORDRITEM</SabreOrderItemID>
+			</Details>
+			<!-- Required. Repeat factor=2 -->
+			<!-- Customer element provides information about the customer. -->
+			<Customer>
+				<!-- Required. No repeats -->
+				<!-- Traveler element provides information about the customer who is actually travelling (using this EMD 
+                    document). -->
+				<Traveler>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the customer -->
+					<Name>JAJECZNICA/MARTYNA</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the customer. -->
+					<FirstName>MARTYNA</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the customer. -->
+					<LastName>JAJECZNICA</LastName>
+				</Traveler>
+				<!-- Optional. No repeats -->
+				<!-- Purchaser element provides information about the customer who payed for the service represented by the 
+                    document.  -->
+				<Purchaser>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the customer -->
+					<Name>JAJECZNICA/MARTYNA</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the customer. -->
+					<FirstName>MARTYNA</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the customer. -->
+					<LastName>JAJECZNICA</LastName>
+				</Purchaser>
+			</Customer>
+			<!-- Required. Repeat factor=16 -->
+			<!-- Miscellaneous element provides specific information about ancillary or miscellaneous items purchased. This 
+                applies to MSR, EXB and EMD -->
+			<Miscellaneous>
+				<!-- Required. No repeats -->
+				<!-- Fee element provides information about fee's details -->
+				<!-- Attribute quantity informs about number of items purchased per PRAS code. -->
+				<!-- Attribute coupon specifies number of the coupon. -->
+				<!-- Attribute description is the description of the purchased item or service. -->
+				<!-- Attribute code is the PRAS code associated to the service or item. -->
+				<Fee coupon="1" quantity="1" description="BREAKFAST" code="0AI">
+					<!-- Optional. No repeats -->
+					<!-- Base element provides information about the base fee amount associated to the item or service which 
+                        does not include taxes. -->
+					<Base>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="ZAR" decimalPlace="0">45</Amount>
+					</Base>
+					<!-- Required. No repeats -->
+					<!-- Total element provides information about the total fee taxes associated to the item or service purchased. -->
+					<Total>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="ZAR" decimalPlace="0">45</Amount>
+					</Total>
+				</Fee>
+				<!-- Optional. No repeats -->
+				<!-- OptionalService element provides specific information about optional service (OC) as published in ATPCO 
+                    or Merchandising -->
+				<!-- Attribute group is the reason for issuance code. -->
+				<!-- Attribute reason is the reason for issuance sub-code. -->
+				<!-- Attribute ssr is the service code in the PNR associated to the item. -->
+				<!-- Attribute journeyType is the code needed for EMD. The value can be sector (S) or portion (P) -->
+				<OptionalService journeyType="S" ssr="EMDA" reason="G" group="ML">
+					<!-- Optional. No repeats -->
+					<!-- FeeProvider element provides information about carrier whose fee was used on the EMD coupon -->
+					<FeeProvider>PG</FeeProvider>
+				</OptionalService>
+				<!-- Optional. Repeat factor=4 -->
+				<!-- AssociatedFlight element provides information about the associated flight coupon. This applies to EMD 
+                    Associated only -->
+				<!-- Attribute entitlement is the total number of coupons. -->
+				<!-- Attribute coupon is the number representing the order in which this coupon was used or is to be used. -->
+				<AssociatedFlight entitlement="1" coupon="1">
+					<!-- Required. No repeats -->
+					<!-- CarrierCode element contains carrier code of the flight associated to the service. -->
+					<CarrierCode>PG</CarrierCode>
+					<!-- Optional. No repeats -->
+					<!-- FlightNumber element contains a flight number associated to the service. -->
+					<FlightNumber>481</FlightNumber>
+					<!-- Optional. No repeats -->
+					<!-- ClassOfService element provides information about the flight class of service. -->
+					<!-- Attribute name contains the description -->
+					<ClassOfService name="Economy">Y</ClassOfService>
+					<!-- Required. No repeats -->
+					<!-- DepartureCity element provides information about the origin or departure city code of the flight. -->
+					<DepartureCity>HLA</DepartureCity>
+					<!-- Optional. No repeats -->
+					<!-- ArrivalCity element provides information about the destination or arrival city of the flight. -->
+					<ArrivalCity>CPT</ArrivalCity>
+					<!-- Optional. No repeats -->
+					<!-- DepartureDate element provides information about the departure date of the flight. -->
+					<DepartureDate>2012-02-12-06:00</DepartureDate>
+					<!-- Optional. No repeats -->
+					<!-- CurrentStatus element contains a code associated to the current status of the coupon. -->
+					<CurrentStatus>OK</CurrentStatus>
+				</AssociatedFlight>
+				<!-- Optional. No repeats -->
+				<!-- AssociatedTicketNumber element provides information about associated ticket number. This applies to EMD Associated only -->
+				<AssociatedTicketNumber couponNumber="1" associationType="A">1612100000106</AssociatedTicketNumber>
+			</Miscellaneous>
+			<!-- Required. No repeats -->
+			<!-- Amounts provides information about any paid money amounts associated with the document. -->
+			<Amounts>
+				<!-- Optional. No repeats -->
+				<!-- New informs about the new amounts that are generated at the time the document is issued. -->
+				<New>
+					<!-- Required. No repeats -->
+					<!-- Base informs about the base amount. -->
+					<Base>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+					</Base>
+					<!-- Optional. No repeats -->
+					<!-- TotalTax informs about total amount of taxes paid (sum of all taxes). -->
+					<TotalTax>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+					</TotalTax>
+					<!-- Required. No repeats -->
+					<!-- Total informs about the grand total amount (base + all the taxes). -->
+					<Total>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>60.00</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+					</Total>
+					<!-- Optional. Repeat factor=3 -->
+					<!-- Tax informs about a single tax amount. Tax element may occur multiple times, listing all the applicable 
+                        taxes. -->
+					<!-- Attribute code provides the tax code that identifies the type of tax paid. -->
+					<!-- Attribute exempt informs if the tax was waived. -->
+					<!-- Attribute sequence is the tax sequence number. -->
+					<Tax code="TX1" exempt="false" sequence="1">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+					</Tax>
+				</New>
+			</Amounts>
+			<!-- Optional. No repeats -->
+			<!-- Taxes lists all the taxes paid. This is the same information that can be found in Tax element occuring under 
+                Amounts. -->
+			<Taxes>
+				<!-- Required. No repeats -->
+				<!-- New lists all the New taxes, i.e. taxes paid at the time the document was issued. -->
+				<New>
+					<!-- Optional. Repeat factor=99 -->
+					<!-- Tax informs about a single tax amount. -->
+					<!-- Attribute code provides the tax code that identifies the type of tax paid. -->
+					<!-- Attribute exempt informs if the tax was waived. -->
+					<!-- Attribute sequence is the tax sequence number. -->
+					<Tax code="TX1" exempt="false" sequence="1">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+					</Tax>
+				</New>
+			</Taxes>
+			<!-- Required. No repeats -->
+			<!-- ValueCalculation provides information on how the value of this EMD document was calculated. -->
+			<ValueCalculation>
+				<!-- Required. No repeats -->
+				<!-- New informs about the value calculation that was performed when the document was originally issued. It's a freetext field. -->
+				<New>BKK PG USM 30.00</New>
+			</ValueCalculation>
+			<!-- Required. Repeat factor=2 -->
+			<!-- Payment informs about the payment made for the amounts listed under Amounts. -->
+			<!-- Attribute sequence informs about the payment sequence number . -->
+			<!-- Attribute type is a code informing about the form of payment. For example, CA stands for cash payment. -->
+			<!-- Attribute paymentConfirmation (optional) indicates whether payment system needs to be notified about every transaction changing this document. -->
+			<Payment sequence="1" type="CA" paymentConfirmation="false">
+				<!-- Optional. No repeats -->
+				<!-- Base informs about the base amount paid. -->
+				<Base>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places.-->
+					<Amount currencyCode="USD" decimalPlace="2">40.00</Amount>
+				</Base>
+				<!-- Optional. No repeats -->
+				<!-- Tax informs about the total amount of taxes paid. -->
+				<Tax>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">0.00</Amount>
+				</Tax>
+				<!-- Required. No repeats -->
+				<!-- Total informs about the grand total (base + taxes) amount of money paid. -->
+				<Total>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places.  -->
+					<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+				</Total>
+				<!-- Optional. No repeats -->
+				<!-- Remarks provides additional information/comment about the form of payment. -->
+				<Remarks>CA</Remarks>
+				<!-- In this place a tag specific for the form of payment used should occur. -->
+				<!-- Required. No repeats -->
+				<!-- Cash indicates that cash was used as the form of payment. -->
+				<!-- Attribute CashIndicator would always be set to true if Cash element is returned. -->
+				<Cash CashIndicator="true"/>
+			</Payment>
+			<!-- Required. Repeat factor=unlimited -->
+			<!-- History provides information about the history of the document. -->
+			<!-- Attribute code is the history code, which indicates what kind of action was taken on the document. -->
+			<!-- Attribute number is the history entry number. -->
+			<!-- Attribute sequence is the history sequence number. -->
+			<History code="OC" number="1" sequence="1">
+				<!-- Required. No repeats -->
+				<!-- Agent provides information about an agent that performed the document update. -->
+				<!-- Attribute duty informs about the agent duty code. -->
+				<!-- Attribute sine provides agent sine (agent ID). -->
+				<Agent duty="4" sine="H01">
+					<!-- Required. No repeats -->
+					<!-- TicketingProvider is the airline code of the carrier that the agent represents. -->
+					<TicketingProvider>PG</TicketingProvider>
+					<!-- Optional. No repeats -->
+					<!-- WorkLocation is the station location code of the station that performed the update. -->
+					<WorkLocation>LPQFGH1</WorkLocation>
+					<!-- Optional. No repeats -->
+					<!-- HomeLocation is the station location code of the home station of the agent. -->
+					<HomeLocation>HDQ</HomeLocation>
+				</Agent>
+				<!-- Required. No repeats -->
+				<!-- TransactionInfo provides information about the document update transaction. -->
+				<TransactionInfo>
+					<!-- Required. No repeats -->
+					<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+					<SystemDateTime>2011-09-08T04:13:59.000</SystemDateTime>
+					<!-- Optional. No repeats -->
+					<!-- SystemProvider is the airline code of the carrier that performed the transaction. -->
+					<SystemProvider>PG</SystemProvider>
+					<!-- Optional. No repeats -->
+					<!-- InputMessage is the GreenScreen entry that initiated the transaction. -->
+					<InputMessage>MISC2/5$EMD+</InputMessage>
+				</TransactionInfo>
+				<!-- Optional. No repeats -->
+				<!-- Details provides additional details about the document update. -->
+				<Details>
+					<!-- Optional. No repeats -->
+					<!-- SupportingDocument is the document number of the document affected by the update transaction. -->
+					<SupportingDocument>8298200110469</SupportingDocument>
+					<!-- Optional. No repeats -->
+					<!-- OldReservation is the PNR locator the document belonged to before the update. -->
+					<OldReservation>DHTYJG</OldReservation>
+					<!-- Optional. No repeats -->
+					<!-- AffectedCoupons lists document coupons that were affected by the update. -->
+					<AffectedCoupons>01</AffectedCoupons>
+				</Details>
+				<!-- Optional. Repeat factor=32 -->
+				<!-- ServiceCouponHistory provides details about the changes to the document coupons.-->
+				<!-- Attribute coupon specifies which coupon this information refers to. -->
+				<ServiceCouponHistory coupon="1">
+					<!-- Optional. No repeats -->
+					<!-- CurrentStatus provides current status code of the coupon (e.g., OK, VOID, USED, ...) -->
+					<CurrentStatus>OK</CurrentStatus>
+					<!-- Optional. No repeats -->
+					<!-- InConnectionDocument informs about the document number that this coupon belongs to. -->
+					<!-- Attribute couponNumber provides coupon number of this coupon on that document. -->
+					<InConnectionDocument couponNumber="1">8292168218278</InConnectionDocument>
+				</ServiceCouponHistory>
+			</History>
+		</ElectronicMiscDocument>
+	</Details>
+	<!-- EXAMPLE of Ticket document detailed information -->
+	<!-- Optional. Unlimited repeats. -->
+	<!-- Details element is used to return a detailed information about the found document -->
+	<Details>
+		<!-- Required. No repeats -->
+		<!-- Agent tag provides information about the agent that issued the document. -->
+		<!-- Attribute duty informs about the agent duty code. -->
+		<!-- Attribute sine provides information about agent sine (agent ID). -->
+		<!-- Attribute type is a code assigned to the type of agent who issued the transaction. In some cases, the system 
+            does not know the agent type. -->
+		<Agent duty="4" sine="H01" type="ATO">
+			<!-- Required. No repeats -->
+			<!-- TicketingProvider provides airline code of the carrier that the agent represents. -->
+			<TicketingProvider>PG</TicketingProvider>
+			<!-- Optional. No repeats -->
+			<!-- StationLocation is the location code of the station that the agent belongs to. -->
+			<StationLocation>LPQTO</StationLocation>
+			<!-- Optional. No repeats -->
+			<!-- StationNumber is the identification number of the station that the agent belongs to. -->
+			<StationNumber>18391052</StationNumber>
+			<!-- Optional. No repeats -->
+			<!-- WorkLocation is the city code of the agent's actual station location. -->
+			<WorkLocation>LPQFGH1</WorkLocation>
+			<!-- Optional. No repeats -->
+			<!-- HomeLocation is the city code of the agent's home station location. -->
+			<HomeLocation>HDQ</HomeLocation>
+			<!-- Optional. No repeats -->
+			<!-- Lniata is the agent LNIATA (session identifier). -->
+			<Lniata>6B1B73</Lniata>
+			<!-- Optional. No repeats -->
+			<!-- IsoCountryCode is the station country code. -->
+			<IsoCountryCode>LA</IsoCountryCode>
+			<!-- Optional. No repeats -->
+			<!-- Name is the full name of the agent. -->
+			<Name>J SMITH</Name>
+			<!-- Optional. No repeats -->
+			<!-- FirstName is the first name of the agent. -->
+			<FirstName>J</FirstName>
+			<!-- Optional. No repeats -->
+			<!-- LastName is the last name (family name) of the agent. -->
+			<LastName>SMITH</LastName>
+			<!-- Optional. No repeats -->
+			<!-- EmployeeNumber is the agent user ID. -->
+			<EmployeeNumber>0123456</EmployeeNumber>
+			<!-- Optional. No repeats -->
+			<!-- ShiftStartDateTime is the agent shift start date/time (time when "assign printer" command was issued). -->
+			<ShiftStartDateTime>2011-09-08T16:08:40.000Z</ShiftStartDateTime>
+			<!-- Optional. No repeats -->
+			<!--Pseudo City Code (PCC) or geographic city code of the creation agent. -->
+			<CrsLocation>LPQ</CrsLocation>
+			<!-- Optional. No repeats -->
+			<!-- Provides information about agent's shift -->
+			<Session>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was opened -->
+				<AgentOpenType>AGT</AgentOpenType>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was closed -->
+				<AgentCloseType>SUP</AgentCloseType>
+			</Session>
+		</Agent>
+		<!-- Required. No repeats -->
+		<!-- TransactionInfo holds some information about the transaction during which the document was issued. -->
+		<!-- Attribute category provides transaction category code. -->
+		<!-- Attribute sequence is the transaction sequence number. -->
+		<!-- Attribute type informs about the transaction type. -->
+		<TransactionInfo category="C" sequence="1" type="SALE">
+			<!-- Optional. No repeats -->
+			<!-- TCN is the transaction number (transaction ID). -->
+			<TCN>40140711905</TCN>
+			<!-- Required. No repeats -->
+			<!-- LocalDateTime is the timestamp of the transaction in the local time zone of the station that generated the 
+                transaction. -->
+			<LocalDateTime>2011-09-08T16:13:59.000Z</LocalDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+			<SystemDateTime>2011-09-08T04:13:59.000Z</SystemDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemProvider is the airline code of the carrier that initiated the transaction. -->
+			<SystemProvider>PG</SystemProvider>
+			<!-- Optional. No repeats -->
+			<!-- InputEntry is the GreenScreen entry that initiated the transaction. -->
+			<InputEntry>MISC2/5$EMD+</InputEntry>
+		</TransactionInfo>
+		<!-- Required. No repeats -->
+		<!-- Ticket provides detailed information about the Ticket that was found. -->
+		<!-- Attribute accountingCode provides the accounting code. -->
+		<!-- Attribute checkDigit is the document check digit. -->
+		<!-- Attribute formNumber is the form number. -->
+		<!-- Attribute number is the document number. -->
+		<!-- Attribute serialNumber is the serial number. -->
+		<!-- Attribute service is a code associated to the general service category type to determine the reason why the 
+            document is issued. The value could be related to A - AIR (VCR and non-VCR) or R - RAIL (AMTRAK) -->
+		<!-- Attribute type is the document type code and will always be "TKT" for Ticket. -->
+		<Ticket accountingCode="337" checkDigit="5" formNumber="21" number="3372105880330" serialNumber="05880330" service="A" type="TKT">
+			<!-- Optional. No repeats. Not used in this version. -->
+			<!-- Indicators element provides information about some flags that can be set on an TKT document. -->
+			<!-- Attribute residentDiscount indicates Spanish Residency Discount was applied. -->
+			<!-- Attribute historical indicates whether the document has been moved to historical DB or not.True means it has been moved to historical and false means otherwise -->
+			<!-- Attribute offerType informs if the document was an ATPCO, NDC or LCC document
+				The possible values for offerType are-
+				NDC= The documnent is an NDC document
+				ATPCONormalisation= The document is issued through traditional ATPCO path using the new API
+				LCCNormalisation= The document is issued through traditional LCC path using the new API -->
+			<Indicators residentDiscount="true" historical="false" offertype="NDC"/>
+			<!-- Required. No repeats -->
+			<!-- Details element provides detailed information about the TKT document. -->
+			<Details>
+				<!-- Optional. No repeats -->
+				<!-- Reservation provides information about the PNR. -->
+				<Reservation>
+					<!-- Optional. No repeats -->
+					<!-- Sabre element provides PNR locator. -->
+					<!-- Attribute createDate is the PNR create date. -->
+					<!-- Attribute provider is the airline code of the carrier that owns the PNR. -->
+					<Sabre createDate="2011-09-08T04:13:00.000" provider="PG">NISGYU</Sabre>
+				</Reservation>
+				<!-- Required. No repeats -->
+				<!-- SystemCreateDateTime is the timestamp of when the document was created - in CST time zone. -->
+				<SystemCreateDateTime>2011-09-08T04:13:59.000</SystemCreateDateTime>
+				<!-- Required. No repeats -->
+				<!-- LocalIssueDateTime is the date and time when the ticketing document was issued in the agent's city -->
+				<!-- useTimeForPricing  indicates if the time was taken from the VCR.-->
+				<LocalIssueDateTime useTimeForPricing="true">2011-09-08T16:13:59.000</LocalIssueDateTime>
+				<!-- Required. No repeats -->
+				<!-- LastUpdate is the timestamp of when the document was last updated - in CST time zone. -->
+				<LastUpdate>2011-09-08T04:13:59.000</LastUpdate>
+				<!-- Required. No repeats -->
+				<!-- ValidatingProvider is the airline code of the issuing carrier. -->
+				<ValidatingProvider>P9</ValidatingProvider>
+				<!-- Optional. No repeats -->
+				<!-- OriginCity is a code of the original point of departure -->
+				<OriginCity>CUN</OriginCity>
+				<!-- Optional. No repeats -->
+				<!-- DestinationCity is a code of the final point of destination -->
+				<DestinationCity>DFW</DestinationCity>
+				<!-- Optional. No repeats -->
+				<!-- ItineraryType is a code associated to the type of itinerary when the ticketing document was issued  D=Domestic  I= -->
+				<ItineraryType>D</ItineraryType>
+				<!-- Optional. No Repeats. -->
+				<!-- ExchTransactionType is the code associated to the exchange transaction type as entered in AER.-->
+				<!-- Possible values can be:
+                        X - Exchange
+                        F - Flown
+                        I - Involuntary Reroute
+                        S - Schedule Change
+                        L - Lost Ticket Application
+                        A - Affidavit
+                        C - Even Exch/Change Fee
+                        K - Keep
+                        P - Revenue Accounting
+                        N - No Coupon Exch
+                        R - Voluntary Refund -->
+				<ExchTransactionType>X</ExchTransactionType>
+				<!-- Optional. No repeats.-->
+				<!-- ExchTransactionDate is the date the transaction took place.-->
+				<ExchTransactionDate>2013-05-20-05:00</ExchTransactionDate>
+				<!-- Optional. No repeats.-->
+				<!-- ExchTransactionTime is the time the transaction took place.-->
+				<ExchTransactionTime>12:19:00.000-05:00</ExchTransactionTime>
+				<!-- Optional. No repeats -->
+				<!-- ExchCategory is a category of the exchange transaction -->
+				<!-- Possible values can be:
+                        D - Domextic Exchange
+                        I - International Exchange
+                        M - Multi-currency Exchange
+                        P - Phase 4 Exchange
+                        T - Automated Exchange and Refunds 
+                        R - Involuntary Reroute-->
+				<ExchCategory>P</ExchCategory>
+				<!-- Optional. No repeats -->
+				<!-- FareCalculationMode is the identifier reflecting the method of pricing for this transaction as entered 
+                    on the ticketing document -->
+				<FareCalculationMode>0</FareCalculationMode>
+				<!-- Optional. No repeats -->
+				<!-- TicketingMode is an indicator of the method of generating a ticket -->
+				<TicketingMode>/</TicketingMode>
+				<!-- Optional. No repeats -->
+				<!-- PriceCheckDigit is a digit number that validates the pricing code -->
+				<PriceCheckDigit>3</PriceCheckDigit>
+				<!-- Optional. No repeats -->
+				<!-- CouponText is a code that defines the usage of the coupon (F or V) -->
+				<CouponText>FVVV</CouponText>
+				<!-- Optional. No repeats. -->
+				<!-- CorporateId specifies corporate identifier. -->
+				<CorporateId>DXB08</CorporateId>
+				<!-- Optional. Repeat factor = 5 -->
+				<!-- AccountCode specifies the account code. -->
+				<!-- Attribute type (optional) is never returned. -->
+				<AccountCode>STF99</AccountCode>
+				<!-- Optional. No repeats. -->
+				<!-- GovernmentStatus provides information about the residency, nationality or employment status of the passenger. -->
+				<!-- Attribute type (required) specifies type of government status (R - residency, N - nationality, E - employment). -->
+				<GovernmentStatus type="R">
+					<!-- Optional. No repeats. -->
+					<!-- CountryCode specifies the code of the country related to the government status. -->
+					<CountryCode>US</CountryCode>
+					<!-- Optional No repeats. -->
+					<!-- StateCode specifies the code of the state related to the government status. -->
+					<StateCode>TX</StateCode>
+					<!-- Optional No repeats. -->
+					<!-- CityCode specifies the code of the city related to the government status. -->
+					<CityCode>DFW</CityCode>
+				</GovernmentStatus>
+				<!-- Optional. No repeats -->
+				<!-- ResidentLargeFamilyDiscount indicates whether Spanish Large Family Discount was applied and specifies what level of discount was applied. 
+                    Possible values are 0 â€“ no Large Family Discount, 1 â€“ Large Family Discount level 1, 2 â€“ Large Family Discount level 2. -->
+				<ResidentLargeFamilyDiscount>2</ResidentLargeFamilyDiscount>
+				<!-- Optional. No repeats -->
+				<!-- BaggageDisclosure shows full disclosure text printed on ticket receipt according to US DOT and Canadian CTA regulations -->
+				<!-- Attribute disclosureIndicator specifies type of itinerary:
+					'1'     To/From US
+					'2'     To/From CA
+					'3'     Within US
+					'4'     Within CA
+					'5'     Between CA and US
+					'6'     Others
+					-->
+				<BaggageDisclosure disclosureIndicator="5">BAG ALLOWANCE     -MIALAX-03P/AA/EACH PIECE UP TO 70 POUNDS/32KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERSBAG ALLOWANCE     -LAXMIA-03P/AA/EACH PIECE UP TO 70 POUNDS/32KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERSCARRY ON ALLOWANCEMIALAX LAXMIA-02P/AA01/SMALL PERSONAL ITEM01/UP TO 45 LINEAR INCHES/115 LINEAR CENTIMETERSADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLYEMBARGOES-APPLY TO EACH PASSENGERMIALAX LAXMIA-AAOVER 100 POUNDS/45 KILOGRAMS NOT PERMITTED</BaggageDisclosure>
+				<GovernmentTaxIdentification idType="A">
+					<!--Optional-->
+					<!--"ValueAddedTax" is a type of consumption tax-->
+					<!--"ValueAddedTax id" is AlphaNumeric characters and maximum of  20 characters length-->
+					<!--""ValueAddedTax id" is unque to each airline -->
+					<!--"Fiscal ID" is a unique ID number specific to an airline-->
+					<!--"Fiscal ID" number should be displayed on all printed and electronically transmitted travel and ancillary receipts irrespective of the Itinerary including the ATB stock -->
+					<ValueAddedTax id="PI13029381004"/>
+					<Fiscal id="CF13029381004"/>
+				</GovernmentTaxIdentification>
+				<!-- NetType code indicates type of Net transaction -->
+				<NetType>M</NetType>
+			    <!-- This will have the OrderID of the hosted carriers and 1S OrderID in case of TN copy of the document. -->
+				<SabreOrderID provider="1S">SAB1SORDR</SabreOrderID>
+				<!-- This is relevant only for subscribers. This field will have the airline OrderID in TN copy of the document. -->
+                <OtherOrderID provider="1S">1AOTHERORDR</OtherOrderID>
+                <!-- This field will display the OrderItemID of the airlines for both hosted and 1S documents. -->
+                <SabreOrderItemID provider="1S">1SSABORDRITEM</SabreOrderItemID>
+				
+			</Details>
+			<!-- Required. Repeat factor=2 -->
+			<!-- Customer element provides information about the customer. -->
+			<Customer>
+				<!-- Required. No repeats -->
+				<!-- Traveler element provides information about the customer who is actually travelling (using this MSR 
+                    document). -->
+				<Traveler>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the customer -->
+					<Name>JAJECZNICA/MARTYNA</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the customer. -->
+					<FirstName>MARTYNA</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the customer. -->
+					<LastName>JAJECZNICA</LastName>
+					<!-- Optional. No repeats -->
+					<!-- PassengerType is a passenger code which depicts special considerations in relation to the passenger 
+                        traveling. -->
+					<PassengerType>ADT</PassengerType>
+					<!-- Contact is the preferred method of contacting the passgenger-->
+					<Contact>
+						<Phone>8005551212</Phone>
+					</Contact>
+					<!-- Form of Identification is the document used to show prroof of identity (passport)-->
+					<FormOfIdentification type="PP">
+						<Id>US9876543</Id>
+					</FormOfIdentification>
+				</Traveler>
+			</Customer>
+			<Affinity xmlns="http://www.sabre.com/ns/Ticketing/DC">
+				<FrequentFlyer>
+					<Provider>AB</Provider>
+					<Number>182587640</Number>
+					<!--Optional-->
+					<!--"Tier" means a level or grade of the customer based on number of trips or loyalty with the particular airline or alliance. -->
+					<!--"Tier" entitles members to receive a certain set of Benefits.-->
+					<Tier>PLT</Tier>
+				</FrequentFlyer>
+			</Affinity>
+			<!-- Required. Repeat factor=30 -->
+			<!-- ServiceCoupon element provides information about flight coupons associated with ticketing document. A ticketing 
+                document can have one or more flight coupons -->
+			<ServiceCoupon coupon="1" entitlement="1">
+				<!-- Required. No repeats -->
+				<!-- MarketingProvider is a code identifying the Marketing Carrier for each coupon as it was sold -->
+				<!-- Attribute name contains the description -->
+				<MarketingProvider name="American Airlines">AA</MarketingProvider>
+				<!-- Required. No repeats -->
+				<!-- MarketingFlightNumber is marketing carrier's flight number for each coupon as it was sold -->
+				<!-- flight number may also have these values OPEN, VOID, or ARNK.-->
+				<MarketingFlightNumber>504</MarketingFlightNumber>
+				<!-- Required. No repeats -->
+				<!-- ClassOfService is a flight class of service associated to the coupon -->
+				<!-- Attribute name contains the description -->
+				<ClassOfService name="Economy">Y</ClassOfService>
+				<!-- Required. No repeats -->
+				<!-- FareBasis is a code that identifies the appropriate fare basis used to issue a ticket -->
+				<FareBasis>Y</FareBasis>
+				<!-- Required. No repeats -->
+				<!-- StartLocation is an airport or city code identifying the start location of the flight or service -->
+				<StartLocation>CUN</StartLocation>
+				<!-- Required. No repeats -->
+				<!-- StartDateTime is a flight departure date and time or the start date and time when the service is applied -->
+				<StartDateTime>2012-04-30T13:30:00.000-05:00</StartDateTime>
+				<!-- Required. No repeats -->
+				<!-- EndLocation is an airport or city code identifying the end location of the flight or service -->
+				<EndLocation>DFW</EndLocation>
+				<!-- Required. No repeats -->
+				<!-- EndDateTime is a flight arrival date and time or the end date and time when the service is applied -->
+				<EndDateTime>2012-04-30T16:24:00.000-05:00</EndDateTime>
+				<!-- Optional. No repeats -->
+				<!-- NotValidAfterDate is a date after which travel or service for this segment is no longer applicable -->
+				<NotValidAfterDate>2013-04-30-05:00</NotValidAfterDate>
+				<!-- Optional. No repeats -->
+				<!-- BookingStatus is a code associated to the status of the booked segment -->
+				<BookingStatus>OK</BookingStatus>
+				<!-- Optional. No repeats -->
+				<!-- CurrentStatus is a code associated to the current status of the coupon. -->
+				<CurrentStatus>OK</CurrentStatus>
+				<!-- Optional. No repeats -->
+				<!-- PreviousStatus informs about an applicable free baggage allowance -->
+				<PreviousStatus>OK</PreviousStatus>
+				<!-- Optional. No repeats -->
+				<!-- CurrentControllingProvider code in case this service coupon is in CTRL status. -->
+				<!-- May be populated with controlling provider service coupon current status for hosted airlines if indicated in the web service request. There is no guarantee on this status-->
+				<!-- Set to true for aitlines hosted in Ticketing open systems -->
+				<CurrentControllingProvider currentStatus="OK" hosted="false">AA</CurrentControllingProvider>
+				<!-- Optional. No repeats -->
+				<!-- ValidatingProviderCouponStatus code -->
+				<!-- May be populated with Validating Carrier service coupon current status for hosted airlines if indicated in the web
+                service request. There is no guarantee on this status-->
+				<!-- Attribute hosted (optional) set to true for Validating Carrier hosted in Sabre -->
+				<!-- Attribute provider (optional) set to Validating Carrier code -->
+				<ValidatingProviderCouponStatus hosted="true" provider="AA">OK</ValidatingProviderCouponStatus>
+				<!-- Optional. No repeats -->
+				<!--InvoluntaryReroute gives information related to irregular operations performed on a Ticket/Coupon-->
+				<InvoluntaryReroute>
+					<!--Optional. No repeats.-->
+					<!--Reason indicates type of IROP operation performed on a Coupon. -->
+					<!--Possible values I and D. -->
+					<Reason>I</Reason>
+					<!--RerouteDescription describes the kind of IROP performed on a Ticket/Coupon. -->
+					<!--Possible values I-INVOL D-Diversion. L - Strike and S- Schedule change will be supported in future.-->
+					<RerouteDescription>INVOL</RerouteDescription>
+					<!--Indicates date on which IROPS is perfomred on a Ticket/Coupon. -->
+					<Date>2018-11-20</Date>
+					<!--Indicate airline code on which Involuntary reroute has been performed. -->
+					<Provider>XX</Provider>
+				</InvoluntaryReroute>
+				<!-- BagAllowance informs about an applicable free baggage allowance -->
+				<BagAllowance>NIL</BagAllowance>
+				<!-- Optional. No repeats -->
+				<!-- CouponUse is a code that informs how the coupon is used. F - flight coupon, V - void coupon -->
+				<CouponUse>F</CouponUse>
+				<!-- Optional. No repeats. Not used in this version. -->
+				<!-- Indicators associated to a service coupon -->
+				<Indicators/>
+				<!-- Optional. No repeats -->
+				<!-- Departure time as it is formatted on the ticketing document -->
+				<StartTimeText>130P</StartTimeText>
+				<!-- Optional. No repeats. -->
+				<!-- FareBreakAmount gives information about the amount of the fare break. -->
+				<FareBreakAmount>
+					<!-- Required. No repeats. -->
+					<!-- Amount gives information about amount and currency. -->
+					<!-- Attribute currencyCode (optional) specifies the currency. -->
+					<!-- Attribute decimalPlace (optional) specifies number of digits after the decimal dot in the amount. -->
+					<Amount currencyCode="ZAR" decimalPlace="0">2350</Amount>
+					<!-- Optional. No repeats. -->
+					<!-- Text gives the textual representation of the fare break amount. -->
+					<Text>2350</Text>
+				</FareBreakAmount>
+				<!-- Optiona. Repeat factor = 99 -->
+				<!-- PlusUp contains information about applied plus-ups (surcharges). -->
+				<!-- Attribute code (optional) specifies plus-up code. -->
+				<!-- Attribute sequence (required) specifies plus-up sequence number. -->
+				<PlusUp code="Q" sequence="1">
+					<!-- Required. No repeats. -->
+					<!-- Amount specifies plus-up amount. -->
+					<!-- Attribute currencyCode specifies plus-up currency. -->
+					<!-- Attribute decimalPlace informs about number of decimal positions after the decimal dot in the amount. -->
+					<Amount currencyCode="NUC" decimalPlace="2">10.00</Amount>
+				</PlusUp>
+				<!--Optional-->
+				<!--"Markup" is the amount or percentage along with respecitve text added to the cost price based on the airline rules-->
+				<!--"Amount" is used to specify the numeric amount for mark-up-->
+				<!--"currencyCode" three letter code used for currency for a particular country-->
+				<!--"PercentageRate" is the rate at which fare will be marked up-->
+				<Markup>
+					<Amount currencyCode="NUC" decimalPlace="2">20.00</Amount>
+					<Text>20.00</Text>
+					<PercentageRate>20.0</PercentageRate>
+					<Text>20.00</Text>
+				</Markup>
+				<!-- Optional. No repeats. -->
+				<!-- FareComponent contains pricing information about the fare component of this service coupon. -->
+				<!-- Attribute sequence (required) specifies fare component sequence number. -->
+				<!-- Attribute flownIndicator (optional) indicates if this fare component is associated with a flown service coupon. -->
+				<!-- Attribute roundTripIndicator (optional) indicates if round trip fare was used. -->
+				<!-- Attribute oneWayIndicator (optional) indicates if one-way fare was used. -->
+				<!-- Attribute oneWayDirectionalIndicator (optional) indicates if one-way directional fare was used. -->
+				<!-- Attribute inboundIndicator (optional) indicates if inbound fare was used. -->
+				<!-- Attribute IATAAuthorisedIndicator (optional) is the pricing's "IATA authorized carrier" indicator. -->
+				<!-- Attribute appendNonrefundableIndicator (optional) is the pricing's "append Non-Refundable to FBC" indicator. -->
+				<FareComponent sequence="1" flownIndicator="false" roundTripIndicator="false" oneWayIndicator="false" oneWayDirectionalIndicator="false" inboundIndicator="false" IATAAuthorisedIndicator="false" appendNonrefundableIndicator="false">
+					<!-- Optional. No repeats. -->
+					<!-- AssociatedFareBasis specifies fare basis code. -->
+					<AssociatedFareBasis>Y</AssociatedFareBasis>
+					<!-- Optional. No repeats. -->
+					<!-- FareProvider specifies fare provider code in the pricing system. -->
+					<FareProvider>MN</FareProvider>
+					<!-- Optional. No repeats. -->
+					<!-- Tariff specifies tariff code in the pricing system. -->
+					<Tariff>865</Tariff>
+					<!-- Optional. No repeats. -->
+					<!-- FareRule specifies fare rule number in the pricing system. -->
+					<FareRule>0003</FareRule>
+					<!-- Optional. No repeats. -->
+					<!-- PricingVendor specifies fare pricing vendor. -->
+					<PricingVendor>ATP</PricingVendor>
+				</FareComponent>
+				<!-- PricingVendor specifies fare pricing vendor. -->
+				<!--This field will display the ServiceID of the airlines for both hosted and 1S documents-->
+				<SabreServiceID provider="1S">SabreService03</SabreServiceID>
+			</ServiceCoupon>
+			<!-- Required. No repeats -->
+			<!-- Amounts provides information about any paid money amounts associated with the document. -->
+			<Amounts>
+				<!-- Optional. No repeats -->
+				<!-- New informs about the new amounts that are generated at the time the document is issued. -->
+				<New>
+					<!-- Required. No repeats -->
+					<!-- Base informs about the base amount. -->
+					<Base>
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+					</Base>
+					<!-- Optional. No repeats -->
+					<!-- Total informs about the grand total amount (base + all the taxes). -->
+					<Total>
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>60.00</Text>
+						<!-- Optional. No repeats -->
+						<!--RateOfExchange is a rate of exchange used to currency conversion. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<RateOfExchange decimalPlace="9">1.000000000</RateOfExchange>
+					</Total>
+					<!-- Optional. Repeat factor=3 -->
+					<!-- Tax informs about the total amount of taxes paid. -->
+					<!-- Attribute code is a code which identifies a type of tax being applied to a transaction. -->
+					<!-- Attribute sequence is a number associated to the order of the tax item as it was shown in the document. -->
+					<Tax code="US" sequence="1">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount of money paid. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">16.30</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>16.30</Text>
+					</Tax>
+					<!-- Optional. Repeat factor=3 -->
+					<!-- Tax informs about the total amount of taxes paid. -->
+					<!-- Attribute code is a code which identifies a type of tax being applied to a transaction. -->
+					<!-- Attribute sequence is a number associated to the order of the tax item as it was shown in the document. -->
+					<Tax code="XO" sequence="2">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount of money paid. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">13.70</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>13.70</Text>
+					</Tax>
+					<!-- Optional. Repeat factor=3 -->
+					<!-- Tax informs about the total amount of taxes paid. -->
+					<!-- Attribute code is a code which identifies a type of tax being applied to a transaction. -->
+					<!-- Attribute sequence is a number associated to the order of the tax item as it was shown in the document. -->
+					<Tax code="XT" sequence="3">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount of money paid. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">45.49</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>45.49</Text>
+					</Tax>
+				</New>
+				<!-- Optional. No repeats. -->
+				<!-- Specifies other amounts related to the document. -->
+				<Other>
+					<!-- Optional. No repeats. -->
+					<!-- Specifies the non-refundable portion of fare amount. -->
+					<NonRefundable>
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+					</NonRefundable>
+					<!-- Optional. Repeat factor=99 -->
+					<!-- OBFee informs about IATA defined OB Fees that were collected at the time of ticketing. -->
+					<!-- Attribute sequence is a number associated to the order of the OBFee item as it was shown in the document. -->
+					<OBFee sequence="1">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount of money paid for OBFee. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">20.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>20.00</Text>
+						<!-- Optional. No repeats -->
+						<!-- ApplyCreditInd indicates amount is negative (true) or positive (false). Default is positive (false). -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+						<!-- Required. No repeats -->
+						<!-- FeeCode represents IATA defined OB Fee code also indicating fee type e.g. OBT01, OBR03, OBFCA. Types defined by IATA:
+                            OBT - Ticketing fees, OBR - Requested Service fees. -->
+						<FeeCode>OBR03</FeeCode>
+						<!-- Optional. No repeats -->
+						<!-- PricedCode indicates how OB fee was priced, the possible values are: 0 - System priced, 1 - Agent priced. -->
+						<PricedCode>0</PricedCode>
+						<!-- Optional. No repeats -->
+						<!-- WaiverCode provides Waiver reason code as defined by the airline in MISCO* table. If specified that implies the fee was not collected
+                            and the amount is excluded from OB Fees Total and Grand Total. -->
+						<WaiverCode>01</WaiverCode>
+						<!-- Optional. No repeats -->
+						<!-- Description informs about Fee description as defined by IATA or Airline in the pricing system. -->
+						<Description>Tour Package Delivery</Description>
+					</OBFee>
+					<!-- Optional. No repeats -->
+					<!-- OBFeesTotal informs about total amount of OB Fees that were collected at the time of ticketing. -->
+					<OBFeesTotal>
+						<!-- Required. No repeats -->
+						<!-- OBFeesTotal informs about the total amount of money paid for OBFees. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">20.00</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>20.00</Text>
+						<!-- Optional. No repeats -->
+						<!-- ApplyCreditInd indicates amount is negative (true) or positive (false). Default is positive (false). -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+					</OBFeesTotal>
+					<!--Optional-->
+					<!--Total fee is a summation of change fee, other fee, OB fee total and fees taxes-->
+					<TotalFees currencyCode="AUD" decimalPlace="2">100.00</TotalFees>
+					<!--Optional-->
+					<!--TotalBaseFees is a summation of carrier imposed fee, change fee, other fee and OB fee total-->
+					<TotalBaseFees CurrencyCode="AUD" decimalPlace="2">100.00</TotalBaseFees>
+				</Other>
+			</Amounts>
+			<!-- Optional. No repeats -->
+			<!-- Taxes lists all the taxes paid. This is the same information that can be found in Tax element occuring under 
+                Amounts. -->
+			<Taxes>
+				<!-- Required. No repeats -->
+				<!-- New lists all the New taxes, i.e. taxes paid at the time the document was issued. -->
+				<New>
+					<!-- Optional. Repeat factor=99 -->
+					<!-- Tax informs about a single tax amount. -->
+					<!-- Attribute code provides the tax code that identifies the type of tax paid. -->
+					<!-- Attribute exempt informs if the tax was waived. -->
+					<!-- Attribute sequence is the tax sequence number. -->
+					<Tax code="US2" sequence="1">
+						<!-- Required. No repeats -->
+						<!-- Amount informs about the amount. -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>false</ApplyCreditInd>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>30.00</Text>
+					</Tax>
+				</New>
+			</Taxes>
+			<!-- Optional. No repeats -->
+			<!-- Remark element stores general remarks about ticketing document -->
+			<Remark>
+				<!-- Optional. No repeats -->
+				<!-- Endorsements element stores endorsements related to ticketing document -->
+				<!-- Attribute sequence is the endorsement sequence number. -->
+				<Endorsements sequence="1">REFUNDABLE</Endorsements>
+				<!-- Optional. No repeats -->
+				<!-- Payment element stores payment related remarks -->
+				<!-- Attribute sequence is the payment related remark sequence number. -->
+				<Payment sequence="1">CASH</Payment>
+			</Remark>
+			<!-- Optional. Repeat factor=3 -->
+			<!-- AffiliatedAgent informs about booking agents -->
+			<AffiliatedAgent>
+				<!-- Optional. No repeats -->
+				<!-- Booking informs about who booked the reservation that was used to issue the document -->
+				<!-- Attribute duty is the code of the agent's duty who did a previous transaction affiliated to this transaction. -->
+				<!-- Attribute sine is the code of the agent's sine who did a previous transaction affiliated to this transaction. -->
+				<Booking duty="4" sine="-GQ">
+					<!-- Optional. No repeats -->
+					<!-- WorkLocation informs about work location city of the agent who did a previous transaction affiliated 
+                        to this transaction -->
+					<WorkLocation>OMA</WorkLocation>
+					<!-- Optional. No repeats -->
+					<!-- HomeLocation informs about home location city of the agent who did a previous transaction affiliated 
+                        to this transaction -->
+					<HomeLocation>HDQ</HomeLocation>
+				</Booking>
+			</AffiliatedAgent>
+			<!-- Optional. No repeats. -->
+			<!-- FareCalculation informs about the details of the fare calculation exactly as printed on the document -->
+			<FareCalculation>
+				<!-- Optional. No repeats -->
+				<!-- New details about fare calculations at the time the document was issued. -->
+				<New>CUN SY DFW497.00NUC497.00END ROE1.00</New>
+			</FareCalculation>
+			<!-- Optional. No repeats. -->
+			<!-- Contains information about other documents related to this ticket. -->
+			<RelatedDocument>
+				<!-- Optional. No repeats. -->
+				<!-- Original contains information about the original document (e.g. in case this ticket was issued as a result of exchange). -->
+				<!-- Attribute sequence (optional) specifies related document sequence number. -->
+				<!-- Attribute paymentConfirmation (optional) indicates whether payment system needed to be notified about the document issuance transaction. -->
+				<Original sequence="0" paymentConfirmation="false">
+					<!-- Optional. No repeats -->
+					<!-- Number indicates document number. -->
+					<Number>1612101829189</Number>
+					<!-- Optional. No repeats -->
+					<!-- Payment indicates original form of payment.  EF = earlier form of payment -->
+					<Payment>EFCASH</Payment>
+					<!-- Optional. No repeats -->
+					<!-- Coupon number -->
+					<Coupon>12</Coupon>
+					<!-- Optional. No repeats -->
+					<!-- IssueDate indicates date document was issued. -->
+					<IssueDate>2013-05-20-05:00</IssueDate>
+					<!-- Optional. No repeats -->
+					<!-- IssueTime indicates the time was the document was issued.-->
+					<IssueTime>12:17:00.000-05:00</IssueTime>
+					<!-- Optional. No repeats -->
+					<!-- IssueCity indicates city where document was issued. -->
+					<IssueCity>CPT</IssueCity>
+					<!-- Optional. No repeats -->
+					<!-- IataNumber of the issuing travel agent. -->
+					<IataNumber>77494944</IataNumber>
+					<!-- Optional. No repeats.-->
+					<!-- TransactionId indicates related document credit card transaction information. -->
+					<TransactionId>123456789012345</TransactionId>
+					<!-- Optional. No repeats. -->
+					<!-- Dynamic Currency Conversion indicates details related to payment amount conversion to the credit card currency code for related document.  Only BA or IK can be used.-->
+					<DynamicCurrencyConversion>
+						<!-- Required. No repeats. -->
+						<!-- Amount the payment amount in credit card currency with corresponding amount currency and decimal places.  -->
+						<Amount currencyCode="EUR" decimalPlace="2">378.43</Amount>
+						<!-- Optional. No repeats. -->
+						<!-- Text indicates the payment amount in credit card currency in text form.-->
+						<Text>378.43</Text>
+						<!-- Required. No repeats. -->
+						<!-- Rate indicates rate of exchange between payment and credit card currency with corresponding decimal places.-->
+						<Rate decimalPlace="5">0.76777</Rate>
+					</DynamicCurrencyConversion>
+					<!-- OriginalPayment element annotation starts here -->
+					<!-- Optional. Can be repeated up to 3 times -->
+					<!-- paymentConfirmation - indicates that payment confirmation needs to be sent to Payment System after successful transaction -->
+					<!-- sequence - contains information the order of payments made -->
+					<!-- type - Same as payment instrument code -->
+					<!-- missingPayAmtInd - indicates if Total Payment Amount is missing in the source record -->
+					<!-- id - a generated identifier assigned for a payment media for uniqueness in the system -->
+					<!-- code - FopVCR -->
+					<OriginalPayment paymentConfirmation="false" sequence="1" type="CC" missingPayAmtInd="false" id="A1" code="B">
+						<!-- Optional. No repeats -->
+						<Base>
+							<!-- Required. No repeats -->
+							<!-- currencyCode -->
+							<!-- decimalPlace -->
+							<Amount currencyCode="AUD" decimalPlace="2">14.00</Amount>
+							<!-- Optional. No repeats -->
+						</Base>
+						<Tax>
+							<!-- Required. No repeats -->
+							<!-- currencyCode -->
+							<!-- decimalPlace -->
+							<Amount currencyCode="AUD" decimalPlace="2">2.00</Amount>
+						</Tax>
+						<Total>
+							<!-- Required. No repeats -->
+							<!-- currencyCode -->
+							<!-- decimalPlace -->
+							<Amount currencyCode="AUD" decimalPlace="2">16.00</Amount>
+						</Total>
+						<!-- Optional. No repeats -->
+						<!-- Contains additional information about the specified form of payment -->
+						<Remarks>REMARK COMMING FROM PAYMENT</Remarks>
+						<!-- In this place a tag specific for the form of payment used should occur. If applicable, the tag would provide additional information about the form of payment. -->
+						<!-- Can be one of: Card, Cash, Check, TravelDocument, Voucher, GovernmentTravel, Invoice, PrepaidTicketAdvice, Certficate, Miscellaneous, RevenueAccounting, Other -->
+						<!-- Required. No repeats -->
+						<!-- Card indicates that credit card was used as the form of payment. -->
+						<!-- cardType - indicates vendor of credit card used -->
+						<Card cardType="VI">
+							<!-- Required. No repeats -->
+							<!-- Full credit card number display (unmasked) for users with keyword CCVIEW in their EPR -->
+							<MaskedCardNumber>XXXXXXXXXXXX800</MaskedCardNumber>
+							<!-- Optional. No repeats -->
+							<!-- Expire date of the credit card used -->
+							<ExpireDate>0813</ExpireDate>
+							<!-- Optional. No repeats -->
+							<!-- Indicates approval code for credit card used -->
+							<ApprovalCode>1234567</ApprovalCode>
+							<!-- Optional. No repeats -->
+							<ExtendedPayment>09</ExtendedPayment>
+							<!-- Optional. No repeats -->
+							<ApprovalSource>M</ApprovalSource>
+							<!-- Optional. No repeats -->
+							<ApprovalType>890765</ApprovalType>
+							<!-- Optional. No repeats -->
+							<CardBinNumber>400555</CardBinNumber>
+							<!-- Optional. No repeats -->
+							<!-- TransactionID is required when a BA or IK credit card is used with Dynamic Currency Conversion -->
+							<TransactionId>123456789012345</TransactionId>
+							<!--Optional. No repeats. -->
+							<!--Dynamic Currency Conversion indicates details related to payment amount conversion to the credit card currency code for related document.-->
+							<DynamicCurrencyConversion>
+								<!-- Required. No repeats.-->
+								<Amount currencyCode="EUR" decimalPlace="2">378.43</Amount>
+								<!-- Text indicates the payment amount in credit card currency in text form.-->
+								<!-- Optional. No repeats.-->
+								<Text>378.43</Text>
+								<!-- Required. No repeats.-->
+								<!-- Rate indicates rate of exchange between payment and credit card currency with corresponding decimal places.-->
+								<Rate decimalPlace="5">0.76777</Rate>
+							</DynamicCurrencyConversion>
+						</Card>
+					</OriginalPayment>
+				</Original>
+			</RelatedDocument>
+			<!-- Optional. No repeats -->
+			<!-- PrintCoupon provides information about coupons of this document printed as a part of the ticketing transaction. -->
+			<!-- Attribute couponType informs about the type of coupon printed. -->
+			<!-- Attribute printerType is a code associated to the printer used to issue the ticketing coupons -->
+			<!-- Attribute quantity is a number of copies per coupon type printed during the ticketing transaction -->
+			<!-- Attribute stockType is a code associated to the type of stocks used to print the coupon. -->
+			<PrintCoupon couponType="P" printerType="0" quantity="0" stockType="T">
+				<!-- Required. No repeats. -->
+				<!-- Lniata is the printer LNIATA (line address). -->
+				<Lniata>BBCA78</Lniata>
+			</PrintCoupon>
+			<!-- Optional. Repeat factor=2 -->
+			<!-- Payment informs about the payment made for the amounts listed under Amounts. -->
+			<!-- Two forms of payment are allowed.  In case of exchanges, there could be another form of paymemt code 'ET' that signifies the use of travel documents to issue another ticketing document.-->
+			<!-- Attribute sequence informs about the payment sequence number . -->
+			<!-- Attribute type is a code informing about the form of payment. For example, CC stands for  credit card payment. -->
+			<!-- Attribute paymentConfirmation (optional) indicates whether payment system needs to be notified about every transaction changing this document. -->
+			<Payment sequence="1" type="CC" paymentConfirmation="true">
+				<!-- Optional. No repeats -->
+				<!-- Base informs about the base amount paid. -->
+				<Base>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+				</Base>
+				<!-- Optional. No repeats -->
+				<!-- Tax informs about the total amount of taxes paid. -->
+				<Tax>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+				</Tax>
+				<!-- Required. No repeats -->
+				<!-- Total informs about the grand total (base + taxes) amount of money paid. -->
+				<Total>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+				</Total>
+				<!-- Optional. No repeats -->
+				<!-- Remarks provides additional information/comment about the form of payment. -->
+				<Remarks>CC</Remarks>
+				<!-- In this place a tag specific for the form of payment used should occur. If applicable, the tag would 
+                    provide additional information about the form of payment. -->
+				<!-- Required. No repeats -->
+				<!-- Card indicates that credit card was used as the form of payment. -->
+				<!--Full credit card number display (unmasked) for users with keyword CCVIEW in their EPR-->
+				<!--Remarks>VI4245123456798000</Remarks-->
+				<Card cardType="VI">
+					<MaskedCardNumber>XXXXXXXXXXXX800</MaskedCardNumber>
+					<ExpireDate>0813</ExpireDate>
+					<ApprovalCode>1234567</ApprovalCode>
+					<CardBinNumber>400555</CardBinNumber>
+					<!--TransactionID is required when a BA or IK credit card is used with Dynamic Currency Conversion-->
+					<TransactionId>123456789012345</TransactionId>
+					<!--Optional. No repeats. -->
+					<!--Dynamic Currency Conversion indicates details related to payment amount conversion to the credit card currency code for related document.-->
+					<DynamicCurrencyConversion>
+						<!-- Optional. No repeats.-->
+						<Amount currencyCode="EUR" decimalPlace="2">378.43</Amount>
+						<!--Text indicates the payment amount in credit card currency in text form.-->
+						<Text>378.43</Text>
+						<!--Required. No repeats.-->
+						<!--Rate indicates rate of exchange between payment and credit card currency with corresponding decimal places.-->
+						<Rate decimalPlace="5">0.76777</Rate>
+					</DynamicCurrencyConversion>
+				</Card>
+			</Payment>
+			<!-- Required. Repeat factor=2 -->
+			<!-- Payment informs about the payment made for the amounts listed under Amounts. -->
+			<!-- Two forms of payment are allowed.  In case of exchanges, there could be another form of paymemt code 'ET' that signifies the use of travel documents to issue another ticketing document.-->
+			<!-- Attribute sequence informs about the payment sequence number . -->
+			<!-- Attribute type is a code informing about the form of payment. For example, CA stands for cash payment. -->
+			<!-- Attribute paymentConfirmation (optional) indicates whether payment system needs to be notified about every transaction changing this document. -->
+			<Payment sequence="1" type="CA" paymentConfirmation="false">
+				<!-- Optional. No repeats -->
+				<!-- Base informs about the base amount paid. -->
+				<Base>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+				</Base>
+				<!-- Optional. No repeats -->
+				<!-- Tax informs about the total amount of taxes paid. -->
+				<Tax>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">30.00</Amount>
+				</Tax>
+				<!-- Required. No repeats -->
+				<!-- Total informs about the grand total (base + taxes) amount of money paid. -->
+				<Total>
+					<!-- Required. No repeats -->
+					<!-- Amount informs about the amount of money paid. -->
+					<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+					<!-- Attribute decimalPlace informs about the number of decimal places. -->
+					<Amount currencyCode="USD" decimalPlace="2">60.00</Amount>
+				</Total>
+				<!-- Optional. No repeats -->
+				<!-- Remarks provides additional information/comment about the form of payment. -->
+				<Remarks>CA</Remarks>
+				<!-- In this place a tag specific for the form of payment used should occur. If applicable, the tag would 
+                    provide additional information about the form of payment. -->
+				<!-- Required. No repeats -->
+				<!-- Cash indicates that cash was used as the form of payment. -->
+				<Cash/>
+			</Payment>
+			<!-- Optional. Repeat factor=unlimited -->
+			<!-- History provides information about the history of the document. -->
+			<!-- Attribute code is the history code, which indicates what kind of action was taken on the document. -->
+			<!-- Attribute number is the history entry number. -->
+			<!-- Attribute sequence is the history sequence number. -->
+			<History code="OC" number="9" sequence="1">
+				<!-- Required. No repeats -->
+				<!-- Agent provides information about an agent that performed the document update. -->
+				<!-- Attriubte duty informs about the agent duty code. -->
+				<!-- Attriubte sine provides agent sine (agent ID). -->
+				<Agent duty="4" sine="-GQ">
+					<!-- Required. No repeats -->
+					<!-- TicketingProvider is the airline code of the carrier that the agent represents. -->
+					<TicketingProvider>PG</TicketingProvider>
+					<!-- Optional. No repeats -->
+					<!-- WorkLocation is the station location code of the station that performed the update. -->
+					<WorkLocation>LPQFGH1</WorkLocation>
+					<!-- Optional. No repeats -->
+					<!-- HomeLocation is the station location code of the home station of the agent. -->
+					<HomeLocation>HDQ</HomeLocation>
+				</Agent>
+				<!-- Required. No repeats -->
+				<!-- TransactionInfo provides information about the document update transaction. -->
+				<TransactionInfo>
+					<!-- Required. No repeats -->
+					<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+					<SystemDateTime>2011-09-08T04:13:59.000</SystemDateTime>
+					<!-- Optional. No repeats -->
+					<!-- SystemProvider is the airline code of the carrier that performed the transaction. -->
+					<SystemProvider>PG</SystemProvider>
+					<!-- Optional. No repeats -->
+					<!-- InputMessage is the GreenScreen entry that initiated the transaction. -->
+					<InputMessage>W$FCA$VCR</InputMessage>
+				</TransactionInfo>
+				<!-- Optional. No repeats -->
+				<!-- Details provides additional details about the document update. -->
+				<Details>
+					<!-- Optional. No repeats -->
+					<!-- SupportingDocument is the document number of the document affected by the update transaction. -->
+					<SupportingDocument>8298200110469</SupportingDocument>
+					<!-- Optional. No repeats -->
+					<!-- OldReservation is the PNR locator the document belonged to before the update. -->
+					<OldReservation>DHTYJG</OldReservation>
+					<!-- Optional. No repeats -->
+					<!-- AffectedCoupons lists document coupons that were affected by the update. -->
+					<AffectedCoupons>01</AffectedCoupons>
+				</Details>
+				<!-- Optional. Repeat factor=32 -->
+				<!-- ServiceCouponHistory provides details about the changes to the document coupons. It may occur multiple 
+                    times. -->
+				<!-- Attribute coupon specifies which coupon this information refers to. -->
+				<ServiceCouponHistory coupon="1">
+					<!-- Optional. No repeats -->
+					<!-- CurrentStatus provides current status code of the coupon (e.g., OK, VOID, USED, ...) -->
+					<CurrentStatus>OK</CurrentStatus>
+					<!-- CurrentControllingProvider is the 2 character provider code which currently controls the service coupon.-->
+					<CurrentControllingProvider>MN</CurrentControllingProvider>
+				</ServiceCouponHistory>
+			</History>
+		</Ticket>
+	</Details>
+	<!-- EXAMPLE of Voucher document detailed information -->
+	<!-- Optional. Unlimited repeats allowed. -->
+	<!-- Details element is used to return a detailed information about the found document -->
+	<Details>
+		<!-->Required. No repeats -->
+		<!-- Agent tag provides information about the agent that issued the document. -->
+		<!-- Attribute duty informs about the agent duty code. -->
+		<!-- Attribute sine provides information about agent sine (agent ID). -->
+		<Agent duty="4" sine="PJ-">
+			<!-- Required. No repeats -->
+			<!-- TicketingProvider provides airline code of the carrier that the agent represents. -->
+			<TicketingProvider>MN</TicketingProvider>
+			<!-- Optional. No repeats -->
+			<!-- StationLocation is the location code of the station that the agent belongs to. -->
+			<StationLocation>CPTCR</StationLocation>
+			<!-- Optional. No repeats -->
+			<!-- StationNumber is the identification number of the station that the agent belongs to. -->
+			<StationNumber>77494944</StationNumber>
+			<!-- Optional. No repeats -->
+			<!-- WorkLocation is the city code of the agent's actual station location. -->
+			<WorkLocation>LPQFGH1</WorkLocation>
+			<!-- Optional. No repeats -->
+			<!-- HomeLocation is the city code of the agent's home station location. -->
+			<HomeLocation>HDQ</HomeLocation>
+			<!-- Optional. No repeats -->
+			<!-- Lniata is the agent LNIATA (session identifier). -->
+			<Lniata>4E7AE3</Lniata>
+			<!-- Optional. No repeats -->
+			<!-- IsoCountryCode is the station country code. -->
+			<IsoCountryCode>ZA</IsoCountryCode>
+			<!-- Optional. No repeats -->
+			<!-- Name is the full name of the agent. -->
+			<Name>P JURAS></Name>
+			<!-- Optional. No repeats -->
+			<!-- EmployeeNumber is the agent user ID. -->
+			<EmployeeNumber>0217274</EmployeeNumber>
+			<!-- Optional. No repeats -->
+			<!-- ShiftStartDateTime is the agent shift start date/time (time when "assign printer" command was issued). -->
+			<ShiftStartDateTime>2013-02-18T23:37:44.000-06:00</ShiftStartDateTime>
+			<Session>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was opened -->
+				<AgentOpenType>AGT</AgentOpenType>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was closed -->
+				<AgentCloseType>SUP</AgentCloseType>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the station session was opened -->
+				<StationOpenType>DCP</StationOpenType>
+			</Session>
+		</Agent>
+		<!-- Required. No repeats -->
+		<!-- TransactionInfo holds some information about the transaction during which the document was issued. -->
+		<!-- Attribute category provides transaction category code. -->
+		<!-- Attribute sequence is the transaction sequence number. -->
+		<!-- Attribute type informs about the transaction type. -->
+		<TransactionInfo actionType="" category="C" code="" sequence="1" type="RFND">
+			<!-- Required. No repeats -->
+			<!-- LocalDateTime is the timestamp of the transaction in the local time zone of the station that generated the 
+                transaction. -->
+			<LocalDateTime>2013-02-19T02:07:31.000-06:00</LocalDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+			<SystemDateTime>2013-02-18T02:07:31.000-06:00</SystemDateTime>
+			<!-- Required. No repeats -->
+			<!-- SystemProvider is the airline code of the carrier that initiated the transaction. -->
+			<SystemProvider>MN</SystemProvider>
+		</TransactionInfo>
+		<!-- Required. No repeats -->
+		<!-- Voucher provides detailed information about the Voucher that was found. -->
+		<!-- Attribute type is the document type code. Required.
+            Possible values can be:
+                    TKT - Ticket
+                    EMD - Electronic Miscellaneous Document
+                    MSR - Miscellaneous Sales Receipt
+                    EXB - Excess Baggage
+                    VOU - Voucher
+                    RFD - Refund
+                    XXX - Cash Refund
+                    CCR - Credit Card Refund -->
+		<!-- Attribute number is the document number. Required -->
+		<!-- Attribute accountingCode provides the accounting code. -->
+		<!-- Attribute checkDigit is the document check digit. -->
+		<!-- Attribute formNumber is the form number. -->
+		<!-- Attribute serialNumber is the serial number. -->
+		<!-- Attribute service is the general service category type to determine the reason why the document is issued.
+         The value could be related to A - AIR (VCR and non-VCR) or R - RAIL (AMTRAK).  -->
+		<Voucher type="VOU" number="1610420000387" accountingCode="161" checkDigit="2" formNumber="042" serialNumber="0000387" service="A">
+			<!-- Optional. No repeats -->
+			<!-- Indicators element provides information whether the document was produced electronically or not.
+                Y = electronically produced.   N = PAPER.   Default is set to N -->
+			<Indicators electronic="true"/>
+			<Details>
+				<!-- Optional. No repeats -->
+				<!-- Reservation provides information about the PNR. -->
+				<Reservation>
+					<!-- Optional. No repeats -->
+					<!-- Sabre element provides PNR locator. -->
+					<!-- Attribute createDate is the PNR create date. -->
+					<!-- Attribute provider is the airline code of the carrier that owns the PNR. -->
+					<Sabre createDate="2013-02-18T18:06:00.000-06:00" provider="MN">EOYQRT</Sabre>
+				</Reservation>
+				<!-- Required. No repeats -->
+				<!-- SystemCreateDateTime is the timestamp of when the document was created - in CST time zone. -->
+				<SystemCreateDateTime>2013-02-18T18:07:31.000-06:00</SystemCreateDateTime>
+				<!-- Optional. No repeats -->
+				<!-- LocalIssueDateTime is the timestamp of when the document was created in the local time of the issuing 
+                    station. -->
+				<LocalIssueDateTime>2013-02-19T02:07:31.000-06:00</LocalIssueDateTime>
+				<!-- Optional. No repeats -->
+				<!-- ValidatingProvider is the airline code of the validating carrier. -->
+				<ValidatingProvider>MN</ValidatingProvider>
+				<!-- Optional. No repeats -->
+				<!-- ExchTranactionType is the exchange transaction type as entered in AER.
+                     Possible values can be:
+                    X - Exchange
+                    F - Flown
+                    I - Involuntary Reroute
+                    S - Schedule Change
+                    L - Lost Ticket Application
+                    A - Affidavit
+                    C - Even Exch/Change Fee
+                    K - Keep
+                    P - Revenue Accounting
+                    N - No Coupon Exch
+                    R - Voluntary Refund-->
+				<ExchTransactionType>R</ExchTransactionType>
+				<!-- Optional. No repeats -->
+				<!-- ElectonricMiscType is the type of the electronic miscellaneous document
+                    Possible values can be:
+                    A - Associated
+                    S - Stand-alone-->
+				<ElectronicMiscType>S</ElectronicMiscType>
+				<!-- Optional. No repeats -->
+				<!-- ReasonType is the airline-defined reason for issuing a voucher.-->
+				<ReasonType>OU</ReasonType>
+				<!-- Optional. No repeats -->
+				<!-- ReasonDescription is the description as to why the voucher was issued.-->
+				<ReasonDescription>REFUND VOUCHER</ReasonDescription>
+				<!-- Optional. No repeats -->
+				<!-- CurrentStatus is the current status of the ticketing document.
+                    Possible values can be:
+                    E - Exchanged
+                    R - Refunded
+                    V - Voided
+                    A - Reactivated-->
+				<CurrentStatus>E</CurrentStatus>
+				<!-- Optional. No repeats -->
+				<!-- CurrentActivity is a code associated to the activity generated by the transaction; primarily used by Agent Sales Reporting.-->
+				<CurrentActivity>RV</CurrentActivity>
+			</Details>
+			<!-->Required. Repeat factor=2 -->
+			<!-- Customer element provides information about the customer. -->
+			<Customer>
+				<!-- Required. No repeats -->
+				<!-- Traveler element provides information about the customer who is actually travelling (using this EMD 
+                   document). -->
+				<Traveler>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the customer -->
+					<Name>TEST/JOHN</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the customer. -->
+					<FirstName>JOHN</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the customer. -->
+					<LastName>TEST</LastName>
+					<!-- Optional. No repeats. -->
+					<!-- The passenger code which depicts special considerations in relation to the passenger traveling. -->
+					<PassengerType>ADT</PassengerType>
+				</Traveler>
+				<!-- Optional. No repeats -->
+				<!-- Purchaser element provides information about the customer who payed for the service represented by the 
+                    document.  -->
+				<Purchaser>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the purchaser -->
+					<Name>TEST/JOHN</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the purchaser. -->
+					<FirstName>JOHN</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the purchaser. -->
+					<LastName>TEST</LastName>
+				</Purchaser>
+			</Customer>
+			<!-- Optional. Repeat factor=30 -->
+			<!-- ServiceCoupon element provides information about flight coupons associated with ticketing document. A ticketing 
+                document can have one or more flight coupons -->
+			<!-- Attribute coupon provides the number representing the order in which this coupon was used or is to be used.. -->
+			<ServiceCoupon coupon="1" entitlement="1">
+				<!-- Required. No repeats -->
+				<!-- MarketingProvider is a code identifying the Marketing Carrier for each coupon as it was sold -->
+				<MarketingProvider>MN</MarketingProvider>
+				<!-- Required. No repeats -->
+				<!-- MarketingFlightNumber is marketing carrier's flight number for each coupon as it was sold -->
+				<MarketingFlightNumber>504</MarketingFlightNumber>
+				<!--StartLocation is the airport or city code identifying the start location of the flight or service.-->
+				<StartLocation>CPT</StartLocation>
+				<!-- Required. No repeats -->
+				<!-- StartDateTime is a flight departure date and time or the start date and time when the service is applied -->
+				<StartDateTime>2012-04-30T13:30:00.000-05:00</StartDateTime>
+				<!-- Required. No repeats -->
+				<!-- EndLocation is an airport or city code identifying the end location of the flight or service -->
+				<EndLocation>JNB</EndLocation>
+				<!-- Optional. No repeats -->
+				<!-- CouponUse is a code that informs how the coupon is used. F - flight coupon, V - void coupon -->
+				<CouponUse>F</CouponUse>
+				<!-- Optional. No repeats -->
+				<!--Other airline validating carrier code.-->
+				<ValidatingProvider>MN</ValidatingProvider>
+			</ServiceCoupon>
+			<!-- Required. No repeats. -->
+			<!-- Contains details about document amounts. -->
+			<Amounts>
+				<!-- Optional. No repeats -->
+				<!-- New informs about the new amounts that are generated at the time the document is issued. -->
+				<New>
+					<!-- Required. No repeats -->
+					<!-- Base informs about the base amount. -->
+					<Base>
+						<!-- Required. No repeats -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<!-- Amount attribute indicates the new amounts associated to the ticketing document -->
+						<Amount currencyCode="ZAR" decimalPlace="0">2330</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>2330</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>true</ApplyCreditInd>
+					</Base>
+					<!-- Optional. No repeats -->
+					<!-- TotalTax informs about total amount of taxes paid (sum of all taxes). -->
+					<TotalTax>
+						<!-- Required. No repeats -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<!-- Amount indicates the amount of the total tax. -->
+						<Amount currencyCode="ZAR" decimalPlace="0">478</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>478</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>true</ApplyCreditInd>
+					</TotalTax>
+					<!-- Required. No repeats -->
+					<!-- Total informs about the grand total amount (base + all the taxes). -->
+					<Total>
+						<!-- Required. No repeats -->
+						<!-- Attribute currencyCode is the code of the currency the amount is in. -->
+						<!-- Attribute decimalPlace informs about the number of decimal places. -->
+						<!-- Amount indicates the total amount (base + all taxes). -->
+						<Amount currencyCode="ZAR" decimalPlace="0">2808</Amount>
+						<!-- Optional. No repeats -->
+						<!-- Text provides the text version of above amount. -->
+						<Text>2808</Text>
+						<!-- Optional. No repeats -->
+						<!--If ApplyCreditInd is false then the amounts are assumed to be Positive. -->
+						<ApplyCreditInd>true</ApplyCreditInd>
+					</Total>
+				</New>
+			</Amounts>
+			<!-- Optional. No repeats. -->
+			<!-- Taxes contains information about paid taxes. -->
+			<Taxes>
+				<!-- Optional. No repeats. -->
+				<!-- New contains information about taxes paid when the document was originally issued. -->
+				<New>
+					<!-- Optional. Unlimited repeats. -->
+					<!-- Contains tax details. -->
+					<!-- Attribute code indicates the code which identifies a type of tax being applied to a transaction.-->
+					<!-- Attribute exempt indicates whether the tax code is exempt or not.-->
+					<!-- Attribute sequence indicates the number associated to the order of the tax item as it was shown in the document.-->
+					<Tax code="ZV" exempt="false" sequence="1">
+						<!-- Required. No repeats. -->
+						<!-- Amount indicates the amount of tax that is applied to the document or item.-->
+						<Amount currencyCode="ZAR" decimalPlace="0">326</Amount>
+						<!-- Optional. No repeats. -->
+						<!-- ApplyCreditInd If the Indicator  'N' then the amounts are assumed to be Positive.-->
+						<ApplyCreditInd>true</ApplyCreditInd>
+						<!-- Optional. No repeats. -->
+						<!-- Textual representation of the tax. -->
+						<Text>326</Text>
+					</Tax>
+				</New>
+			</Taxes>
+			<!-- Optional. No repeats. -->
+			<!-- Contains remarks added to the document. -->
+			<Remark>
+				<!-- Possible elements are: Endorsements, Manual, Payment, OriginalIssue, PrePaid. They follow the same format. -->
+				<!-- Optional, no repeats. -->
+				<!-- Payment specifies payment remark. -->
+				<!-- Attribute sequence informs about payment remark sequence number. -->
+				<Payment sequence="1">CPT JNB2330Y ZAR2330END XT16EV20UM</Payment>
+				<!-- Optional, repeat factor = 20 -->
+				<!-- Other specifies other remark. -->
+				<!-- Attribute type informas about remark type. -->
+				<!-- Attribute sequence informs about the remark sequence number. -->
+				<Other type="FOP1" sequence="1">CC</Other>
+			</Remark>
+			<!-- Optional. No repeats. -->
+			<!-- RelatedDocument contains information about the document this Voucher is related to. -->
+			<RelatedDocument>
+				<!-- Optiona. No repeats. -->
+				<!-- Original contains information about original document (e.g. ticket that was refunded to this voucher). -->
+				<!-- Attribute sequence is the related document sequence number. -->
+				<!-- Attribute paymentConfirmation (optional) indicates whether payment system needed to be notified about the document issuance transaction. -->
+				<Original sequence="0" paymentConfirmation="false">
+					<!-- Required. No repeats. -->
+					<!-- Number provides the related document number. -->
+					<Number>161210208184</Number>
+					<!-- Optional. No repeats -->
+					<!-- CheckDigit provides the check digit of the related document. -->
+					<CheckDigit>5</CheckDigit>
+					<!-- Optional. No repeats -->
+					<!-- IssueDate is the date when original document was issued - in the time zone of issuing station. -->
+					<IssueDate>2013-02-19-06:00</IssueDate>
+					<!-- Optional. No repeats -->
+					<!-- IssueTime is the time when original document was issued - in the time zone of issuing station. -->
+					<IssueTime>12:17:00.000-05:00</IssueTime>
+					<!-- Optional. No repeats -->
+					<!-- IssueCity is the issuing station location. -->
+					<IssueCity>CPT</IssueCity>
+				</Original>
+				<!-- Optiona. No repeats. -->
+				<!-- Refund contains information about refund document related to this voucher. -->
+				<!-- Attribute sequence is the related document sequence number. -->
+				<Refund sequence="1">
+					<!-- Required. No repeats. -->
+					<!-- Number provides the related document number. -->
+					<Number>1612101208184</Number>
+					<!-- Optional. No repeats -->
+					<!-- CheckDigit provides the check digit of the related document. -->
+					<CheckDigit>5</CheckDigit>
+					<!-- Optional. No repeats -->
+					<!-- Coupon is the coupon number of the related document that this voucher is related to. -->
+					<Coupon>1</Coupon>
+				</Refund>
+			</RelatedDocument>
+			<!-- Optional. Repeat factor = 6 -->
+			<!-- PrintCoupon contains information about coupons of this voucher that have been printed. -->
+			<!-- Attribute couponType specifies print coupon type -->
+			<PrintCoupon couponType="P">
+				<!-- Optional. No repeats. -->
+				<!-- Lniata specifies the printer address (LNIATA) of the printer used to print this coupon. -->
+				<Lniata>BEC33E</Lniata>
+			</PrintCoupon>
+			<!-- Required. Repeat factor = 3 -->
+			<!-- Payment gives details about forms of payment that was used to pay for this document. Up to two forms of payment are supported. In case of exchanges, there could be another form of paymemt code 'ET' that signifies the use of travel documents to issue another ticketing document.-->
+			<!-- Attribute sequence defines the order of payments made.-->
+			<!-- Attribute type defines payment type.-->
+			<!-- Attribute paymentConfirmation (optional) indicates whether payment system needs to be notified about every transaction changing this document. -->
+			<Payment sequence="1" type="TV" paymentConfirmation="false">
+				<!-- Optional. No repeats. -->
+				<!-- Base gives information about the base amount and currency. -->
+				<Base>
+					<!--Required. No repeats. -->
+					<!-- Amount specifies the amount. -->
+					<!-- Attribute currencyCode specifies amount currency. -->
+					<!-- Attribute decimalPlace is equal to the number of decimal positions after the decimal dot in the amount. -->
+					<Amount currencyCode="ZAR" decimalPlace="0">2330</Amount>
+					<!-- Optional. No repeats. -->
+					<!-- ApplyCreditInd informs whether given form of payment was applied to given amount. -->
+					<ApplyCreditInd>true</ApplyCreditInd>
+				</Base>
+				<!-- Optional. No repeats. -->
+				<!-- Tax specifies the total tax amount. -->
+				<Tax>
+					<!--Required. No repeats. -->
+					<!-- Amount specifies the amount. -->
+					<!-- Attribute currencyCode specifies amount currency. -->
+					<!-- Attribute decimalPlace is equal to the number of decimal positions after the decimal dot in the amount. -->
+					<Amount currencyCode="ZAR" decimalPlace="0">478</Amount>
+					<!-- Optional. No repeats. -->
+					<!-- ApplyCreditInd informs whether given form of payment was applied to given amount. -->
+					<ApplyCreditInd>true</ApplyCreditInd>
+				</Tax>
+				<!-- Required No repeats. -->
+				<!-- Total specifies the total payment amount (base + taxes). -->
+				<Total>
+					<!--Required. No repeats. -->
+					<!-- Amount specifies the amount. -->
+					<!-- Attribute currencyCode specifies amount currency. -->
+					<!-- Attribute decimalPlace is equal to the number of decimal positions after the decimal dot in the amount. -->
+					<Amount currencyCode="ZAR" decimalPlace="0">2808</Amount>
+					<!-- Optional. No repeats. -->
+					<!-- ApplyCreditInd informs whether given form of payment was applied to given amount. -->
+					<ApplyCreditInd>true</ApplyCreditInd>
+				</Total>
+				<!-- Optional. No repeats. -->
+				<!-- Remarks contains additional information about the used form of payment. -->
+				<Remarks>VOUCHER</Remarks>
+				<!-- Required. No repeats. -->
+				<!-- Voucher informs that this document is a voucher and thus does not require a form of payment. -->
+				<Voucher/>
+			</Payment>
+			<!-- Optional. Repeat factor=unlimited -->
+			<!-- History provides information about the history of the document. -->
+			<!-- Attribute code is the history code, which indicates what kind of action was taken on the document. -->
+			<!-- Attribute number is the history entry number. -->
+			<!-- Attribute sequence is the history sequence number. -->
+			<History code="EXE" number="4" sequence="1">
+				<!-- Required. No repeats -->
+				<!-- Agent provides information about an agent that performed the document update. -->
+				<!-- Attriubte duty informs about the agent duty code. -->
+				<!-- Attriubte sine provides agent sine (agent ID). -->
+				<Agent duty="4" sine="PJ-">
+					<!-- Required. No repeats -->
+					<!-- TicketingProvider is the airline code of the carrier that the agent represents. -->
+					<TicketingProvider>MN</TicketingProvider>
+					<!-- Optional. No repeats -->
+					<!-- WorkLocation is the station location code of the station that performed the update. -->
+					<WorkLocation>LPQFGH1</WorkLocation>
+					<!-- Optional. No repeats -->
+					<!-- HomeLocation is the station location code of the home station of the agent. -->
+					<HomeLocation>HDQ</HomeLocation>
+				</Agent>
+				<!-- Required. No repeats -->
+				<!-- TransactionInfo provides information about the document update transaction. -->
+				<TransactionInfo>
+					<!-- Required. No repeats -->
+					<!-- SystemDateTime is the timestamp of the transaction in CST time zone. -->
+					<SystemDateTime>2013-02-18T18:07:51.000-06:00</SystemDateTime>
+					<!-- Optional. No repeats -->
+					<!-- SystemProvider is the airline code of the carrier that performed the transaction. -->
+					<SystemProvider>MN</SystemProvider>
+				</TransactionInfo>
+				<!-- Optional. No repeats -->
+				<!-- Details provides additional details about the document update. -->
+				<Details>
+					<!-- Optional. No repeats -->
+					<!-- SupportingDocument is the document number of the document affected by the update transaction. -->
+					<SupportingDocument>1610420000387</SupportingDocument>
+					<!-- Optional. No repeats -->
+					<!-- CurrentDocumentStatus provides information about the document status after update. -->
+					<CurrentDocumentStatus>E</CurrentDocumentStatus>
+				</Details>
+			</History>
+		</Voucher>
+	</Details>
+	<!-- Optional. Repeat factor=Unbounded -->
+	<Abbreviated>
+		<!-- Required. No repeats -->
+		<!-- Agent tag provides information about the agent that issued the document. -->
+		<!-- Attribute duty informs about the agent duty code. -->
+		<!-- Attribute sine provides information about agent sine (agent ID). -->
+		<!-- Attribute type describes agent (web based etc.) -->
+		<Agent duty="4" sine="H01" type="ATO">
+			<!-- Required. No repeats -->
+			<!-- TicketingProvider provides airline code of the carrier that the agent represents. -->
+			<TicketingProvider>PG</TicketingProvider>
+			<!-- Optional. No repeats -->
+			<!-- StationLocation is the location code of the station that the agent belongs to. -->
+			<StationLocation>LPQTO</StationLocation>
+			<!-- Optional. No repeats -->
+			<!-- StationNumber is the identification number of the station that the agent belongs to. -->
+			<StationNumber>18391052</StationNumber>
+			<!-- optional. No repeats -->
+			<!-- WorkLocation is the city code of the agent's actual station location. -->
+			<WorkLocation>LPQFGH1</WorkLocation>
+			<!-- Optional. No repeats -->
+			<!-- HomeLocation is the city code of the agent's home station location. -->
+			<HomeLocation>HDQ</HomeLocation>
+			<!-- Optional. No repeats -->
+			<!-- EmployeeNumber is the agent user ID. -->
+			<EmployeeNumber>0123456</EmployeeNumber>
+			<!-- Optional. No repeats -->
+			<!-- Provides information about agent's shift -->
+			<Session>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was opened -->
+				<AgentOpenType>AGT</AgentOpenType>
+				<!-- Optional. No repeats -->
+				<!-- Informs how the agent session was closed -->
+				<AgentCloseType>SUP</AgentCloseType>
+			</Session>
+		</Agent>
+		<!-- Required. No repeats -->
+		<!-- Attribute number is the document number. Required -->
+		<!-- Attribute accountingCode provides the accounting code. -->
+		<!-- Attribute checkDigit is the document check digit. -->
+		<!-- Attribute formNumber is the form number. -->
+		<!-- Attribute serialNumber is the serial number. -->
+		<!-- Attribute type is the document type code, required. -->
+		<TicketingDocument number="8298200110468" accountingCode="829" checkDigit="5" formNumber="820" serialNumber="0110469" type="TKT">
+			<!-- Indicators element provides information about some flags that can be set on the document. -->
+			<!-- Attribute electronic informs if the document is electronic. -->
+			<!-- ManualAdd is a Y/N indicator representing whether the document is manually added or not into Agent Sales Report. -->
+			<!-- Attribute offerType informs if the document was an ATPCO, NDC or LCC document
+				The possible values for offerType are-
+				NDC= The documnent is an NDC document
+				ATPCONormalisation= The document is issued through traditional ATPCO path using the new API
+				LCCNormalisation= The document is issued through traditional LCC path using the new API -->
+			<Indicators electronic="true" manualAdd="true" offertype="NDC"/>
+			<!-- Required. No repeats -->
+			<!-- Details element provides detailed information about the document. -->
+			<Details>
+				<!-- Optional. No repeats -->
+				<!-- Reservation provides information about the PNR. -->
+				<Reservation>
+					<!-- Optional. No repeats -->
+					<!-- Sabre element provides PNR locator. -->
+					<!-- Attribute createDate is the PNR create date. -->
+					<!-- Attribute provider is the airline code of the carrier that owns the PNR. -->
+					<!-- Purge date, information about the purge date. -->
+					<Sabre createDate="2011-09-08T04:13:00.000" provider="PG" purgeDate="2011-09-08T04:13:59.000">DHTYJG</Sabre>
+					<!-- Optional. Reservation information provided by other system. -->
+					<OtherSystem>0</OtherSystem>
+				</Reservation>
+				<!-- Required. No repeats -->
+				<!-- LocalIssueDateTime is the timestamp of when the document was created in the local time of the issuing 
+                    station. -->
+				<LocalIssueDateTime>2011-09-08T16:13:59.000</LocalIssueDateTime>
+				<!-- Optional. No repeats -->
+				<!-- ElectronicMiscType is the type of EMD document: A for associated documents or S for standalone documents. -->
+				<ElectronicMiscType>A</ElectronicMiscType>
+				<!-- Optional. No repeats -->
+				<!-- ReasonForIssue is the reason for issuance code (RFIC) as defined by IATA EMD specification. -->
+				<ReasonForIssue>A</ReasonForIssue>
+				<!-- Optional. No repeats -->
+				<!-- Current status of the ticketing document. -->
+				<CurrentStatus>E</CurrentStatus>
+				<!-- Optional. No repeats -->
+				<!-- A code associated to the activity generated by the transaction; primarily used by Agent Sales Reporting -->
+				<CurrentActivity>A</CurrentActivity>
+				<!-- This will have the OrderID of the hosted carriers and 1S OrderID in case of TN copy of the document. -->
+				<SabreOrderID provider="1S">SAB1SORDR</SabreOrderID>
+				<!-- This is relevant only for subscribers. This field will have the airline OrderID in TN copy of the document. -->
+                <OtherOrderID provider="1S">1AOTHERORDR</OtherOrderID>
+                <!-- This field will display the OrderItemID of the airlines for both hosted and 1S documents. -->
+                <SabreOrderItemID provider="1S">1SSABORDRITEM</SabreOrderItemID>
+			</Details>
+			<!-- Required. No repeats. -->
+			<Customer>
+				<Traveler>
+					<!-- Required. No repeats -->
+					<!-- Name is the full name of the customer. -->
+					<Name>NOWAK/JAN</Name>
+					<!-- Optional. No repeats -->
+					<!-- FirstName is the first name of the customer. -->
+					<FirstName>JAN</FirstName>
+					<!-- Optional. No repeats -->
+					<!-- LastName is the last name of the customer. -->
+					<LastName>NOWAK</LastName>
+					<!-- Optional. No repeats -->
+					<!-- Is a passenger code which depicts special considerations in relation to the passenger traveling. -->
+					<PassengerType>ADT</PassengerType>
+				</Traveler>
+			</Customer>
+			<!-- Optional. Repeat factor=30 -->
+			<!-- ServiceCoupon element provides information about flight coupons associated with ticketing document. A ticketing 
+                document can have one or more flight coupons -->
+			<!-- Attribute coupon specifies number of the coupon. -->
+			<ServiceCoupon coupon="1" entitlement="1">
+				<!-- Required. No repeats -->
+				<!-- MarketingProvider is a code identifying the Marketing Carrier for each coupon as it was sold -->
+				<MarketingProvider>SY</MarketingProvider>
+				<!-- Required. No repeats -->
+				<!-- MarketingFlightNumber is marketing carrier's flight number for each coupon as it was sold -->
+				<MarketingFlightNumber>504</MarketingFlightNumber>
+				<!-- Required. No repeats -->
+				<!-- ClassOfService is a flight class of service associated to the coupon -->
+				<ClassOfService>Y</ClassOfService>
+				<!-- Required. No repeats -->
+				<!-- FareBasis is a code that identifies the appropriate fare basis used to issue a ticket -->
+				<FareBasis>Y</FareBasis>
+				<!-- Required. No repeats -->
+				<!-- StartLocation is an airport or city code identifying the start location of the flight or service -->
+				<StartLocation>CUN</StartLocation>
+				<!-- Required. No repeats -->
+				<!-- StartDateTime is a flight departure date and time or the start date and time when the service is applied -->
+				<StartDateTime>2012-04-30T13:30:00.000-05:00</StartDateTime>
+				<!-- Required. No repeats -->
+				<!-- EndLocation is an airport or city code identifying the end location of the flight or service -->
+				<EndLocation>DFW</EndLocation>
+				<!-- Required. No repeats -->
+				<!-- EndDateTime is a flight arrival date and time or the end date and time when the service is applied -->
+				<EndDateTime>2012-04-30T16:24:00.000-05:00</EndDateTime>
+				<!-- Optional. No repeats -->
+				<!-- NotValidAfterDate is a date after which travel or service for this segment is no longer applicable -->
+				<NotValidAfterDate>2013-04-30-05:00</NotValidAfterDate>
+				<!-- Optional. No repeats -->
+				<!-- BookingStatus is a code associated to the status of the booked segment -->
+				<BookingStatus>OK</BookingStatus>
+				<!-- Optional. No repeats -->
+				<!-- CurrentStatus is a code associated to the current status of the coupon. -->
+				<CurrentStatus>CTRL</CurrentStatus>
+				<!-- Optional. No repeats -->
+				<!-- PreviousStatus is a code associated to the previous status of the coupon. -->
+				<PreviousStatus>OK</PreviousStatus>
+				<!-- Optional. No repeats. -->
+				<!-- CurrentControllingProvider is the current status of the coupon as returned by the controlling airline.-->
+				<CurrentControllingProvider currentSatus="OK" hosted="false">AA</CurrentControllingProvider>
+				<!-- Optional. No repeats -->
+				<!-- BagAllowance informs about an applicable free baggage allowance -->
+				<BagAllowance>NIL</BagAllowance>
+				<!-- Optional. No repeats -->
+				<!-- CouponUse is a code that informs how the coupon is used. F - flight coupon, V - void coupon -->
+				<CouponUse>F</CouponUse>
+				<!-- Optional. No repeats. Not used in this version. -->
+				<!-- Indicators associated to a service coupon -->
+				<Indicators/>
+				<!-- Optional. No repeats -->
+				<!-- Departure time as it is formatted on the ticketing document -->
+				<StartTimeText>130P</StartTimeText>
+				<!-- Optional. No repeats. -->
+				<!-- Code of the vendor that priced this service coupon. -->
+				<!-- Required. No repeats -->
+				<!-- Code assigned by the airline to designate specific fare discounts -->
+				<TicketDesignator>FT104</TicketDesignator>
+				<!-- Optional. No repeats -->
+				<!-- Is the passenger entitled to make a stop-over. -->
+				<StopOver>X</StopOver>
+				<!--This field will display the ServiceID of the airlines for both hosted and 1S documents-->
+				<SabreServiceID provider="1S">SabreService03</SabreServiceID>
+			</ServiceCoupon>
+			<!-- Optional. Repeat factor=16 -->
+			<!-- Specific information about  ancillary or miscellaneous items purchased (Applies to MSR, EXB and EMD). -->
+			<Miscellaneous>
+				<!-- Optional. Repeat factor=4 -->
+				<!-- Describes the associated flight -->
+				<!-- Attribute entitlement is optional. This is a total number of coupons. -->
+				<!-- Attribute coupon is required. It is a number representing the order in which this coupon was used or is to be used. -->
+				<AssociatedFlight entitlement="1" coupon="1">
+					<!-- Required. No repeats -->
+					<!-- CarrierCode element contains carrier code of the flight associated to the service. -->
+					<CarrierCode>PG</CarrierCode>
+					<!-- Optional. No repeats -->
+					<!-- FlightNumber element contains a flight number associated to the service. -->
+					<FlightNumber>481</FlightNumber>
+					<!-- Optional. No repeats -->
+					<!-- ClassOfService element provides information about the flight class of service. -->
+					<ClassOfService>D</ClassOfService>
+					<!-- Required. No repeats -->
+					<!-- DepartureCity element provides information about the origin or departure city code of the flight. -->
+					<DepartureCity>HLA</DepartureCity>
+					<!-- Optional. No repeats -->
+					<!-- ArrivalCity element provides information about the destination or arrival city of the flight. -->
+					<ArrivalCity>CPT</ArrivalCity>
+					<!-- Optional. No repeats -->
+					<!-- DepartureDate element provides information about the departure date of the flight. -->
+					<DepartureDate>2012-02-12-06:00</DepartureDate>
+					<!-- Optional. No repeats -->
+					<!-- A code that applies to whether the flight is a stop over or not (X, O). -->
+					<StopOver>X</StopOver>
+					<!-- Optional. No repeats -->
+					<!-- CurrentStatus element contains a code associated to the current status of the coupon. -->
+					<CurrentStatus>OK</CurrentStatus>
+					<!-- Optional. No repeats -->
+					<!-- PreviousStatus element contains a code associated to the previous status of the coupon. -->
+					<PreviousStatus>OK</PreviousStatus>
+				</AssociatedFlight>
+				<!-- Optional. No repeats -->
+				<!-- AssociatedTicketNumber element provides information about associated ticket number. Fee can be associated to a ticket number. -->
+				<!-- Attribute coupon specifies number of the coupon. Optional. -->
+				<!-- Attribute associationType is the type of association. Optional. -->
+				<!-- Attribute checkDigit is the document check digit. Optional. -->
+				<AssociatedTicketNumber couponNumber="1" associationType="A" checkDigit="">1612100000106</AssociatedTicketNumber>
+				<!--This field will display the ServiceID of the airlines for both hosted and 1S documents-->
+				<SabreServiceID provider="1S">SabreService03</SabreServiceID>
+			</Miscellaneous>
+			<!-- Optional. No repeats -->
+			<!-- Other Documents that are related to the primary document -->
+			<RelatedDocument>
+				<!-- Optional. No repeats. -->
+				<!-- Original contains information about the original document. -->
+				<!-- Attribute sequence is optional. It's a related document sequence number. -->
+				<Original sequence="1">
+					<!-- Required, no repeats. -->
+					<!-- The ticket number. -->
+					<Number>1612100000201</Number>
+					<!-- Optional, max one occurrence. -->
+					<CheckDigit>1</CheckDigit>
+					<!-- Optional, max one occurrence. -->
+					<IssueDate>1967-08-13</IssueDate>
+					<!-- Optional, max one occurrence. -->
+					<IssueTime>12:17:00.000-50:00</IssueTime>
+					<!-- TransactionID is required when a BA or IK credit card is used with Dynamic Currency Conversion-->
+					<TransactionID>123456789012345</TransactionID>
+					<!-- Displays the converted amount in cardholder's currency-->
+					<DynamicCurencyConversion>
+						<Amount currencyCode="EUR" decimalPlace="2">378.43</Amount>
+						<Text>378.43</Text>
+						<Rate decimalPlace="5">0.76777</Rate>
+					</DynamicCurencyConversion>
+					<!-- Optional, Repeat factor=16 -->
+					<!-- AssociatedTicketNumber element provides information about associated ticket numbers. -->
+					<!-- Attribute couponNumber specifies number of the coupon. Optional. -->
+					<!-- Attribute associationType is the type of association. Optional. -->
+					<!-- Attribute checkDigit is the document check digit. Optional. -->
+					<AssociatedTicketNumber couponNumber="1" associationType="A" checkDigit="2">1612100000106</AssociatedTicketNumber>
+				</Original>
+				<!-- Optional. Repeat factor=11 -->
+				<!-- Field descriptions as in 'Original' element -->
+				<Exchange>
+					<Number>1612100000201</Number>
+					<CheckDigit>2</CheckDigit>
+					<IssueDate>1967-08-13</IssueDate>
+					<AssociatedTicketNumber>1612100000207</AssociatedTicketNumber>
+				</Exchange>
+				<!-- Optional. Repeat factor=11 -->
+				<!-- Field descriptions as in 'Original' element -->
+				<Refund>
+					<Number>1612100000201</Number>
+					<CheckDigit>1</CheckDigit>
+					<IssueDate>1967-08-13</IssueDate>
+					<AssociatedTicketNumber>1612100000208</AssociatedTicketNumber>
+				</Refund>
+				<!-- Optional. Maximum one occurrence. -->
+				<!-- Field descriptions as in 'Original' element -->
+				<!-- Linked element provided specific information a booking which is associated to another booking -->
+				<Linked>
+					<Number>1612100000201</Number>
+					<CheckDigit>3</CheckDigit>
+					<IssueDate>1967-08-13</IssueDate>
+					<AssociatedTicketNumber>1612100000209</AssociatedTicketNumber>
+				</Linked>
+				<!-- Optional. Repeat factor=6 -->
+				<!-- Miscellaneous element provides specific information about ancillary or miscellaneous items purchased. This applies to MSR, EXB and EMD -->
+				<Miscellaneous>
+					<Number>1612100000201</Number>
+					<CheckDigit>1</CheckDigit>
+					<IssueDate>1967-08-13</IssueDate>
+					<AssociatedTicketNumber>1612100000210</AssociatedTicketNumber>
+				</Miscellaneous>
+			</RelatedDocument>
+			<!-- Required. Repeat factor=2 -->
+			<!-- Payment informs about the payment made for the amounts listed under Amounts. -->
+			<!-- Attribute sequence informs about the payment sequence number. Required. -->
+			<!-- Attribute type is a code informing about the form of payment. Required. For example, CA stands for cash payment. -->
+			<Payment type="CA" sequence="1"/>
+		</TicketingDocument>
+	</Abbreviated>
+</GetTicketingDocumentRS>

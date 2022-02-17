@@ -1,0 +1,8 @@
+<GetTicketingDocumentRQ Version="3.23.0" xmlns="http://www.sabre.com/ns/Ticketing/DC">
+	<ns1:STL_Header.RQ xmlns:ns1="http://services.sabre.com/STL/v01"/>
+	<ns2:POS xmlns:ns2="http://services.sabre.com/STL/v01"/>
+	<SearchParameters resultType="P">
+		<TicketingProvider>1S</TicketingProvider>
+		<DocumentNumber>8882023350558</DocumentNumber>
+	</SearchParameters>
+</GetTicketingDocumentRQ>

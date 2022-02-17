@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://services.sabre.com/css/ssi/enumerations/v1.0.0" version="2.0.0" jaxb:version="2.0" xmlns="http://services.sabre.com/css/ssi/enumerations/v1.0.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb">
+  <xsd:simpleType name="AdjustmentValueType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Number"/>
+      <xsd:enumeration value="Percentage"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DayOfWeek">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Mon"/>
+      <xsd:enumeration value="Tue"/>
+      <xsd:enumeration value="Wed"/>
+      <xsd:enumeration value="Thu"/>
+      <xsd:enumeration value="Fri"/>
+      <xsd:enumeration value="Sat"/>
+      <xsd:enumeration value="Sun"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FlightModifierRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="IsAny"/>
+      <xsd:enumeration value="IsNot"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FlightRangeModifierRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Is"/>
+      <xsd:enumeration value="IsNot"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FlightServiceTypeName">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Charter"/>
+      <xsd:enumeration value="Scheduled"/>
+      <xsd:enumeration value="Additional"/>
+      <xsd:enumeration value="Other"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FrequentFlyerType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Airline"/>
+      <xsd:enumeration value="TierLevelOnly"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ConditionOperator">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
+      <xsd:enumeration value="And"/>
+      <xsd:enumeration value="Or"/>
+      <xsd:enumeration value="Not"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="HierarchyLevel">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Leg"/>
+      <xsd:enumeration value="Cabin"/>
+      <xsd:enumeration value="FareClass"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IncreaseAvailabilitySlsType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Honor"/>
+      <xsd:enumeration value="Override"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IntegerActionParameterValueType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Absolute"/>
+      <xsd:enumeration value="Percentage"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OperatorRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Equal"/>
+      <xsd:enumeration value="LessThan"/>
+      <xsd:enumeration value="MoreThan"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="OriginTypeRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="AirlineAgent"/>
+      <xsd:enumeration value="TravelAgent"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleActionModifier">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
+      <xsd:enumeration value="Availability"/>
+      <xsd:enumeration value="FareValue"/>
+      <xsd:enumeration value="Sell"/>
+      <xsd:enumeration value="Clearance"/>
+      <xsd:enumeration value="Waitlist"/>
+      <xsd:enumeration value="SegmentLimits"/>
+      <xsd:enumeration value="Min"/>
+      <xsd:enumeration value="Max"/>
+      <xsd:enumeration value="LoadFactor"/>
+      <xsd:enumeration value="LoadFactorMin"/>
+      <xsd:enumeration value="FareClass"/>
+      <xsd:enumeration value="Cabin"/>
+      <xsd:enumeration value="Leg"/>
+      <xsd:enumeration value="LoadFactorMax"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleActionName">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="AllowPartialCancel"/>
+      <xsd:enumeration value="BlockSells"/>
+      <xsd:enumeration value="BlockAvailabilities"/>
+      <xsd:enumeration value="BlockPartialCancel"/>
+      <xsd:enumeration value="CapQuotaSalesLimit"/>
+      <xsd:enumeration value="Cascade"/>
+      <xsd:enumeration value="CascadeToCache"/>
+      <xsd:enumeration value="Decrease"/>
+      <xsd:enumeration value="DecreaseFareValue"/>
+      <xsd:enumeration value="ExternalInhibit"/>
+      <xsd:enumeration value="ExternalUninhibit"/>
+      <xsd:enumeration value="Increase"/>
+      <xsd:enumeration value="MaxIncrease"/>
+      <xsd:enumeration value="IncreaseFareValue"/>
+      <xsd:enumeration value="Inhibit"/>
+      <xsd:enumeration value="Limit"/>
+      <xsd:enumeration value="Max"/>
+      <xsd:enumeration value="Min"/>
+      <xsd:enumeration value="Override"/>
+      <xsd:enumeration value="RegardlessOfAvailability"/>
+      <xsd:enumeration value="RemoveCascade"/>
+      <xsd:enumeration value="SetMarketFare"/>
+      <xsd:enumeration value="SetPhysicalControls"/>
+      <xsd:enumeration value="SetPolicyClass"/>
+      <xsd:enumeration value="SetToFinancial"/>
+      <xsd:enumeration value="SetToPhysical"/>
+      <xsd:enumeration value="SetWaitlistAuthorization"/>
+      <xsd:enumeration value="SuppressToZero"/>
+      <xsd:enumeration value="UnBlock"/>
+      <xsd:enumeration value="UnBlockSells"/>
+      <xsd:enumeration value="UnBlockAvailabilities"/>
+      <xsd:enumeration value="Uncapp"/>
+      <xsd:enumeration value="Uninhibit"/>
+      <xsd:enumeration value="Unknown"/>
+      <xsd:enumeration value="UnsetPhysicalControls"/>
+      <xsd:enumeration value="Unsuppress"/>
+      <xsd:enumeration value="AddClassToFareClassSequence"/>
+      <xsd:enumeration value="RemoveClassToFareClassSequence"/>
+      <xsd:enumeration value="RemoveJourneyUser"/>
+      <xsd:enumeration value="SubstitutePocForPosCity"/>
+      <xsd:enumeration value="Bypass"/>
+      <xsd:enumeration value="SkipRules"/>
+      <xsd:enumeration value="BypassRtdpAvailabilities"/>
+      <xsd:enumeration value="BypassRtdpSells"/>
+      <xsd:enumeration value="Overbook"/>
+      <xsd:enumeration value="BidPriceExchangeAdjust"/>
+      <xsd:enumeration value="BidPriceSend"/>
+      <xsd:enumeration value="BidPriceDontSend"/>
+      <xsd:enumeration value="UseReceivedBidPrice"/>
+      <xsd:enumeration value="DoNotUseReceivedBidPrice"/>
+      <xsd:enumeration value="FallbackToAvs"/>
+      <xsd:enumeration value="LegBidPriceAdjust"/>
+      <xsd:enumeration value="ODBidPriceAdjust"/>
+      <xsd:enumeration value="SkipMarriage"/>
+      <xsd:enumeration value="SetBaseClassAuth"/>
+      <xsd:enumeration value="OverrideMinTripAvailability"/>
+      <xsd:enumeration value="CopyFaresFromPOS"/>
+      <xsd:enumeration value="CopyFaresFromFareClasses"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleActionParameterType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Min"/>
+      <xsd:enumeration value="Max"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleActionValueType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
+      <xsd:enumeration value="Absolute"/>
+      <xsd:enumeration value="Percentage"/>
+      <xsd:enumeration value="PercentageOfCabinCapacity"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleConditionName">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ArrivalTime"/>
+      <xsd:enumeration value="BlackoutDate"/>
+      <xsd:enumeration value="BlockspaceCodeshare"/>
+      <xsd:enumeration value="ClassAvailability"/>
+      <xsd:enumeration value="ClassBookings"/>
+      <xsd:enumeration value="CloseDateAndTime"/>
+      <xsd:enumeration value="CloseRestriction"/>
+      <xsd:enumeration value="CodeshareOperatingPartner"/>
+      <xsd:enumeration value="DepartureTime"/>
+      <xsd:enumeration value="Destination"/>
+      <xsd:enumeration value="DutyCode"/>
+      <xsd:enumeration value="ExpectedClassBooking"/>
+      <xsd:enumeration value="ExpectedLoadFactor"/>
+      <xsd:enumeration value="Flight"/>
+      <xsd:enumeration value="FlightRange"/>
+      <xsd:enumeration value="HoursOutsideDeparture"/>
+      <xsd:enumeration value="HoursToDeparture"/>
+      <xsd:enumeration value="LoadFactor"/>
+      <xsd:enumeration value="ReducedLoadFactor"/>
+      <xsd:enumeration value="LoyaltyIndicator"/>
+      <xsd:enumeration value="MaximumStay"/>
+      <xsd:enumeration value="MinimumStay"/>
+      <xsd:enumeration value="MinutesToDeparture"/>
+      <xsd:enumeration value="OAConnection"/>
+      <xsd:enumeration value="OnlineConnection"/>
+      <xsd:enumeration value="OnlineDestination"/>
+      <xsd:enumeration value="OnlineOrigin"/>
+      <xsd:enumeration value="OnlineConnectionOA"/>
+      <xsd:enumeration value="OpenRestriction"/>
+      <xsd:enumeration value="Origin"/>
+      <xsd:enumeration value="OriginatingAirlineOrGDS"/>
+      <xsd:enumeration value="OriginType"/>
+      <xsd:enumeration value="POS"/>
+      <xsd:enumeration value="PCC"/>
+      <xsd:enumeration value="Routing"/>
+      <xsd:enumeration value="RoutingConfiguration"/>
+      <xsd:enumeration value="SegmentLimitSales"/>
+      <xsd:enumeration value="SellingDate"/>
+      <xsd:enumeration value="SellingDOW"/>
+      <xsd:enumeration value="SellingTime"/>
+      <xsd:enumeration value="TravelDate"/>
+      <xsd:enumeration value="TravelDOW"/>
+      <xsd:enumeration value="OutboundDateCondition"/>
+      <xsd:enumeration value="InboundDateCondition"/>
+      <xsd:enumeration value="TwoCabinConfiguration"/>
+      <xsd:enumeration value="Segment"/>
+      <xsd:enumeration value="FourSegmentConnectionWithCodeshare"/>
+      <xsd:enumeration value="Board"/>
+      <xsd:enumeration value="Off"/>
+      <xsd:enumeration value="LegDateRange"/>
+      <xsd:enumeration value="FrequentFlyer"/>
+      <xsd:enumeration value="LegDepartureTime"/>
+      <xsd:enumeration value="LegDowFrequency"/>
+      <xsd:enumeration value="LegOrigin"/>
+      <xsd:enumeration value="LegDestination"/>
+      <xsd:enumeration value="FlightServiceType"/>
+      <xsd:enumeration value="ConnectingTime"/>
+      <xsd:enumeration value="POC"/>
+      <xsd:enumeration value="HomeCity"/>
+      <xsd:enumeration value="MarketingCarrier"/>
+      <xsd:enumeration value="PrimaryScreen"/>
+      <xsd:enumeration value="CVS"/>
+      <xsd:enumeration value="WaitListCount"/>
+      <xsd:enumeration value="LargePartyCount"/>
+      <xsd:enumeration value="ClassAuthorization"/>
+      <xsd:enumeration value="CabinCapacity"/>
+      <xsd:enumeration value="CabinCapacityAdjustment"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleLevelType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Host"/>
+      <xsd:enumeration value="OperatingPartner"/>
+      <xsd:enumeration value="Location"/>
+      <xsd:enumeration value="FlightNumber"/>
+      <xsd:enumeration value="Market"/>
+      <xsd:enumeration value="AirlineGDS"/>
+      <xsd:enumeration value="PointOfSale"/>
+      <xsd:enumeration value="PseudoCityCode"/>
+      <xsd:enumeration value="Agent"/>
+      <xsd:enumeration value="MarketingPartner"/>
+      <xsd:enumeration value="Ancillary"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleTypeModifier">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="FullOriginAndDestination"/>
+      <xsd:enumeration value="Segment"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RuleStatus">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Active"/>
+      <xsd:enumeration value="Inactive"/>
+      <xsd:enumeration value="Simulated"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RoutingModifierRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Is"/>
+      <xsd:enumeration value="IsAny"/>
+      <xsd:enumeration value="IsAll"/>
+      <xsd:enumeration value="IsConsecutive"/>
+      <xsd:enumeration value="IsConsecutiveLegBased"/>
+      <xsd:enumeration value="IsConsecutiveCustomLegBased"/>
+      <xsd:enumeration value="IsConnectPoint"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RoutingRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Direct"/>
+      <xsd:enumeration value="International"/>
+      <xsd:enumeration value="Domestic"/>
+      <xsd:enumeration value="Nonstop"/>
+      <xsd:enumeration value="OnlineConnect"/>
+      <xsd:enumeration value="InterlineConnect"/>
+      <xsd:enumeration value="CodeshareConnect"/>
+      <xsd:enumeration value="Any"/>
+      <xsd:enumeration value="First"/>
+      <xsd:enumeration value="Second"/>
+      <xsd:enumeration value="Third"/>
+      <xsd:enumeration value="Last"/>
+      <xsd:enumeration value="LastBut1"/>
+      <xsd:enumeration value="LastBut2"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SegmentModifierRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Is"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SegmentRuleParameterValue">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Operating"/>
+      <xsd:enumeration value="FinancialCodeshare"/>
+      <xsd:enumeration value="Codeshare"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="WeightType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NotApplicable"/>
+      <xsd:enumeration value="Prioritized"/>
+      <xsd:enumeration value="NotPrioritized"/>
+      <xsd:enumeration value="Explicit"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="GroupType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Airline"/>
+      <xsd:enumeration value="Flights"/>
+      <xsd:enumeration value="Location"/>
+      <xsd:enumeration value="POS"/>
+      <xsd:enumeration value="PCC"/>
+      <xsd:enumeration value="Agents"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="LocationLevel">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Airport"/>
+      <xsd:enumeration value="City"/>
+      <xsd:enumeration value="AirportCityGroup"/>
+      <xsd:enumeration value="Country"/>
+      <xsd:enumeration value="CountryGroup"/>
+      <xsd:enumeration value="Region"/>
+      <xsd:enumeration value="Conference"/>
+      <xsd:enumeration value="World"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

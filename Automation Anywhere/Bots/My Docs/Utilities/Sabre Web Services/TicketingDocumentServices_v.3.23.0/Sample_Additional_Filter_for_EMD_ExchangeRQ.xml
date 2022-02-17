@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n1:GetTicketingDocumentRQ Version="3.23.0" xmlns:STL="http://services.sabre.com/STL/v01" xmlns:n1="http://www.sabre.com/ns/Ticketing/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sabre.com/ns/Ticketing/DC TicketingDocumentServices_v.3.23.0.xsd">
+	<ns1:STL_Header.RQ xmlns:ns1="http://services.sabre.com/STL/v01"/>
+	<ns2:POS xmlns:ns2="http://services.sabre.com/STL/v01"/>
+	<n1:SearchParameters resultType="S">
+		<n1:TicketingProvider>U0</n1:TicketingProvider>
+		<n1:DocumentType>EMD</n1:DocumentType>
+		<n1:LastName firstName="SCHULKO" lastName="STEPH" pnrLocator="THWKPR"/>
+		<n1:AdditionalFilter>EligibleForExchange</n1:AdditionalFilter>
+	</n1:SearchParameters>
+</n1:GetTicketingDocumentRQ>

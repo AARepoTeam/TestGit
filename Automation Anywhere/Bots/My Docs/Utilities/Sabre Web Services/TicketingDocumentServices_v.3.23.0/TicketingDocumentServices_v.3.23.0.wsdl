@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:TT="http://www.sabre.com/ns/Ticketing/DC" name="TicketingDocumentServices" targetNamespace="http://www.sabre.com/ns/Ticketing/DC">
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.sabre.com/ns/Ticketing/DC" schemaLocation="TicketingDocumentServices_v.3.23.0.xsd"/>
+            <xsd:import namespace="http://www.ebxml.org/namespaces/messageHeader" schemaLocation="msg-header-2_0.xsd"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/12/secext" schemaLocation="wsse2.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="TicketingDocumentInput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:GetTicketingDocumentRQ"/>
+    </message>
+    <message name="TicketingDocumentOutput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:GetTicketingDocumentRS"/>
+    </message>
+    <message name="TicketingDocumentFault">
+        <part name="body" element="TT:GetTicketingDocumentRS"/>
+    </message>
+    <message name="UpdateServiceCouponInput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:UpdateServiceCouponRQ"/>
+    </message>
+    <message name="UpdateServiceCouponOutput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:UpdateServiceCouponRS"/>
+    </message>
+    <message name="UpdateServiceCouponFault">
+        <part name="body" element="TT:UpdateServiceCouponRS"/>
+    </message>
+    <message name="UpdateTicketingDocumentInput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:UpdateTicketingDocumentRQ"/>
+    </message>
+    <message name="UpdateTicketingDocumentOutput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:UpdateTicketingDocumentRS"/>
+    </message>
+    <message name="UpdateTicketingDocumentFault">
+        <part name="body" element="TT:UpdateTicketingDocumentRS"/>
+    </message>
+    <message name="ValidateTicketingDocumentInput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:ValidateTicketingDocumentRQ"/>
+    </message>
+    <message name="ValidateTicketingDocumentOutput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:ValidateTicketingDocumentRS"/>
+    </message>
+    <message name="ValidateTicketingDocumentFault">
+        <part name="body" element="TT:ValidateTicketingDocumentRS"/>
+    </message>
+    <message name="IssueTicketingDocumentInput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:IssueTicketingDocumentRQ"/>
+    </message>
+    <message name="IssueTicketingDocumentOutput">
+        <part name="header" element="eb:MessageHeader"/>
+        <part name="header2" element="wsse:Security"/>
+        <part name="body" element="TT:IssueTicketingDocumentRS"/>
+    </message>
+    <message name="IssueTicketingDocumentSoapFault">
+        <part name="body" element="TT:IssueTicketingDocumentRS"/>
+    </message>
+    <portType name="TicketingDocumentPortType">
+        <operation name="TicketingDocumentRQ">
+            <input message="TT:TicketingDocumentInput"/>
+            <output message="TT:TicketingDocumentOutput"/>
+            <fault name="TicketingDocumentSoapFault" message="TT:TicketingDocumentFault"/>
+        </operation>
+      </portType>
+    <portType name="UpdateServiceCouponPortType">
+        <operation name="UpdateServiceCouponRQ">
+            <input message="TT:UpdateServiceCouponInput"/>
+            <output message="TT:UpdateServiceCouponOutput"/>
+            <fault name="UpdateServiceCouponSoapFault" message="TT:UpdateServiceCouponFault"/>
+        </operation>
+    </portType>
+    <portType name="UpdateTicketingDocumentPortType">
+        <operation name="UpdateTicketingDocumentRQ">
+            <input message="TT:UpdateTicketingDocumentInput"/>
+            <output message="TT:UpdateTicketingDocumentOutput"/>
+            <fault name="UpdateTicketingDocumentSoapFault" message="TT:UpdateTicketingDocumentFault"/>
+        </operation>
+    </portType>
+    <portType name="ValidateTicketingDocumentPortType">
+        <operation name="ValidateTicketingDocumentRQ">
+            <input message="TT:ValidateTicketingDocumentInput"/>
+            <output message="TT:ValidateTicketingDocumentOutput"/>
+            <fault name="ValidateTicketingDocumentSoapFault" message="TT:ValidateTicketingDocumentFault"/>
+        </operation>
+    </portType>
+    <portType name="IssueTicketingDocumentPortType">
+           <operation name="IssueTicketingDocumentRQ">
+            <input message="TT:IssueTicketingDocumentInput"/>
+            <output message="TT:IssueTicketingDocumentOutput"/>
+            <fault name="IssueTicketingDocumentSoapFault" message="TT:IssueTicketingDocumentSoapFault"/>
+        </operation>
+    </portType>
+    <binding name="TicketingDocumentSoapBinding" type="TT:TicketingDocumentPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="TicketingDocumentRQ">
+            <soap:operation soapAction="OTA"/>
+            <input>
+                <soap:header message="TT:TicketingDocumentInput" part="header" use="literal"/>
+                <soap:header message="TT:TicketingDocumentInput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:header message="TT:TicketingDocumentOutput" part="header" use="literal"/>
+                <soap:header message="TT:TicketingDocumentOutput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </output>
+            <fault name="TicketingDocumentSoapFault">
+                <soap:fault name="TicketingDocumentSoapFault" use="literal"/>
+            </fault>
+        </operation>
+     </binding>
+    <binding name="UpdateServiceCouponSoapBinding" type="TT:UpdateServiceCouponPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="UpdateServiceCouponRQ">
+            <soap:operation soapAction="OTA"/>
+            <input>
+                <soap:header message="TT:UpdateServiceCouponInput" part="header" use="literal"/>
+                <soap:header message="TT:UpdateServiceCouponInput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:header message="TT:UpdateServiceCouponOutput" part="header" use="literal"/>
+                <soap:header message="TT:UpdateServiceCouponOutput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </output>
+            <fault name="UpdateServiceCouponSoapFault">
+                <soap:fault name="UpdateServiceCouponSoapFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="UpdateTicketingDocumentSoapBinding" type="TT:UpdateTicketingDocumentPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="UpdateTicketingDocumentRQ">
+            <soap:operation soapAction="OTA"/>
+            <input>
+                <soap:header message="TT:UpdateTicketingDocumentInput" part="header" use="literal"/>
+                <soap:header message="TT:UpdateTicketingDocumentInput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:header message="TT:UpdateTicketingDocumentOutput" part="header" use="literal"/>
+                <soap:header message="TT:UpdateTicketingDocumentOutput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </output>
+            <fault name="UpdateTicketingDocumentSoapFault">
+                <soap:fault name="UpdateTicketingDocumentSoapFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="ValidateTicketingDocumentSoapBinding" type="TT:ValidateTicketingDocumentPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="ValidateTicketingDocumentRQ">
+            <soap:operation soapAction="OTA"/>
+            <input>
+                <soap:header message="TT:ValidateTicketingDocumentInput" part="header" use="literal"/>
+                <soap:header message="TT:ValidateTicketingDocumentInput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:header message="TT:ValidateTicketingDocumentOutput" part="header" use="literal"/>
+                <soap:header message="TT:ValidateTicketingDocumentOutput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </output>
+            <fault name="ValidateTicketingDocumentSoapFault">
+                <soap:fault name="ValidateTicketingDocumentSoapFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <binding name="IssueTicketingDocumentSoapBinding" type="TT:IssueTicketingDocumentPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+         <operation name="IssueTicketingDocumentRQ">
+            <soap:operation soapAction="OTA"/>
+            <input>
+                <soap:header message="TT:IssueTicketingDocumentInput" part="header" use="literal"/>
+                <soap:header message="TT:IssueTicketingDocumentInput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:header message="TT:IssueTicketingDocumentOutput" part="header" use="literal"/>
+                <soap:header message="TT:IssueTicketingDocumentOutput" part="header2" use="literal"/>
+                <soap:body parts="body" use="literal"/>
+            </output>
+            <fault name="IssueTicketingDocumentSoapFault">
+                <soap:fault name="IssueTicketingDocumentSoapFault" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="TicketingDocumentService">
+        <port name="TicketingDocumentPortType" binding="TT:TicketingDocumentSoapBinding">
+            <soap:address location="$SWS_URL$"/>
+        </port>
+        <port name="UpdateServiceCouponPortType" binding="TT:UpdateServiceCouponSoapBinding">
+            <soap:address location="$SWS_URL$"/>
+        </port>
+        <port name="UpdateTicketingDocumentPortType" binding="TT:UpdateTicketingDocumentSoapBinding">
+            <soap:address location="$SWS_URL$"/>
+        </port>
+        <port name="ValidateTicketingDocumentPortType" binding="TT:ValidateTicketingDocumentSoapBinding">
+            <soap:address location="$SWS_URL$"/>
+        </port>
+        <port name="IssueTicketingDocumentPortType" binding="TT:IssueTicketingDocumentSoapBinding">
+            <soap:address location="$SWS_URL$"/>
+        </port>
+    </service>
+</definitions>

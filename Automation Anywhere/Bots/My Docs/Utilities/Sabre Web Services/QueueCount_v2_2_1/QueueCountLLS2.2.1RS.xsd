@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://webservices.sabre.com/sabreXML/2011/10" elementFormDefault="qualified" xmlns:sws="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:stl="http://services.sabre.com/STL/v01">
+  <xs:import namespace="http://services.sabre.com/STL/v01" schemaLocation="STL_For_SabreProtocol_v.1.2.0.xsd"/>
+  <xs:include schemaLocation="sws_common.xsd"/>
+  <xs:element name="QueueCountRS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="stl:ApplicationResults"/>
+        <xs:element name="QueueInfo" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QueueIdentifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AdditionalQueueInfo" minOccurs="0">
+                      <xs:complexType>
+                        <xs:attribute name="FreeText" type="xs:string" use="optional"/>
+                        <xs:attribute name="PseudoCityCode" type="xs:string" use="optional"/>
+                        <xs:attribute name="QueueNumber" type="xs:string" use="optional"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Count" type="xs:string" use="optional"/>
+                  <xs:attribute name="Name" type="xs:string" use="optional"/>
+                  <xs:attribute name="Number" type="xs:string" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="DateTime" type="sws:dateTime" use="optional"/>
+            <xs:attribute name="PseudoCityCode" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Totals" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="Count" type="xs:string" use="optional"/>
+            <xs:attribute name="Type" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Version" type="xs:string" fixed="2.2.1" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,9 @@
+            <v1:SubjectArea>ITINERARY</v1:SubjectArea>
+            <!--<v1:SubjectArea>REMARKS</v1:SubjectArea>-->
+            <v1:SubjectArea>AFAX</v1:SubjectArea>           
+            <v1:SubjectArea>GFAX</v1:SubjectArea>
+            <v1:SubjectArea>NAME</v1:SubjectArea>
+            <v1:SubjectArea>PASSENGERDETAILS</v1:SubjectArea>
+            <v1:SubjectArea>PHONE</v1:SubjectArea>
+            <!--<v1:SubjectArea>TICKETING</v1:SubjectArea>-->
+            <!--<v1:SubjectArea>VCR</v1:SubjectArea>-->

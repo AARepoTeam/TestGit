@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Groups" targetNamespace="http://services.sabre.com/css/ssi/groups/v1.0.0" xmlns:groups="http://services.sabre.com/css/ssi/groups/v1.0.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:shdr="http://services.sabre.com/ns/SOTA/Messaging/v1">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://services.sabre.com/css/ssi/groups/v1.0.0">
+      <xsd:include schemaLocation="GroupsRQRS_v2.0.0.xsd"/>
+      <xsd:import namespace="http://www.ebxml.org/namespaces/messageHeader" schemaLocation="msg-header-2_0.xsd"/>
+      <xsd:import namespace="http://schemas.xmlsoap.org/ws/2002/12/secext" schemaLocation="wsse.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetGroupsRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:GetGroupsRQ"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationsRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:GetLocationsRQ"/>
+  </wsdl:message>
+  <wsdl:message name="GetLocationsResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:GetLocationsRS"/>
+  </wsdl:message>
+  <wsdl:message name="GetGroupsResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:GetGroupsRS"/>
+  </wsdl:message>
+  <wsdl:message name="AddGroupRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:AddGroupRQ"/>
+  </wsdl:message>
+  <wsdl:message name="AddGroupResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:AddGroupRS"/>
+  </wsdl:message>
+  <wsdl:message name="AddLocationRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:AddLocationRQ"/>
+  </wsdl:message>
+  <wsdl:message name="AddAgentRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:AddAgentRQ"/>
+  </wsdl:message>
+  <wsdl:message name="AddAgentResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:AddAgentRS"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:UpdateGroupRQ"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateLocationRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:UpdateLocationRQ"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateGroupResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:UpdateGroupRS"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:DeleteGroupRQ"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteLocationRequest">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:DeleteLocationRQ"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteGroupResponse">
+    <wsdl:part name="header" element="eb:MessageHeader"/>
+    <wsdl:part name="header2" element="wsse:Security"/>
+    <wsdl:part name="body" element="groups:DeleteGroupRS"/>
+  </wsdl:message>
+  <wsdl:portType name="GroupsPortType">
+    <wsdl:operation name="GetGroups">
+      <wsdl:input message="groups:GetGroupsRequest"/>
+      <wsdl:output message="groups:GetGroupsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationGroups">
+      <wsdl:input message="groups:GetLocationsRequest"/>
+      <wsdl:output message="groups:GetLocationsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocationGroup">
+      <wsdl:input message="groups:AddLocationRequest"/>
+      <wsdl:output message="groups:AddGroupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroup">
+      <wsdl:input message="groups:AddGroupRequest"/>
+      <wsdl:output message="groups:AddGroupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="AddAgent">
+      <wsdl:input message="groups:AddAgentRequest"/>
+      <wsdl:output message="groups:AddAgentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <wsdl:input message="groups:UpdateGroupRequest"/>
+      <wsdl:output message="groups:UpdateGroupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocationGroup">
+      <wsdl:input message="groups:UpdateLocationRequest"/>
+      <wsdl:output message="groups:UpdateGroupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroup">
+      <wsdl:input message="groups:DeleteGroupRequest"/>
+      <wsdl:output message="groups:DeleteGroupResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocationGroup">
+      <wsdl:input message="groups:DeleteLocationRequest"/>
+      <wsdl:output message="groups:DeleteGroupResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GroupsBinding" type="groups:GroupsPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetGroups">
+      <soap:operation soapAction="GetGroups"/>
+      <wsdl:input>
+        <soap:header message="groups:GetGroupsRequest" part="header" use="literal"/>
+        <soap:header message="groups:GetGroupsRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:GetGroupsResponse" part="header" use="literal"/>
+        <soap:header message="groups:GetGroupsResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationGroups">
+      <soap:operation soapAction="GetLocationGroups"/>
+      <wsdl:input>
+        <soap:header message="groups:GetLocationsRequest" part="header" use="literal"/>
+        <soap:header message="groups:GetLocationsRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:GetLocationsResponse" part="header" use="literal"/>
+        <soap:header message="groups:GetLocationsResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGroup">
+      <soap:operation soapAction="AddGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:AddGroupRequest" part="header" use="literal"/>
+        <soap:header message="groups:AddGroupRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:AddGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:AddGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocationGroup">
+      <soap:operation soapAction="AddLocationGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:AddLocationRequest" part="header" use="literal"/>
+        <soap:header message="groups:AddLocationRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:AddGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:AddGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAgent">
+      <soap:operation soapAction="AddAgent"/>
+      <wsdl:input>
+        <soap:header message="groups:AddAgentRequest" part="header" use="literal"/>
+        <soap:header message="groups:AddAgentRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:AddAgentResponse" part="header" use="literal"/>
+        <soap:header message="groups:AddAgentResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGroup">
+      <soap:operation soapAction="UpdateGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:UpdateGroupRequest" part="header" use="literal"/>
+        <soap:header message="groups:UpdateGroupRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:UpdateGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:UpdateGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocationGroup">
+      <soap:operation soapAction="UpdateLocationGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:UpdateLocationRequest" part="header" use="literal"/>
+        <soap:header message="groups:UpdateLocationRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:UpdateGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:UpdateGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGroup">
+      <soap:operation soapAction="DeleteGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:DeleteGroupRequest" part="header" use="literal"/>
+        <soap:header message="groups:DeleteGroupRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:DeleteGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:DeleteGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocationGroup">
+      <soap:operation soapAction="DeleteLocationGroup"/>
+      <wsdl:input>
+        <soap:header message="groups:DeleteLocationRequest" part="header" use="literal"/>
+        <soap:header message="groups:DeleteLocationRequest" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:header message="groups:DeleteGroupResponse" part="header" use="literal"/>
+        <soap:header message="groups:DeleteGroupResponse" part="header2" use="literal"/>
+        <soap:body parts="body" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GroupsService">
+    <wsdl:port name="GroupsPort" binding="groups:GroupsBinding">
+      <soap:address location="https://webservices.sabre.com"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

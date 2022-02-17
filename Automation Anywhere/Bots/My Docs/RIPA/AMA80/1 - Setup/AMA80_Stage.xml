@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration> 
+	<NotificationReceivers>jiahua.deng@aa.com</NotificationReceivers>
+	<!-- ErrorCountThreshold: the value used to control when we need to shutdown bot forcefully -->
+	<!-- For example, if the value is 50, the bot will shutdown when the bot gets 50 errors -->
+	<ErrorCountThreshold>50</ErrorCountThreshold>
+	<EPR_Username>871316</EPR_Username>
+	<EPR_Password>RIPARPA1</EPR_Password>
+	<SWS_Username>S1002421</SWS_Username>
+	<SWS_Password>AaeBot$tage123</SWS_Password>
+	<Sabre_Status_Codes>HK SC RR KK KL TK</Sabre_Status_Codes>
+	<XML_Root>stl19:Air</XML_Root>
+	<XML_Reservation_Segments>//stl19:Segments/stl19:Segment/stl19:Air</XML_Reservation_Segments>
+	<XML_ActionCode>stl19:ActionCode</XML_ActionCode>
+	<XML_Sequence>stl19:Sequence</XML_Sequence>
+	<XML_OperatingAirlineCode>stl19:OperatingAirlineCode</XML_OperatingAirlineCode>
+  	<MaxProcessingTimePerCommand>5</MaxProcessingTimePerCommand>
+</Configuration>
+	

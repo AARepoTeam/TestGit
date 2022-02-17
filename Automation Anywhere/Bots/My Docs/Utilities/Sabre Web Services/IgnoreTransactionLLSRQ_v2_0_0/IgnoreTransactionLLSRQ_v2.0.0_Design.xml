@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--"ReturnHostCommand" is used to specify whether or not to return the native host command in the response message.-->
+<!--Equivalent Sabre host command: I-->
+<IgnoreTransactionRQ ReturnHostCommand="false" TimeStamp="2011-06-01T13:30:00-06:00" Version="2.0.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+</IgnoreTransactionRQ>

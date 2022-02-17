@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamplePayloads>
+	<SampleRequests>
+		<!--Ignore transaction.-->
+		<!--Equivalent Sabre host command: I-->
+		<IgnoreTransactionRQ Version="2.0.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+	</SampleRequests>
+	<SampleResponses>
+		<IgnoreTransactionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" Version="2.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+			<stl:ApplicationResults status="Complete">
+				<stl:Success timeStamp="2011-12-07T16:16:13-06:00"/>
+			</stl:ApplicationResults>
+		</IgnoreTransactionRS>
+	</SampleResponses>
+</SamplePayloads>
