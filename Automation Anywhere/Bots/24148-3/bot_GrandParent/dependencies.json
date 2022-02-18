@@ -1,1 +1,1 @@
-{"path":"Automation Anywhere\\Bots\\24148-3\\GrandParent","manualDependencies":[],"scannedDependencies":[]}
+{"path":"Automation Anywhere\\Bots\\24148-3\\GrandParent","manualDependencies":[],"scannedDependencies":["Automation Anywhere\\Bots\\24148-3\\Child1","Automation Anywhere\\Bots\\24148-3\\Child2"]}
