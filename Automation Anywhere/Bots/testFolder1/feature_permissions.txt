@@ -1,0 +1,14 @@
+
+PD-40449 :
+API :  
+   http://localhost:3000/v2/repository/files/49/versions/list
+Steps to reproduce :
+1. Remove check-in and checkout permission for the user
+2. click on View TaskBot version history in the public workspace or private workspace(check-out bots)
+Actual :
+
+{"code":"repository.exception.insufficientpermission","details":null,"message":"Insufficient privileges.You do not have the permission \"{0}\".Please contact the system administrator to get the required permission."}
+
+Expected: 
+
+{"code":"repository.exception.insufficientpermission","details":null,"message":"Insufficient privileges.You do not have the permission \"check-in and check-out required to view version history\" .Please contact the system administrator to get the required permission."}
