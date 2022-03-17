@@ -12,3 +12,6 @@ Actual :
 Expected: 
 
 {"code":"repository.exception.insufficientpermission","details":null,"message":"Insufficient privileges.You do not have the permission \"check-in and check-out required to view version history\" .Please contact the system administrator to get the required permission."}
+
+#
+#updated
